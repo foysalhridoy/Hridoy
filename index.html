@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>ECLIPSE | Pixel Perfect Portfolio</title>
+  <title>MASTERCLASS | Premium Portfolio</title>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -17,44 +17,44 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      transition: background-color 0.3s ease, color 0.2s ease;
+      transition: background-color 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       overflow-x: hidden;
     }
 
     /* ===== DARK THEME ===== */
     body.dark {
       --bg-primary: #000000;
-      --bg-secondary: #050505;
-      --bg-card: rgba(15, 15, 20, 0.85);
-      --bg-card-solid: #0a0a0f;
+      --bg-secondary: #03030a;
+      --bg-card: rgba(10, 10, 20, 0.75);
       --text-primary: #ffffff;
-      --text-secondary: #a1a1aa;
-      --accent: #00d4ff;
-      --accent-2: #7c3aed;
-      --accent-3: #f43f5e;
-      --accent-glow: rgba(0, 212, 255, 0.15);
-      --border-color: rgba(255, 255, 255, 0.08);
+      --text-secondary: #a0a0b5;
+      --accent: #3b82f6;
+      --accent-2: #8b5cf6;
+      --accent-3: #ec489a;
+      --accent-glow: rgba(59, 130, 246, 0.2);
+      --border-color: rgba(59, 130, 246, 0.2);
       --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.4);
-      --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.5);
-      --shadow-glow: 0 0 40px rgba(0, 212, 255, 0.2);
+      --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.5);
+      --shadow-glow: 0 0 40px rgba(59, 130, 246, 0.25);
+      --card-bg: #0a0a14;
     }
 
     /* ===== LIGHT THEME ===== */
     body.light {
-      --bg-primary: #fafafa;
+      --bg-primary: #f8fafc;
       --bg-secondary: #ffffff;
-      --bg-card: rgba(255, 255, 255, 0.9);
-      --bg-card-solid: #ffffff;
-      --text-primary: #0a0a0a;
-      --text-secondary: #52525b;
-      --accent: #0891b2;
-      --accent-2: #7c3aed;
-      --accent-3: #e11d48;
-      --accent-glow: rgba(8, 145, 178, 0.08);
-      --border-color: rgba(0, 0, 0, 0.08);
+      --bg-card: rgba(255, 255, 255, 0.85);
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --accent: #3b82f6;
+      --accent-2: #8b5cf6;
+      --accent-3: #ec489a;
+      --accent-glow: rgba(59, 130, 246, 0.08);
+      --border-color: rgba(59, 130, 246, 0.2);
       --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.04);
-      --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.08);
-      --shadow-glow: 0 0 30px rgba(8, 145, 178, 0.15);
+      --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.08);
+      --shadow-glow: 0 0 30px rgba(59, 130, 246, 0.15);
+      --card-bg: #ffffff;
     }
 
     body {
@@ -62,17 +62,46 @@
       color: var(--text-primary);
     }
 
-    /* Animated Background */
-    .animated-bg {
+    /* Animated Gradient Orbs */
+    .orb {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
-      background: radial-gradient(circle at 20% 30%, var(--accent-glow) 0%, transparent 50%),
-                  radial-gradient(circle at 80% 70%, rgba(124, 58, 237, 0.08) 0%, transparent 60%);
+      border-radius: 50%;
+      filter: blur(80px);
       pointer-events: none;
+      z-index: -2;
+      animation: floatOrb 20s ease-in-out infinite;
+    }
+    .orb-1 {
+      width: 500px;
+      height: 500px;
+      background: var(--accent);
+      opacity: 0.15;
+      top: -200px;
+      left: -200px;
+      animation-delay: 0s;
+    }
+    .orb-2 {
+      width: 600px;
+      height: 600px;
+      background: var(--accent-2);
+      opacity: 0.1;
+      bottom: -300px;
+      right: -200px;
+      animation-delay: -5s;
+    }
+    .orb-3 {
+      width: 400px;
+      height: 400px;
+      background: var(--accent-3);
+      opacity: 0.08;
+      top: 50%;
+      right: 20%;
+      animation-delay: -10s;
+    }
+    @keyframes floatOrb {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(100px, -50px) scale(1.1); }
+      66% { transform: translate(-50px, 100px) scale(0.9); }
     }
 
     /* Grid Pattern */
@@ -85,20 +114,20 @@
       z-index: -1;
       background-image: linear-gradient(var(--border-color) 1px, transparent 1px),
                         linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
-      background-size: 40px 40px;
+      background-size: 50px 50px;
       pointer-events: none;
-      opacity: 0.4;
+      opacity: 0.3;
     }
 
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
-      width: 6px;
+      width: 8px;
     }
     ::-webkit-scrollbar-track {
       background: var(--bg-secondary);
     }
     ::-webkit-scrollbar-thumb {
-      background: var(--accent);
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
       border-radius: 10px;
     }
 
@@ -108,23 +137,23 @@
       padding: 0 2rem;
     }
 
-    /* ===== NAVIGATION - MINIMAL COLLAPSIBLE ===== */
+    /* ===== NAVIGATION - PREMIUM COLLAPSIBLE ===== */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       z-index: 1000;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
     
     .nav-container {
       padding: 1.2rem 0;
-      transition: all 0.4s ease;
+      transition: all 0.5s ease;
     }
     
     nav.nav-minimized .nav-container {
-      padding: 0.6rem 0;
+      padding: 0.5rem 0;
       background: var(--bg-card);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border-color);
@@ -142,7 +171,7 @@
     
     .logo {
       font-weight: 800;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       background: linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent-3));
       background-clip: text;
       -webkit-background-clip: text;
@@ -150,37 +179,48 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      letter-spacing: -0.02em;
+      transition: all 0.3s;
+      animation: glowPulse 3s ease-in-out infinite;
+    }
+    @keyframes glowPulse {
+      0%, 100% { filter: drop-shadow(0 0 0px rgba(59,130,246,0)); }
+      50% { filter: drop-shadow(0 0 5px rgba(59,130,246,0.5)); }
     }
     
     .nav-links {
       display: flex;
-      gap: 2.5rem;
+      gap: 2.8rem;
       list-style: none;
     }
     
     .nav-links a {
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
       color: var(--text-primary);
-      transition: 0.2s;
+      transition: all 0.3s;
       position: relative;
       font-size: 0.95rem;
     }
     
-    .nav-links a::after {
+    .nav-links a::before {
       content: '';
       position: absolute;
-      bottom: -4px;
+      bottom: -6px;
       left: 0;
       width: 0;
       height: 2px;
-      background: var(--accent);
-      transition: width 0.3s ease;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      border-radius: 2px;
     }
     
-    .nav-links a:hover::after {
+    .nav-links a:hover::before {
       width: 100%;
+    }
+    
+    .nav-links a:hover {
+      transform: translateY(-2px);
+      color: var(--accent);
     }
     
     .theme-toggle {
@@ -191,10 +231,27 @@
       cursor: pointer;
       display: flex;
       gap: 8px;
-      font-weight: 500;
+      font-weight: 600;
       transition: all 0.3s;
       color: var(--text-primary);
       font-size: 0.9rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .theme-toggle::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, var(--accent-glow), transparent);
+      transition: left 0.5s;
+    }
+    
+    .theme-toggle:hover::before {
+      left: 100%;
     }
     
     .theme-toggle:hover {
@@ -204,28 +261,28 @@
     
     .nav-spacer {
       height: 85px;
-      transition: height 0.4s ease;
+      transition: height 0.5s ease;
     }
     
     nav.nav-minimized + .nav-spacer {
       height: 65px;
     }
     
-    /* Buttons */
+    /* Premium Buttons with Animation */
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
       color: white;
-      padding: 0.9rem 2rem;
+      padding: 1rem 2.2rem;
       border-radius: 50px;
-      font-weight: 600;
+      font-weight: 700;
       border: none;
       cursor: pointer;
-      transition: all 0.3s ease;
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.7rem;
       position: relative;
       overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     
     .btn-primary::before {
@@ -235,7 +292,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
       transition: left 0.5s;
     }
     
@@ -244,48 +301,72 @@
     }
     
     .btn-primary:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px) scale(1.02);
       box-shadow: var(--shadow-glow);
+    }
+    
+    .btn-primary:active {
+      transform: translateY(0) scale(0.98);
     }
     
     .btn-outline {
       background: transparent;
       border: 1.5px solid var(--accent);
       color: var(--accent);
-      padding: 0.85rem 1.9rem;
+      padding: 0.95rem 2rem;
       border-radius: 50px;
-      font-weight: 500;
-      transition: all 0.3s;
+      font-weight: 600;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-outline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: var(--accent-glow);
+      transition: width 0.4s ease;
+      z-index: -1;
+    }
+    
+    .btn-outline:hover::before {
+      width: 100%;
     }
     
     .btn-outline:hover {
-      background: var(--accent-glow);
       transform: translateY(-2px);
       border-color: var(--accent-2);
     }
     
-    /* Section Badge */
+    /* Section Elements */
     .section-badge {
       display: inline-block;
       background: var(--accent-glow);
-      padding: 0.3rem 1rem;
+      padding: 0.35rem 1rem;
       border-radius: 50px;
       font-size: 0.7rem;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.5px;
       color: var(--accent);
       margin-bottom: 1rem;
       backdrop-filter: blur(5px);
       border: 1px solid var(--border-color);
+      transition: all 0.3s;
+      animation: fadeInUp 0.6s ease;
     }
     
     .section-title {
-      font-size: 2.8rem;
+      font-size: 3rem;
       font-weight: 800;
       letter-spacing: -0.02em;
       line-height: 1.2;
       margin-bottom: 1rem;
+      animation: fadeInUp 0.6s ease 0.1s backwards;
     }
     
     /* Hero Section */
@@ -305,25 +386,12 @@
     
     .hero-left {
       flex: 1.2;
-      animation: fadeInUp 0.6s ease;
     }
     
     .hero-right {
       flex: 0.8;
       display: flex;
       justify-content: center;
-      animation: fadeInUp 0.6s ease 0.2s backwards;
-    }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
     
     .hero-badge {
@@ -333,17 +401,19 @@
       background: var(--accent-glow);
       border: 1px solid var(--border-color);
       border-radius: 100px;
-      padding: 0.35rem 1rem;
+      padding: 0.4rem 1rem;
       font-size: 0.75rem;
       font-weight: 500;
       margin-bottom: 1.5rem;
+      animation: fadeInUp 0.6s ease;
     }
     
     .hero-left h1 {
-      font-size: 3.8rem;
+      font-size: 4rem;
       font-weight: 800;
       line-height: 1.1;
       margin: 1rem 0;
+      animation: fadeInUp 0.6s ease 0.1s backwards;
     }
     
     .gradient-text {
@@ -352,7 +422,7 @@
       -webkit-background-clip: text;
       color: transparent;
       background-size: 200% auto;
-      animation: shimmer 3s linear infinite;
+      animation: shimmer 4s linear infinite;
     }
     
     @keyframes shimmer {
@@ -361,21 +431,31 @@
     }
     
     .hero-desc {
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       color: var(--text-secondary);
       max-width: 550px;
       margin: 1.2rem 0;
-      line-height: 1.6;
+      line-height: 1.7;
+      animation: fadeInUp 0.6s ease 0.2s backwards;
     }
     
     .hero-stats {
       display: flex;
       gap: 2.5rem;
       margin: 2rem 0;
+      animation: fadeInUp 0.6s ease 0.3s backwards;
+    }
+    
+    .stat-block {
+      transition: all 0.3s;
+    }
+    
+    .stat-block:hover {
+      transform: translateY(-5px);
     }
     
     .stat-block h3 {
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 800;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
       background-clip: text;
@@ -383,10 +463,17 @@
       color: transparent;
     }
     
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.6s ease 0.4s backwards;
+    }
+    
     /* Avatar */
     .avatar {
-      width: 300px;
-      height: 300px;
+      width: 320px;
+      height: 320px;
       background: linear-gradient(135deg, var(--accent-glow), transparent);
       border-radius: 40% 60% 35% 65% / 55% 40% 60% 45%;
       display: flex;
@@ -394,24 +481,42 @@
       justify-content: center;
       border: 2px solid var(--border-color);
       box-shadow: var(--shadow-glow);
-      transition: all 0.4s ease;
-      animation: float 5s ease-in-out infinite;
+      transition: all 0.5s ease;
+      animation: float 5s ease-in-out infinite, fadeInRight 0.8s ease;
     }
     
     @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-12px); }
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(2deg); }
+    }
+    
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
     
     .avatar i {
-      font-size: 7rem;
+      font-size: 8rem;
       color: var(--accent);
+      transition: all 0.3s;
+      animation: iconPulse 3s ease-in-out infinite;
+    }
+    
+    @keyframes iconPulse {
+      0%, 100% { filter: drop-shadow(0 0 0px var(--accent)); }
+      50% { filter: drop-shadow(0 0 20px var(--accent)); }
     }
     
     /* Projects Grid */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
       gap: 2rem;
       margin: 2rem 0;
     }
@@ -421,35 +526,37 @@
       backdrop-filter: blur(12px);
       border-radius: 1.5rem;
       padding: 1.8rem;
-      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       border: 1px solid var(--border-color);
       cursor: pointer;
-      animation: fadeInUp 0.5s ease backwards;
+      animation: fadeInUp 0.6s ease backwards;
       animation-delay: calc(var(--index, 0) * 0.08s);
     }
     
     .project-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-12px);
       border-color: var(--accent);
-      box-shadow: var(--shadow-md);
+      box-shadow: var(--shadow-glow);
     }
     
     .project-icon {
       background: var(--accent-glow);
-      width: 55px;
-      height: 55px;
-      border-radius: 14px;
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       color: var(--accent);
       margin-bottom: 1.2rem;
-      transition: all 0.3s;
+      transition: all 0.4s;
     }
     
     .project-card:hover .project-icon {
-      transform: scale(1.05) rotate(3deg);
+      transform: scale(1.1) rotate(5deg);
+      background: var(--accent);
+      color: white;
     }
     
     /* Skills */
@@ -464,21 +571,21 @@
     .skill-tag {
       background: var(--bg-card);
       backdrop-filter: blur(8px);
-      padding: 0.7rem 1.6rem;
+      padding: 0.8rem 1.8rem;
       border-radius: 60px;
-      font-weight: 500;
+      font-weight: 600;
       border: 1px solid var(--border-color);
-      transition: all 0.3s;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       cursor: pointer;
       font-size: 0.9rem;
-      animation: fadeInScale 0.4s ease backwards;
-      animation-delay: calc(var(--idx, 0) * 0.03s);
+      animation: fadeInScale 0.5s ease backwards;
+      animation-delay: calc(var(--idx, 0) * 0.04s);
     }
     
     @keyframes fadeInScale {
       from {
         opacity: 0;
-        transform: scale(0.9);
+        transform: scale(0.8);
       }
       to {
         opacity: 1;
@@ -488,7 +595,7 @@
     
     .skill-tag:hover {
       border-color: var(--accent);
-      transform: translateY(-3px);
+      transform: translateY(-5px) scale(1.05);
       background: var(--accent-glow);
     }
     
@@ -497,16 +604,17 @@
       background: var(--bg-card);
       backdrop-filter: blur(16px);
       border-radius: 2rem;
-      padding: 2.8rem;
+      padding: 3rem;
       text-align: center;
       border: 1px solid var(--border-color);
-      transition: all 0.4s;
-      animation: fadeInUp 0.6s ease;
+      transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      animation: fadeInUp 0.8s ease;
     }
     
     .contact-card:hover {
       border-color: var(--accent);
       box-shadow: var(--shadow-glow);
+      transform: translateY(-5px);
     }
     
     .social-icons {
@@ -518,22 +626,22 @@
     
     .social-icons a {
       background: var(--accent-glow);
-      width: 52px;
-      height: 52px;
+      width: 55px;
+      height: 55px;
       border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       color: var(--accent);
-      transition: all 0.3s;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       border: 1px solid var(--border-color);
     }
     
     .social-icons a:hover {
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
       color: white;
-      transform: translateY(-5px) scale(1.05);
+      transform: translateY(-8px) rotate(360deg) scale(1.1);
     }
     
     footer {
@@ -544,29 +652,40 @@
       border-top: 1px solid var(--border-color);
     }
     
-    /* Toast */
+    /* Toast Animation */
     .toast {
       position: fixed;
       bottom: 30px;
       right: 30px;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
       color: white;
-      padding: 12px 24px;
+      padding: 14px 28px;
       border-radius: 50px;
-      font-weight: 500;
+      font-weight: 600;
       z-index: 2000;
-      animation: slideInRight 0.3s ease;
+      animation: slideInRight 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       box-shadow: var(--shadow-md);
     }
     
     @keyframes slideInRight {
       from {
         opacity: 0;
-        transform: translateX(30px);
+        transform: translateX(50px);
       }
       to {
         opacity: 1;
         transform: translateX(0);
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
     
@@ -576,8 +695,8 @@
       .hero-grid { flex-direction: column-reverse; text-align: center; }
       .hero-stats { justify-content: center; }
       .section-title { font-size: 2rem; }
-      .avatar { width: 220px; height: 220px; }
-      .avatar i { font-size: 5rem; }
+      .avatar { width: 240px; height: 240px; }
+      .avatar i { font-size: 5.5rem; }
       .nav-links { gap: 1.5rem; }
     }
     
@@ -586,21 +705,21 @@
       .hero-left h1 { font-size: 1.8rem; }
       .nav-inner { flex-direction: column; gap: 0.8rem; }
       .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
-      .logo { font-size: 1.2rem; }
       .projects-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body class="dark">
-  <div class="animated-bg"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
   <div class="grid-pattern"></div>
 
-  <!-- Navigation -->
   <nav id="mainNav">
     <div class="nav-container">
       <div class="nav-inner">
         <div class="logo">
-          <i class="fas fa-feather-alt"></i> ECLIPSE
+          <i class="fas fa-gem"></i> MASTERCLASS
         </div>
         <ul class="nav-links">
           <li><a href="#home">Home</a></li>
@@ -617,97 +736,92 @@
   <div class="nav-spacer"></div>
 
   <main>
-    <!-- USER CONFIGURATION - EDIT YOUR DETAILS -->
     <script>
-      const portfolio = {
-        name: "Aria Vance",
-        title: "Digital Experience Designer",
-        bio: "Creating immersive digital experiences that blend aesthetics with functionality. I turn complex problems into elegant solutions.",
-        experience: "7+",
-        projectsCount: "48",
-        clientsCount: "38",
-        avatarIcon: "fas fa-dove",
+      const userData = {
+        name: "Alexander Vance",
+        title: "Creative Director & Developer",
+        bio: "Award-winning creative technologist specializing in immersive digital experiences. I turn complex ideas into elegant, high-performance solutions that captivate audiences worldwide.",
+        experience: "12+",
+        projectsCount: "89",
+        clientsCount: "120+",
+        avatarIcon: "fas fa-meteor",
         projects: [
-          { name: "Nova OS", desc: "Revolutionary operating interface with AI-driven personalization.", tech: "React, Three.js, Python", icon: "fas fa-globe" },
-          { name: "Aether UI", desc: "Design system powering 1000+ applications globally.", tech: "Vue, Tailwind, Storybook", icon: "fas fa-palette" },
-          { name: "Quantum Analytics", desc: "Real-time data intelligence platform.", tech: "D3, Node, TensorFlow", icon: "fas fa-chart-line" },
-          { name: "Stellar Wallet", desc: "Secure Web3 wallet with DeFi integration.", tech: "Web3, Solidity, React", icon: "fas fa-wallet" },
-          { name: "Dreamscape", desc: "Immersive VR experiences for creative professionals.", tech: "Three.js, WebXR", icon: "fas fa-vr-cardboard" },
-          { name: "Flow Forge", desc: "No-code automation tool for modern workflows.", tech: "Node, React, MongoDB", icon: "fas fa-cogs" }
+          { name: "Aether OS", desc: "Revolutionary operating interface with AI-driven personalization and stunning 3D visuals.", tech: "React, Three.js, Python", icon: "fas fa-globe" },
+          { name: "Lumina Design System", desc: "Enterprise-grade design system powering 5000+ applications globally.", tech: "Vue, Tailwind, Storybook", icon: "fas fa-palette" },
+          { name: "Quantum Analytics", desc: "Real-time data intelligence platform with predictive ML algorithms.", tech: "D3, Node, TensorFlow", icon: "fas fa-chart-line" },
+          { name: "Stellar Wallet 3.0", desc: "Secure Web3 wallet with seamless DeFi and NFT integration.", tech: "Web3, Solidity, React", icon: "fas fa-wallet" },
+          { name: "Dreamscape VR", desc: "Immersive virtual reality experience for creative professionals.", tech: "Three.js, WebXR", icon: "fas fa-vr-cardboard" },
+          { name: "Flow Forge Pro", desc: "No-code automation tool used by 10,000+ businesses.", tech: "Node, React, MongoDB", icon: "fas fa-cogs" }
         ],
-        skills: ["React/Next.js", "Three.js", "TypeScript", "TailwindCSS", "Framer Motion", "Node.js", "GraphQL", "Python", "Figma", "WebGL"],
-        email: "aria@eclipse.dev",
-        github: "https://github.com/ariavance",
-        linkedin: "https://linkedin.com/in/ariavance",
-        twitter: "https://twitter.com/ariavance",
-        footerText: "✨ Crafting digital experiences that inspire ✨"
+        skills: ["React/Next.js", "Three.js", "TypeScript", "TailwindCSS", "Framer Motion", "Node.js", "GraphQL", "Python", "TensorFlow", "WebGL", "Figma", "MongoDB"],
+        email: "alexander@masterclass.dev",
+        github: "https://github.com/alexandervance",
+        linkedin: "https://linkedin.com/in/alexandervance",
+        twitter: "https://twitter.com/alexandervance",
+        footerText: "✨ Crafting digital excellence since 2012 ✨"
       };
     </script>
 
-    <!-- HERO SECTION -->
     <section id="home" class="hero">
       <div class="container">
         <div class="hero-grid">
           <div class="hero-left">
             <div class="hero-badge">
-              <i class="fas fa-bolt"></i> Available for opportunities
+              <i class="fas fa-bolt"></i> Available for exclusive opportunities
             </div>
-            <h1>Hi, I'm <span class="gradient-text" id="displayName">Aria</span><br><span id="displayTitle">Digital Experience Designer</span></h1>
-            <p class="hero-desc" id="displayBio">Creating immersive digital experiences that blend aesthetics with functionality. I turn complex problems into elegant solutions.</p>
+            <h1>Hi, I'm <span class="gradient-text" id="displayName">Alexander</span><br><span id="displayTitle">Creative Director</span></h1>
+            <p class="hero-desc" id="displayBio">Award-winning creative technologist specializing in immersive digital experiences.</p>
             <div class="hero-stats">
-              <div class="stat-block"><h3 id="statExp">7+</h3><p>Years Exp</p></div>
-              <div class="stat-block"><h3 id="statProjects">48</h3><p>Projects</p></div>
-              <div class="stat-block"><h3 id="statClients">38</h3><p>Clients</p></div>
+              <div class="stat-block"><h3 id="statExp">12+</h3><p>Years Exp</p></div>
+              <div class="stat-block"><h3 id="statProjects">89</h3><p>Projects</p></div>
+              <div class="stat-block"><h3 id="statClients">120+</h3><p>Clients</p></div>
             </div>
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <div class="hero-buttons">
               <a href="#work" class="btn-primary"><i class="fas fa-arrow-down"></i> Explore Work</a>
-              <a href="#contact" class="btn-outline"><i class="fas fa-comment"></i> Let's Talk</a>
+              <a href="#contact" class="btn-outline"><i class="fas fa-comment-dots"></i> Let's Connect</a>
             </div>
           </div>
           <div class="hero-right">
             <div class="avatar">
-              <i id="avatarIcon" class="fas fa-dove"></i>
+              <i id="avatarIcon" class="fas fa-meteor"></i>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PROJECTS SECTION -->
     <section id="work" class="container" style="margin: 5rem auto;">
       <div style="text-align: center;">
-        <span class="section-badge"><i class="fas fa-crown"></i> Featured Work</span>
+        <span class="section-badge"><i class="fas fa-crown"></i> Featured Masterpieces</span>
         <h2 class="section-title">Selected Projects</h2>
-        <p style="color: var(--text-secondary);">Crafted with precision and passion</p>
+        <p style="color: var(--text-secondary);">A showcase of my finest work</p>
       </div>
       <div id="projectsGrid" class="projects-grid"></div>
     </section>
 
-    <!-- SKILLS SECTION -->
     <section id="skills" class="container" style="margin: 5rem auto;">
       <div style="text-align: center;">
-        <span class="section-badge"><i class="fas fa-code"></i> Expertise</span>
-        <h2 class="section-title">Tech Stack</h2>
-        <p style="color: var(--text-secondary);">Modern tools for modern solutions</p>
+        <span class="section-badge"><i class="fas fa-microchip"></i> Technical Arsenal</span>
+        <h2 class="section-title">Core Competencies</h2>
+        <p style="color: var(--text-secondary);">Modern tools, exceptional results</p>
       </div>
       <div id="skillsGrid" class="skills-wrapper"></div>
     </section>
 
-    <!-- CONTACT SECTION -->
     <section id="contact" class="container" style="margin: 5rem auto;">
       <div class="contact-card">
-        <i class="fas fa-envelope-open-text" style="font-size: 2.5rem; color: var(--accent);"></i>
-        <h2 style="margin: 1rem 0 0.5rem;">Let's Connect</h2>
-        <p style="color: var(--text-secondary);">Have a project? Let's bring your vision to life.</p>
-        <a id="contactEmail" href="mailto:aria@eclipse.dev" style="font-size: 1.1rem; font-weight: 600; color: var(--accent); display: inline-block; margin: 1rem 0;">aria@eclipse.dev</a>
+        <i class="fas fa-envelope-open-text" style="font-size: 2.8rem; color: var(--accent);"></i>
+        <h2 style="margin: 1rem 0 0.5rem;">Let's Create Something Extraordinary</h2>
+        <p style="color: var(--text-secondary);">Ready to bring your vision to life? Let's collaborate.</p>
+        <a id="contactEmail" href="mailto:alexander@masterclass.dev" style="font-size: 1.2rem; font-weight: 700; color: var(--accent); display: inline-block; margin: 1rem 0;">alexander@masterclass.dev</a>
         <div id="socialLinks" class="social-icons"></div>
-        <button id="copyBtn" class="btn-primary" style="padding: 0.7rem 1.6rem;"><i class="far fa-copy"></i> Copy Email</button>
+        <button id="copyBtn" class="btn-primary" style="padding: 0.8rem 1.8rem;"><i class="far fa-copy"></i> Copy Email</button>
       </div>
     </section>
   </main>
 
   <footer>
-    <p id="footerText">✨ Crafting digital experiences that inspire ✨</p>
+    <p id="footerText">✨ Crafting digital excellence since 2012 ✨</p>
   </footer>
 
   <script>
@@ -721,69 +835,64 @@
       }
     });
     
-    // Apply Data with Animation Delays
-    function applyPortfolioData() {
-      document.getElementById('displayName').innerText = portfolio.name;
-      document.getElementById('displayTitle').innerText = portfolio.title;
-      document.getElementById('displayBio').innerText = portfolio.bio;
-      document.getElementById('statExp').innerText = portfolio.experience;
-      document.getElementById('statProjects').innerText = portfolio.projectsCount;
-      document.getElementById('statClients').innerText = portfolio.clientsCount;
-      document.getElementById('avatarIcon').className = portfolio.avatarIcon;
+    // Apply Data with Animations
+    function applyData() {
+      document.getElementById('displayName').innerText = userData.name;
+      document.getElementById('displayTitle').innerText = userData.title;
+      document.getElementById('displayBio').innerText = userData.bio;
+      document.getElementById('statExp').innerText = userData.experience;
+      document.getElementById('statProjects').innerText = userData.projectsCount;
+      document.getElementById('statClients').innerText = userData.clientsCount;
+      document.getElementById('avatarIcon').className = userData.avatarIcon;
       
-      // Projects
       const projectsGrid = document.getElementById('projectsGrid');
       projectsGrid.innerHTML = '';
-      portfolio.projects.forEach((proj, idx) => {
+      userData.projects.forEach((proj, idx) => {
         const card = document.createElement('div');
         card.className = 'project-card';
         card.style.setProperty('--index', idx);
         card.innerHTML = `
           <div class="project-icon"><i class="${proj.icon}"></i></div>
-          <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">${proj.name}</h3>
-          <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.5;">${proj.desc}</p>
-          <span style="background: var(--accent-glow); padding: 0.25rem 0.9rem; border-radius: 30px; font-size: 0.7rem; font-weight: 500; display: inline-block;">${proj.tech}</span>
+          <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem;">${proj.name}</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6;">${proj.desc}</p>
+          <span style="background: var(--accent-glow); padding: 0.3rem 1rem; border-radius: 30px; font-size: 0.75rem; font-weight: 600;">${proj.tech}</span>
         `;
         projectsGrid.appendChild(card);
       });
       
-      // Skills
       const skillsGrid = document.getElementById('skillsGrid');
       skillsGrid.innerHTML = '';
-      portfolio.skills.forEach((skill, idx) => {
+      userData.skills.forEach((skill, idx) => {
         const tag = document.createElement('div');
         tag.className = 'skill-tag';
         tag.style.setProperty('--idx', idx);
-        tag.innerHTML = `<i class="fas fa-code" style="margin-right: 6px; font-size: 0.75rem;"></i> ${skill}`;
+        tag.innerHTML = `<i class="fas fa-code" style="margin-right: 8px;"></i> ${skill}`;
         skillsGrid.appendChild(tag);
       });
       
-      // Contact
-      document.getElementById('contactEmail').innerText = portfolio.email;
-      document.getElementById('contactEmail').href = `mailto:${portfolio.email}`;
-      document.getElementById('footerText').innerHTML = portfolio.footerText;
+      document.getElementById('contactEmail').innerText = userData.email;
+      document.getElementById('contactEmail').href = `mailto:${userData.email}`;
+      document.getElementById('footerText').innerHTML = userData.footerText;
       
-      // Social Links
       const socialDiv = document.getElementById('socialLinks');
       socialDiv.innerHTML = '';
       const socials = [
-        { icon: 'fab fa-github', url: portfolio.github },
-        { icon: 'fab fa-linkedin-in', url: portfolio.linkedin },
-        { icon: 'fab fa-twitter', url: portfolio.twitter }
+        { icon: 'fab fa-github', url: userData.github },
+        { icon: 'fab fa-linkedin-in', url: userData.linkedin },
+        { icon: 'fab fa-twitter', url: userData.twitter }
       ];
       socials.forEach(s => {
         if (s.url && s.url !== "") {
           const a = document.createElement('a');
           a.href = s.url;
           a.target = '_blank';
-          a.rel = 'noopener';
           a.innerHTML = `<i class="${s.icon}"></i>`;
           socialDiv.appendChild(a);
         }
       });
     }
     
-    // Theme Management
+    // Theme
     function initTheme() {
       const saved = localStorage.getItem('theme') || 'dark';
       document.body.classList.add(saved);
@@ -833,17 +942,16 @@
         const el = document.getElementById(id);
         if (el) {
           const offset = 80;
-          const pos = el.offsetTop - offset;
-          window.scrollTo({ top: pos, behavior: 'smooth' });
+          window.scrollTo({ top: el.offsetTop - offset, behavior: 'smooth' });
         }
       });
     });
     
-    applyPortfolioData();
+    applyData();
     initTheme();
     document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme);
     document.getElementById('copyBtn').addEventListener('click', () => {
-      navigator.clipboard.writeText(portfolio.email).then(() => showToast('Email copied!'));
+      navigator.clipboard.writeText(userData.email).then(() => showToast('Email copied!'));
     });
   </script>
 </body>
