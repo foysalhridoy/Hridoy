@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>ORION | Dynamic Portfolio</title>
+  <title>ECHO | Personal Portfolio</title>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -16,39 +16,37 @@
     }
 
     body {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Inter', sans-serif;
       transition: background-color 0.3s ease, color 0.2s ease;
       overflow-x: hidden;
     }
 
     /* ===== DARK THEME ===== */
     body.dark {
-      --bg-primary: #03050a;
-      --bg-secondary: #0a0f16;
-      --bg-card: rgba(15, 25, 35, 0.65);
-      --text-primary: #f0f3fc;
-      --text-secondary: #9aafc5;
-      --accent: #4fd1c5;
-      --accent-2: #a855f7;
-      --accent-glow: rgba(79, 209, 197, 0.25);
-      --border-color: rgba(79, 209, 197, 0.3);
-      --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.3);
-      --shadow-hover: 0 20px 35px -12px rgba(79, 209, 197, 0.2);
+      --bg-primary: #0a0c12;
+      --bg-secondary: #11141c;
+      --bg-card: #151b24;
+      --text-primary: #edf2f7;
+      --text-secondary: #94a3b8;
+      --accent: #3b82f6;
+      --accent-light: rgba(59, 130, 246, 0.15);
+      --border-color: #1e293b;
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.2);
     }
 
     /* ===== LIGHT THEME ===== */
     body.light {
-      --bg-primary: #f5f9ff;
+      --bg-primary: #f8fafc;
       --bg-secondary: #ffffff;
-      --bg-card: rgba(255, 255, 255, 0.7);
-      --text-primary: #0a1f2a;
-      --text-secondary: #4a6f6a;
-      --accent: #2c7a6e;
-      --accent-2: #8b5cf6;
-      --accent-glow: rgba(44, 122, 110, 0.12);
-      --border-color: rgba(44, 122, 110, 0.25);
-      --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.05);
-      --shadow-hover: 0 20px 35px -12px rgba(44, 122, 110, 0.2);
+      --bg-card: #ffffff;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --accent: #3b82f6;
+      --accent-light: rgba(59, 130, 246, 0.08);
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
 
     body {
@@ -56,141 +54,113 @@
       color: var(--text-primary);
     }
 
-    /* Animated Gradient Background */
-    .animated-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
-      background: radial-gradient(circle at 20% 40%, var(--accent-glow) 0%, transparent 50%),
-                  radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.08) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    /* Floating Particles Canvas */
-    #particleCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      pointer-events: none;
-    }
-
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
-      width: 6px;
+      width: 8px;
     }
     ::-webkit-scrollbar-track {
       background: var(--bg-secondary);
     }
     ::-webkit-scrollbar-thumb {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      background: var(--accent);
       border-radius: 10px;
     }
 
     .container {
-      max-width: 1280px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
     }
 
-    /* ===== DYNAMIC NAVIGATION - COLLAPSIBLE ===== */
+    /* ===== NAVIGATION - CLEAN RECTANGULAR DESIGN ===== */
     nav {
       position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      max-width: 1200px;
+      top: 0;
+      left: 0;
+      width: 100%;
       z-index: 1000;
-      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      transition: all 0.3s ease;
+      background: transparent;
     }
     
-    /* Collapsed state (minimized) */
-    nav.nav-minimized {
-      top: 10px;
-      width: auto;
-      background: var(--bg-card);
-      backdrop-filter: blur(20px);
-      border-radius: 50px;
-      padding: 0.3rem 1rem;
+    /* Normal state */
+    .nav-container {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+    
+    /* Minimized state - smaller padding */
+    nav.nav-minimized .nav-container {
+      padding: 0.6rem 0;
       box-shadow: var(--shadow-sm);
-    }
-    
-    nav.nav-minimized .nav-inner {
-      padding: 0.5rem 1.2rem;
     }
     
     nav.nav-minimized .logo {
-      font-size: 1.2rem;
-    }
-    
-    nav.nav-minimized .nav-links {
-      gap: 1.2rem;
+      font-size: 1.3rem;
     }
     
     nav.nav-minimized .nav-links a {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
+      padding: 0.4rem 0;
     }
     
     nav.nav-minimized .theme-toggle {
-      padding: 0.3rem 0.8rem;
-      font-size: 0.8rem;
+      padding: 0.35rem 1rem;
+      font-size: 0.85rem;
     }
     
     .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.9rem 2rem;
-      background: var(--bg-card);
-      backdrop-filter: blur(20px);
-      border-radius: 80px;
-      border: 1px solid var(--border-color);
-      box-shadow: var(--shadow-sm);
-      transition: all 0.3s ease;
+      transition: padding 0.3s ease;
     }
     
     .logo {
       font-weight: 800;
-      font-size: 1.6rem;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
+      font-size: 1.5rem;
+      color: var(--accent);
       display: flex;
       align-items: center;
       gap: 8px;
       transition: all 0.3s;
     }
     
+    .logo i {
+      font-size: 1.4rem;
+    }
+    
     .nav-links {
       display: flex;
       gap: 2.5rem;
       list-style: none;
-      transition: all 0.3s;
     }
     
     .nav-links a {
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
       color: var(--text-primary);
-      transition: 0.25s;
+      transition: 0.2s;
+      padding: 0.5rem 0;
       position: relative;
+    }
+    
+    .nav-links a:hover {
+      color: var(--accent);
     }
     
     .nav-links a::after {
       content: '';
       position: absolute;
-      bottom: -5px;
+      bottom: 0;
       left: 0;
-      width: 0%;
+      width: 0;
       height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      background: var(--accent);
       transition: width 0.25s ease;
     }
     
@@ -199,98 +169,94 @@
     }
     
     .theme-toggle {
-      background: var(--bg-secondary);
+      background: var(--accent-light);
       border: 1px solid var(--border-color);
       border-radius: 40px;
-      padding: 0.5rem 1.2rem;
+      padding: 0.45rem 1.2rem;
       cursor: pointer;
       display: flex;
+      align-items: center;
       gap: 8px;
-      font-weight: 600;
-      transition: all 0.25s;
+      font-weight: 500;
+      transition: 0.2s;
       color: var(--text-primary);
-      backdrop-filter: blur(10px);
     }
     
     .theme-toggle:hover {
-      transform: scale(1.03);
       border-color: var(--accent);
+      transform: scale(0.98);
     }
-
-    /* Fast Animations */
-    .fast-animate {
-      transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    
+    /* Spacer to prevent content from hiding under fixed nav */
+    .nav-spacer {
+      height: 80px;
+      transition: height 0.3s ease;
     }
-
-    /* Premium Buttons */
+    
+    nav.nav-minimized + .nav-spacer {
+      height: 65px;
+    }
+    
+    /* Buttons */
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      background: var(--accent);
       color: white;
-      padding: 0.9rem 2rem;
-      border-radius: 60px;
-      font-weight: 700;
+      padding: 0.85rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
       border: none;
       cursor: pointer;
-      transition: all 0.25s ease;
+      transition: all 0.25s;
       display: inline-flex;
       align-items: center;
-      gap: 0.7rem;
-      position: relative;
-      overflow: hidden;
+      gap: 0.6rem;
     }
     
     .btn-primary:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 10px 25px var(--accent-glow);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+      filter: brightness(1.05);
     }
     
     .btn-outline {
       background: transparent;
       border: 1.5px solid var(--accent);
       color: var(--accent);
-      padding: 0.85rem 1.9rem;
-      border-radius: 60px;
-      font-weight: 600;
+      padding: 0.8rem 1.9rem;
+      border-radius: 40px;
+      font-weight: 500;
       transition: all 0.25s;
       cursor: pointer;
-      backdrop-filter: blur(5px);
     }
     
     .btn-outline:hover {
-      background: var(--accent-glow);
+      background: var(--accent-light);
       transform: translateY(-2px);
-      border-color: var(--accent-2);
     }
-
-    /* Section Styling */
+    
+    /* Section Styles */
     .section-badge {
       display: inline-block;
-      background: var(--accent-glow);
-      padding: 0.3rem 1rem;
-      border-radius: 60px;
+      background: var(--accent-light);
+      padding: 0.25rem 0.9rem;
+      border-radius: 30px;
       font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
+      font-weight: 600;
       color: var(--accent);
       margin-bottom: 1rem;
-      backdrop-filter: blur(5px);
-      border: 1px solid var(--border-color);
     }
     
     .section-title {
-      font-size: 2.8rem;
-      font-weight: 800;
+      font-size: 2.2rem;
+      font-weight: 700;
       letter-spacing: -0.02em;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
+      color: var(--text-primary);
       margin-bottom: 1rem;
     }
-
+    
     /* Hero Section */
     .hero {
-      padding: 7rem 0 4rem;
+      padding: 2rem 0 4rem;
     }
     
     .hero-grid {
@@ -305,182 +271,184 @@
     }
     
     .hero-right {
-      flex: 0.9;
+      flex: 0.8;
       display: flex;
       justify-content: center;
     }
     
     .hero-left h1 {
-      font-size: 3.8rem;
+      font-size: 3.2rem;
       font-weight: 800;
       line-height: 1.2;
-      margin: 1rem 0;
+      margin: 0.8rem 0;
     }
     
     .gradient-text {
-      background: linear-gradient(125deg, var(--accent), var(--accent-2));
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
+      color: var(--accent);
     }
     
     .hero-desc {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: var(--text-secondary);
-      max-width: 550px;
-      margin: 1.2rem 0;
+      max-width: 500px;
+      margin: 1rem 0;
       line-height: 1.6;
     }
     
     .hero-stats {
       display: flex;
       gap: 2rem;
-      margin: 2rem 0;
+      margin: 1.8rem 0;
     }
     
     .stat-block h3 {
-      font-size: 2rem;
-      font-weight: 800;
+      font-size: 1.8rem;
+      font-weight: 700;
       color: var(--accent);
     }
     
-    /* Glassmorphism Avatar */
-    .glass-avatar {
-      width: 280px;
-      height: 280px;
-      background: var(--bg-card);
-      backdrop-filter: blur(16px);
-      border-radius: 40% 60% 35% 65% / 55% 40% 60% 45%;
+    .stat-block p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    
+    /* Avatar - Clean Design */
+    .avatar-circle {
+      width: 260px;
+      height: 260px;
+      background: linear-gradient(135deg, var(--accent-light), var(--bg-card));
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       border: 2px solid var(--border-color);
-      box-shadow: var(--shadow-hover);
-      transition: all 0.3s ease;
-      animation: softFloat 4s ease-in-out infinite;
+      transition: transform 0.3s;
     }
     
-    @keyframes softFloat {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-12px); }
+    .avatar-circle:hover {
+      transform: scale(1.02);
     }
     
-    .glass-avatar i {
+    .avatar-circle i {
       font-size: 7rem;
       color: var(--accent);
-      filter: drop-shadow(0 0 15px var(--accent-glow));
     }
     
-    /* Glassmorphism Cards */
+    /* Cards - Clean Glassmorphism */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 1.8rem;
       margin: 2rem 0;
     }
     
     .project-card {
       background: var(--bg-card);
-      backdrop-filter: blur(12px);
-      border-radius: 1.8rem;
-      padding: 1.8rem;
-      transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      border-radius: 1.2rem;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
       border: 1px solid var(--border-color);
-      cursor: pointer;
     }
     
     .project-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-5px);
       border-color: var(--accent);
-      box-shadow: var(--shadow-hover);
-      background: var(--bg-card);
+      box-shadow: var(--shadow-md);
     }
     
     .project-icon {
-      background: var(--accent-glow);
-      width: 60px;
-      height: 60px;
-      border-radius: 18px;
+      background: var(--accent-light);
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       color: var(--accent);
       margin-bottom: 1.2rem;
-      transition: all 0.2s;
     }
     
-    .project-card:hover .project-icon {
-      transform: scale(1.05);
+    .project-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
     }
     
-    /* Skills with Glass */
+    .project-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    
+    .tech-tag {
+      background: var(--accent-light);
+      border-radius: 20px;
+      padding: 0.25rem 0.8rem;
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+    
+    /* Skills */
     .skills-wrapper {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 0.9rem;
+      gap: 0.8rem;
       margin: 2rem 0;
     }
     
     .skill-tag {
       background: var(--bg-card);
-      backdrop-filter: blur(8px);
-      padding: 0.7rem 1.5rem;
-      border-radius: 60px;
-      font-weight: 600;
       border: 1px solid var(--border-color);
+      padding: 0.6rem 1.4rem;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.85rem;
       transition: all 0.2s;
-      cursor: pointer;
     }
     
     .skill-tag:hover {
       border-color: var(--accent);
-      transform: translateY(-3px);
-      background: var(--accent-glow);
+      transform: translateY(-2px);
     }
     
-    /* Contact Card - Enhanced Glass */
+    /* Contact Card */
     .contact-card {
       background: var(--bg-card);
-      backdrop-filter: blur(16px);
-      border-radius: 2rem;
+      border-radius: 1.5rem;
       padding: 2.5rem;
       text-align: center;
       border: 1px solid var(--border-color);
-      transition: all 0.25s;
-    }
-    
-    .contact-card:hover {
-      border-color: var(--accent);
-      box-shadow: var(--shadow-hover);
     }
     
     .social-icons {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
-      margin: 1.8rem 0;
+      gap: 1.2rem;
+      margin: 1.5rem 0;
     }
     
     .social-icons a {
-      background: var(--accent-glow);
-      width: 52px;
-      height: 52px;
+      background: var(--accent-light);
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       color: var(--accent);
       transition: all 0.2s;
-      border: 1px solid var(--border-color);
     }
     
     .social-icons a:hover {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      background: var(--accent);
       color: white;
-      transform: translateY(-5px) scale(1.05);
+      transform: translateY(-3px);
     }
     
     footer {
@@ -491,91 +459,95 @@
       border-top: 1px solid var(--border-color);
     }
     
-    /* Toast Message */
+    /* Toast */
     .toast-msg {
       position: fixed;
       bottom: 30px;
       right: 30px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      background: var(--accent);
       color: white;
-      padding: 12px 24px;
-      border-radius: 50px;
-      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 40px;
+      font-size: 0.85rem;
       z-index: 2000;
-      animation: slideIn 0.25s ease;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      animation: fadeInUp 0.2s ease;
     }
     
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(30px); }
-      to { opacity: 1; transform: translateX(0); }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     
     /* Responsive */
-    @media (max-width: 880px) {
-      .hero-left h1 { font-size: 2.5rem; }
+    @media (max-width: 800px) {
+      .hero-left h1 { font-size: 2.2rem; }
       .hero-grid { flex-direction: column-reverse; text-align: center; }
       .hero-stats { justify-content: center; }
-      .section-title { font-size: 2rem; }
-      .glass-avatar { width: 220px; height: 220px; }
-      .glass-avatar i { font-size: 5rem; }
-      nav.nav-minimized .nav-links { display: none; }
-      nav.nav-minimized { width: auto; }
-      .nav-inner { flex-wrap: wrap; gap: 0.8rem; }
+      .container { padding: 0 1.2rem; }
+      .section-title { font-size: 1.8rem; }
+      .nav-links { gap: 1.2rem; }
+      .avatar-circle { width: 200px; height: 200px; }
+      .avatar-circle i { font-size: 5rem; }
     }
     
-    @media (max-width: 580px) {
-      .container { padding: 0 1.2rem; }
+    @media (max-width: 550px) {
+      .nav-inner { padding: 0.8rem 1rem; flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
       .nav-links { gap: 1rem; }
-      .hero-left h1 { font-size: 2rem; }
+      .logo { font-size: 1.2rem; }
     }
   </style>
 </head>
 <body class="dark">
-  <canvas id="particleCanvas"></canvas>
-  <div class="animated-bg"></div>
-
-  <!-- Dynamic Navigation -->
+  <!-- Navigation - Clean Rectangular Design -->
   <nav id="mainNav">
-    <div class="nav-inner">
-      <div class="logo"><i class="fas fa-infinity"></i> ORION</div>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <button class="theme-toggle" id="themeToggleBtn">
-        <i class="fas fa-moon"></i> <span id="themeText">Dark</span>
-      </button>
+    <div class="nav-container">
+      <div class="nav-inner">
+        <div class="logo">
+          <i class="fas fa-code"></i> PORTFOLIO
+        </div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggleBtn">
+          <i class="fas fa-moon"></i> <span id="themeText">Dark</span>
+        </button>
+      </div>
     </div>
   </nav>
+  <div class="nav-spacer"></div>
 
   <main>
     <!-- USER CONFIGURATION - EDIT YOUR DETAILS HERE -->
     <script>
-      const portfolioData = {
-        name: "Zara Phoenix",
-        title: "Digital Architect & Visionary",
-        bio: "Crafting immersive digital experiences with cutting-edge technology and artistic vision.",
-        experience: "10+",
-        projectsCount: "84",
-        clientsCount: "150+",
-        avatarIcon: "fas fa-phoenix-framework",
+      const userData = {
+        name: "Arjun Mehta",
+        title: "Full Stack Developer",
+        bio: "Building exceptional digital experiences with modern web technologies. Focused on performance, design, and user experience.",
+        experience: "6",
+        projectsCount: "42",
+        clientsCount: "35",
+        avatarIcon: "fas fa-user-astronaut",
         projects: [
-          { name: "Nova OS", desc: "Next-gen operating interface with AI integration.", tech: "React, Three.js, WebGL", icon: "fas fa-globe" },
-          { name: "Elysium UI", desc: "Design system used by 1000+ companies worldwide.", tech: "Vue, Tailwind, Storybook", icon: "fas fa-palette" },
-          { name: "Quantum Flow", desc: "AI-powered workflow automation platform.", tech: "Python, TensorFlow, Next.js", icon: "fas fa-brain" },
-          { name: "Stellar Analytics", desc: "Real-time 3D data visualization dashboard.", tech: "D3, WebGL, Node", icon: "fas fa-chart-line" },
-          { name: "Crypto Nexus", desc: "Web3 portfolio tracker with DeFi insights.", tech: "Web3, React, Ethers", icon: "fas fa-chart-simple" },
-          { name: "DreamForge VR", desc: "Immersive VR experiences for creators.", tech: "A-Frame, Three.js", icon: "fas fa-vr-cardboard" }
+          { name: "Flow Dashboard", desc: "Analytics platform with real-time insights and beautiful visualizations.", tech: "React, D3, Tailwind", icon: "fas fa-chart-line" },
+          { name: "Nexus Commerce", desc: "Modern e-commerce platform with seamless checkout experience.", tech: "Next.js, Stripe, MongoDB", icon: "fas fa-store" },
+          { name: "Orion Design System", desc: "Component library used by 200+ developers globally.", tech: "Vue, SCSS, Storybook", icon: "fas fa-palette" },
+          { name: "TaskFlow Pro", desc: "Productivity app with real-time collaboration features.", tech: "Node, Socket.io, React", icon: "fas fa-tasks" }
         ],
-        skills: ["React/Next.js", "Three.js", "TypeScript", "TailwindCSS", "Framer Motion", "Node.js", "GraphQL", "WebGL", "Python", "Firebase"],
-        email: "zara@orion.dev",
-        github: "https://github.com/zaraphoenix",
-        linkedin: "https://linkedin.com/in/zaraphoenix",
-        twitter: "https://twitter.com/zaraphoenix",
-        footerText: "✨ Crafting the future, one pixel at a time ✨"
+        skills: ["React / Next.js", "TypeScript", "Node.js", "TailwindCSS", "MongoDB", "GraphQL", "Python", "Figma"],
+        email: "arjun@mehta.dev",
+        github: "https://github.com/arjunmehta",
+        linkedin: "https://linkedin.com/in/arjunmehta",
+        twitter: "https://twitter.com/arjunmehta",
+        footerText: "© 2025 Arjun Mehta. Built with passion."
       };
     </script>
 
@@ -584,22 +556,22 @@
       <div class="container">
         <div class="hero-grid">
           <div class="hero-left">
-            <div class="section-badge"><i class="fas fa-bolt"></i> Available for opportunities</div>
-            <h1>I'm <span class="gradient-text" id="dynamicName">Zara</span><br><span id="dynamicTitle">Digital Architect</span></h1>
-            <p class="hero-desc" id="dynamicBio">Crafting immersive digital experiences with cutting-edge technology.</p>
+            <div class="section-badge"><i class="fas fa-code"></i> Available for work</div>
+            <h1>Hi, I'm <span class="gradient-text" id="dynamicName">Arjun</span><br><span id="dynamicTitle">Full Stack Developer</span></h1>
+            <p class="hero-desc" id="dynamicBio">Building exceptional digital experiences with modern web technologies.</p>
             <div class="hero-stats">
-              <div class="stat-block"><h3 id="expVal">10+</h3><p>Years Exp</p></div>
-              <div class="stat-block"><h3 id="projVal">84</h3><p>Projects</p></div>
-              <div class="stat-block"><h3 id="clientVal">150+</h3><p>Clients</p></div>
+              <div class="stat-block"><h3 id="expVal">6</h3><p>Years Exp</p></div>
+              <div class="stat-block"><h3 id="projVal">42</h3><p>Projects</p></div>
+              <div class="stat-block"><h3 id="clientVal">35</h3><p>Clients</p></div>
             </div>
             <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
               <a href="#work" class="btn-primary"><i class="fas fa-arrow-down"></i> View Work</a>
-              <a href="#contact" class="btn-outline"><i class="fas fa-comment-dots"></i> Connect</a>
+              <a href="#contact" class="btn-outline"><i class="fas fa-paper-plane"></i> Contact</a>
             </div>
           </div>
           <div class="hero-right">
-            <div class="glass-avatar">
-              <i id="avatarIconDynamic" class="fas fa-phoenix-framework"></i>
+            <div class="avatar-circle">
+              <i id="avatarIconDynamic" class="fas fa-user-astronaut"></i>
             </div>
           </div>
         </div>
@@ -607,165 +579,114 @@
     </section>
 
     <!-- PROJECTS SECTION -->
-    <section id="work" class="container" style="margin: 4rem auto;">
+    <section id="work" class="container" style="margin: 3rem auto;">
       <div style="text-align: center;">
-        <span class="section-badge"><i class="fas fa-crown"></i> Featured Work</span>
-        <h2 class="section-title">Creative Projects</h2>
-        <p style="color: var(--text-secondary);">Innovative solutions that push boundaries</p>
+        <span class="section-badge"><i class="fas fa-folder-open"></i> Portfolio</span>
+        <h2 class="section-title">Featured Projects</h2>
+        <p style="color: var(--text-secondary);">Some of my best work</p>
       </div>
       <div id="projectsContainer" class="projects-grid"></div>
     </section>
 
     <!-- SKILLS SECTION -->
-    <section id="skills" class="container" style="margin: 4rem auto;">
+    <section id="skills" class="container" style="margin: 3rem auto;">
       <div style="text-align: center;">
-        <span class="section-badge"><i class="fas fa-microchip"></i> Expertise</span>
-        <h2 class="section-title">Tech Arsenal</h2>
+        <span class="section-badge"><i class="fas fa-cog"></i> Expertise</span>
+        <h2 class="section-title">Tech Stack</h2>
       </div>
       <div id="skillsContainer" class="skills-wrapper"></div>
     </section>
 
     <!-- CONTACT SECTION -->
-    <section id="contact" class="container" style="margin: 4rem auto 5rem;">
+    <section id="contact" class="container" style="margin: 3rem auto 4rem;">
       <div class="contact-card">
-        <i class="fas fa-envelope-open-text" style="font-size: 2.5rem; color: var(--accent);"></i>
-        <h2 style="margin: 1rem 0 0.5rem;">Let's Collaborate</h2>
-        <p style="color: var(--text-secondary);">Have a project in mind? Let's create something amazing.</p>
-        <a id="contactEmailLink" href="mailto:zara@orion.dev" style="font-size: 1.2rem; font-weight: 700; color: var(--accent); display: inline-block; margin: 1rem 0;">zara@orion.dev</a>
+        <i class="fas fa-envelope" style="font-size: 2rem; color: var(--accent);"></i>
+        <h2 style="margin: 0.8rem 0 0.3rem;">Get In Touch</h2>
+        <p style="color: var(--text-secondary);">Have a project? Let's discuss!</p>
+        <a id="contactEmailLink" href="mailto:arjun@mehta.dev" style="font-size: 1.1rem; font-weight: 600; color: var(--accent); display: inline-block; margin: 0.8rem 0;">arjun@mehta.dev</a>
         <div id="socialLinks" class="social-icons"></div>
-        <button id="copyEmailBtn" class="btn-primary" style="padding: 0.7rem 1.6rem;"><i class="far fa-copy"></i> Copy Email</button>
+        <button id="copyEmailBtn" class="btn-primary" style="padding: 0.6rem 1.4rem;"><i class="far fa-copy"></i> Copy Email</button>
       </div>
     </section>
   </main>
 
   <footer>
-    <p id="footerQuote">✨ Crafting the future, one pixel at a time ✨</p>
-    <p style="margin-top: 0.7rem; opacity: 0.7;">© 2025 ORION · Infinite Possibilities</p>
+    <p id="footerQuote">© 2025 Arjun Mehta. Built with passion.</p>
   </footer>
 
   <script>
-    // ===== DYNAMIC NAVIGATION - COLLAPSE ON SCROLL =====
+    // ===== NAVIGATION COLLAPSE ON SCROLL =====
     const nav = document.getElementById('mainNav');
-    let lastScrollTop = 0;
-    let scrollTimeout;
+    const spacer = document.querySelector('.nav-spacer');
+    let lastScroll = 0;
     
-    function handleNavOnScroll() {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      
-      if (scrollTop > 80) {
+    function handleScroll() {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll > 50) {
         nav.classList.add('nav-minimized');
       } else {
         nav.classList.remove('nav-minimized');
       }
-      lastScrollTop = scrollTop;
+      lastScroll = currentScroll;
     }
     
-    window.addEventListener('scroll', handleNavOnScroll);
-    handleNavOnScroll();
-    
-    // ===== PARTICLE SYSTEM =====
-    const canvas = document.getElementById('particleCanvas');
-    let ctx, particles = [];
-    
-    function initParticles() {
-      if (!canvas) return;
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      ctx = canvas.getContext('2d');
-      const particleCount = 60;
-      for (let i = 0; i < particleCount; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          radius: Math.random() * 2 + 1,
-          speedX: (Math.random() - 0.5) * 0.4,
-          speedY: (Math.random() - 0.5) * 0.3,
-          opacity: Math.random() * 0.4 + 0.2
-        });
-      }
-      animateParticles();
-    }
-    
-    function animateParticles() {
-      if (!ctx) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const isDark = document.body.classList.contains('dark');
-      const accentColor = isDark ? '#4fd1c5' : '#2c7a6e';
-      particles.forEach(p => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = accentColor;
-        ctx.globalAlpha = p.opacity;
-        ctx.fill();
-        p.x += p.speedX;
-        p.y += p.speedY;
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
-      });
-      requestAnimationFrame(animateParticles);
-    }
-    
-    window.addEventListener('resize', () => {
-      if (canvas) {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        particles = [];
-        initParticles();
-      }
-    });
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
     
     // ===== APPLY USER DATA =====
     function applyUserData() {
-      document.getElementById('dynamicName').innerText = portfolioData.name;
-      document.getElementById('dynamicTitle').innerText = portfolioData.title;
-      document.getElementById('dynamicBio').innerText = portfolioData.bio;
-      document.getElementById('expVal').innerText = portfolioData.experience;
-      document.getElementById('projVal').innerText = portfolioData.projectsCount;
-      document.getElementById('clientVal').innerText = portfolioData.clientsCount;
-      document.getElementById('avatarIconDynamic').className = portfolioData.avatarIcon;
+      document.getElementById('dynamicName').innerText = userData.name;
+      document.getElementById('dynamicTitle').innerText = userData.title;
+      document.getElementById('dynamicBio').innerText = userData.bio;
+      document.getElementById('expVal').innerText = userData.experience;
+      document.getElementById('projVal').innerText = userData.projectsCount;
+      document.getElementById('clientVal').innerText = userData.clientsCount;
+      document.getElementById('avatarIconDynamic').className = userData.avatarIcon;
       
+      // Projects
       const projContainer = document.getElementById('projectsContainer');
       projContainer.innerHTML = '';
-      portfolioData.projects.forEach((proj, idx) => {
+      userData.projects.forEach(proj => {
         const card = document.createElement('div');
         card.className = 'project-card';
-        card.style.animationDelay = `${idx * 0.05}s`;
         card.innerHTML = `
           <div class="project-icon"><i class="${proj.icon}"></i></div>
-          <h3 style="font-size: 1.4rem; font-weight: 700;">${proj.name}</h3>
-          <p style="color: var(--text-secondary); margin: 0.6rem 0;">${proj.desc}</p>
-          <div style="background: var(--accent-glow); border-radius: 30px; padding: 0.3rem 1rem; display: inline-block; font-size: 0.7rem; font-weight: 600;">${proj.tech}</div>
+          <h3>${proj.name}</h3>
+          <p>${proj.desc}</p>
+          <span class="tech-tag">${proj.tech}</span>
         `;
         projContainer.appendChild(card);
       });
       
+      // Skills
       const skillsCont = document.getElementById('skillsContainer');
       skillsCont.innerHTML = '';
-      portfolioData.skills.forEach(skill => {
+      userData.skills.forEach(skill => {
         const tag = document.createElement('div');
         tag.className = 'skill-tag';
-        tag.innerHTML = `<i class="fas fa-sparkle" style="margin-right: 6px; font-size: 0.7rem;"></i> ${skill}`;
+        tag.innerHTML = skill;
         skillsCont.appendChild(tag);
       });
       
-      document.getElementById('contactEmailLink').innerText = portfolioData.email;
-      document.getElementById('contactEmailLink').href = `mailto:${portfolioData.email}`;
-      document.getElementById('footerQuote').innerText = portfolioData.footerText;
+      // Contact
+      document.getElementById('contactEmailLink').innerText = userData.email;
+      document.getElementById('contactEmailLink').href = `mailto:${userData.email}`;
+      document.getElementById('footerQuote').innerHTML = userData.footerText;
       
+      // Social Links
       const socialDiv = document.getElementById('socialLinks');
       socialDiv.innerHTML = '';
       const socials = [
-        { icon: 'fab fa-github', url: portfolioData.github },
-        { icon: 'fab fa-linkedin-in', url: portfolioData.linkedin },
-        { icon: 'fab fa-twitter', url: portfolioData.twitter }
+        { icon: 'fab fa-github', url: userData.github },
+        { icon: 'fab fa-linkedin-in', url: userData.linkedin },
+        { icon: 'fab fa-twitter', url: userData.twitter }
       ];
       socials.forEach(s => {
         if (s.url && s.url !== "") {
           const a = document.createElement('a');
           a.href = s.url;
           a.target = '_blank';
+          a.rel = 'noopener noreferrer';
           a.innerHTML = `<i class="${s.icon}"></i>`;
           socialDiv.appendChild(a);
         }
@@ -814,25 +735,26 @@
       setTimeout(() => toast.remove(), 2000);
     }
     
-    // Smooth Scroll
+    // Smooth Scroll for Navigation
     document.querySelectorAll('.nav-links a').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        const id = this.getAttribute('href').substring(1);
-        const el = document.getElementById(id);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const targetId = this.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          const offset = 80;
+          const elementPosition = target.offsetTop - offset;
+          window.scrollTo({ top: elementPosition, behavior: 'smooth' });
         }
       });
     });
     
-    // Initialize everything
+    // Initialize
     applyUserData();
     initTheme();
-    initParticles();
     document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme);
     document.getElementById('copyEmailBtn').addEventListener('click', () => {
-      navigator.clipboard.writeText(portfolioData.email).then(() => showToast('Email copied!'));
+      navigator.clipboard.writeText(userData.email).then(() => showToast('Email copied!'));
     });
   </script>
 </body>
