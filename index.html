@@ -424,7 +424,7 @@
   }
   [data-theme="light"] .gmail-icon-wrap { background: rgba(234,67,53,.07); }
   .gmail-icon-wrap svg { width: 36px; height: 36px; }
-  .gmail-hero-content { flex: 1; text-align: left; position: relative; z-index: 1; }
+  .gmail-hero-content { flex: 1; text-align: left; position: relative; z-index: 1; min-width: 0; }
   .gmail-primary-label {
     font-family: var(--font-mono);
     font-size: .6rem;
@@ -440,16 +440,20 @@
     width: 20px; height: 1px;
     background: #ea4335;
     opacity: .6;
+    flex-shrink: 0;
   }
+  /* CHANGE 1: Gmail address font size reduced + overflow protection */
   .gmail-address {
     font-family: var(--font-head);
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     font-weight: 800;
     color: var(--text);
     letter-spacing: -.01em;
     margin-bottom: .5rem;
     transition: color .2s;
     word-break: break-all;
+    overflow-wrap: anywhere;
+    line-height: 1.3;
   }
   .gmail-hero-card:hover .gmail-address { color: #ea4335; }
   [data-theme="light"] .gmail-address { color: #0f0c09; }
@@ -487,6 +491,7 @@
     transform: translateX(-8px) translateY(8px);
     transition: opacity .25s, transform .25s;
     position: relative; z-index: 1;
+    flex-shrink: 0;
   }
   .gmail-hero-card:hover .gmail-arrow { opacity: .8; transform: translateX(0) translateY(0); }
   .gmail-preferred-tag {
@@ -506,8 +511,10 @@
   }
 
   /* ─── CONTACT CARDS GRID ─── */
-  .contact-cards { display: grid; grid-template-columns: repeat(5,1fr); gap: 1rem; margin-bottom: 3.5rem; }
-  .contact-card { position: relative; background: var(--contact-card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 1.8rem 1rem 1.6rem; text-decoration: none; overflow: hidden; transition: transform .35s cubic-bezier(.22,.68,0,1.2),border-color .3s,box-shadow .3s,background .4s; cursor: none; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0; }
+  .contact-cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin-bottom: 3.5rem; }
+
+  /* CHANGE 2: contact-card gets more height + smaller value text */
+  .contact-card { position: relative; background: var(--contact-card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 1.8rem 0.8rem 2.2rem; text-decoration: none; overflow: hidden; transition: transform .35s cubic-bezier(.22,.68,0,1.2),border-color .3s,box-shadow .3s,background .4s; cursor: none; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0; min-height: 170px; }
   .contact-card::before { content: ''; position: absolute; top: -60%; left: -80%; width: 60%; height: 220%; background: linear-gradient(105deg,transparent 0%,rgba(255,255,255,.04) 50%,transparent 100%); transform: skewX(-15deg); transition: left .6s ease; pointer-events: none; z-index: 0; }
   .contact-card:hover::before { left: 140%; }
   .contact-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; opacity: 0; transition: opacity .3s; border-radius: 16px 16px 0 0; }
@@ -538,7 +545,8 @@
   .contact-card.instagram .cc-icon { background: rgba(220,39,67,.1); border: 1px solid rgba(220,39,67,.2); }
   .contact-card.facebook .cc-icon { background: rgba(24,119,242,.12); color: #1877f2; border: 1px solid rgba(24,119,242,.2); }
   .cc-label { font-family: var(--font-mono); font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin-bottom: .35rem; position: relative; z-index: 1; }
-  .cc-value { font-family: var(--font-head); font-size: .82rem; font-weight: 700; color: var(--text); word-break: break-all; transition: color .2s; position: relative; z-index: 1; line-height: 1.3; }
+  /* CHANGE 2b: Smaller cc-value font + better wrapping */
+  .cc-value { font-family: var(--font-head); font-size: .7rem; font-weight: 700; color: var(--text); word-break: break-word; overflow-wrap: anywhere; transition: color .2s; position: relative; z-index: 1; line-height: 1.35; padding: 0 .2rem; }
   [data-theme="light"] .cc-value { color: #0f0c09; }
   .contact-card.github:hover .cc-value { color: #a371f7; }
   [data-theme="light"] .contact-card.github:hover .cc-value { color: #6e40c9; }
@@ -553,6 +561,72 @@
   .contact-card.instagram .cc-arrow { color: #dc2743; }
   .contact-card.facebook .cc-arrow { color: #1877f2; }
   .contact-card:hover .cc-arrow { opacity: .8; transform: translateX(0) translateY(0); }
+
+  /* ─── FUN STATS ROW (CHANGE 3: new section above "Open to work") ─── */
+  .fun-stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .fun-stat-card {
+    background: var(--contact-card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    transition: transform .35s cubic-bezier(.22,.68,0,1.2), border-color .3s, box-shadow .3s;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+  }
+  .fun-stat-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,255,229,.05), transparent 60%);
+    opacity: 0;
+    transition: opacity .3s;
+  }
+  [data-theme="light"] .fun-stat-card::before { background: linear-gradient(135deg,rgba(0,122,110,.07),transparent 60%); }
+  .fun-stat-card:hover::before { opacity: 1; }
+  .fun-stat-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    box-shadow: var(--glow);
+  }
+  .fun-stat-icon {
+    font-size: 1.6rem;
+    margin-bottom: .5rem;
+    display: block;
+    line-height: 1;
+  }
+  .fun-stat-num {
+    font-family: var(--font-head);
+    font-size: 1.2rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    margin-bottom: .35rem;
+    letter-spacing: -.02em;
+    line-height: 1.25;
+  }
+  .fun-stat-label {
+    font-family: var(--font-mono);
+    font-size: .56rem;
+    color: var(--muted);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    line-height: 1.5;
+    display: block;
+  }
+
   .contact-cta-section { display: flex; flex-direction: column; align-items: center; gap: 0; }
   .contact-avail { display: inline-flex; align-items: center; gap: .7rem; font-family: var(--font-mono); font-size: .75rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(232,244,248,.7); background: rgba(0,255,136,.06); border: 1px solid rgba(0,255,136,.22); padding: 1rem 2rem; border-radius: 99px; transition: border-color .4s,background .4s,box-shadow .4s,transform .3s; cursor: default; box-shadow: 0 0 24px rgba(0,255,136,.08); }
   [data-theme="light"] .contact-avail { color: rgba(15,12,9,.8); background: rgba(0,160,80,.07); border-color: rgba(0,150,75,.25); }
@@ -608,11 +682,11 @@
   [data-theme="light"] #scroll-top:hover { box-shadow: 0 0 18px rgba(0,122,110,.3), 0 6px 24px rgba(0,0,0,.1); }
 
   /* RESPONSIVE */
-  @media (max-width:1100px){section{padding:6rem 3rem 4rem;}#hero{gap:2.5rem;}.contact-cards{grid-template-columns:repeat(3,1fr);}}
-  @media (max-width:900px){nav{padding:1rem 1.5rem;}section{padding:5rem 1.8rem 4rem;}#hero{grid-template-columns:1fr;gap:3rem;padding-top:7rem;}.hero-photo{order:-1;}.photo-wrap{width:220px;height:220px;}#about{grid-template-columns:1fr;gap:2.5rem;}.skills-grid{grid-template-columns:repeat(3,1fr);}.contact-cards{grid-template-columns:repeat(3,1fr);}.edu-timeline::before{left:36px;}.gmail-hero-card{padding:1.8rem 2rem;gap:1.5rem;}}
-  @media (max-width:700px){section{padding:5rem 1.2rem 3.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.about-stats{grid-template-columns:1fr 1fr;}.projects-grid{grid-template-columns:1fr;}.edu-item{grid-template-columns:60px 1fr;gap:0 1rem;}.edu-node{width:60px;height:60px;font-size:1.35rem;border-radius:14px;}.edu-timeline::before{left:30px;}.gmail-hero-card{flex-direction:column;text-align:center;padding:1.8rem 1.5rem;}.gmail-hero-content{text-align:center;}.gmail-primary-label{justify-content:center;}.gmail-sub-text{justify-content:center;flex-wrap:wrap;}}
+  @media (max-width:1100px){section{padding:6rem 3rem 4rem;}#hero{gap:2.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.fun-stats-row{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:900px){nav{padding:1rem 1.5rem;}section{padding:5rem 1.8rem 4rem;}#hero{grid-template-columns:1fr;gap:3rem;padding-top:7rem;}.hero-photo{order:-1;}.photo-wrap{width:220px;height:220px;}#about{grid-template-columns:1fr;gap:2.5rem;}.skills-grid{grid-template-columns:repeat(3,1fr);}.contact-cards{grid-template-columns:repeat(2,1fr);}.edu-timeline::before{left:36px;}.gmail-hero-card{padding:1.8rem 2rem;gap:1.5rem;}.fun-stats-row{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:700px){section{padding:5rem 1.2rem 3.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.about-stats{grid-template-columns:1fr 1fr;}.projects-grid{grid-template-columns:1fr;}.edu-item{grid-template-columns:60px 1fr;gap:0 1rem;}.edu-node{width:60px;height:60px;font-size:1.35rem;border-radius:14px;}.edu-timeline::before{left:30px;}.gmail-hero-card{flex-direction:column;text-align:center;padding:1.8rem 1.5rem;}.gmail-hero-content{text-align:center;}.gmail-primary-label{justify-content:center;}.gmail-sub-text{justify-content:center;flex-wrap:wrap;}.fun-stats-row{grid-template-columns:repeat(2,1fr);}}
   @media (max-width:600px){.nav-hamburger{display:flex;}.nav-links{display:none!important;}.projects-grid{grid-template-columns:1fr;}.skills-grid{grid-template-columns:repeat(2,1fr);}.contact-big{font-size:clamp(2rem,9vw,3rem);}.contact-cta-section{padding:0 1rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}#scroll-top{bottom:1.4rem;right:1.4rem;width:42px;height:42px;}}
-  @media (max-width:480px){nav{padding:.9rem 1rem;}.nav-right{gap:.7rem;}.hero-name{font-size:clamp(2rem,8vw,3rem);}.hero-cta{flex-direction:column;align-items:flex-start;}.contact-cards{grid-template-columns:1fr 1fr;}.stat-num{font-size:1.7rem;}.edu-card{padding:1.5rem 1.3rem;}.gmail-address{font-size:1rem;}}
+  @media (max-width:480px){nav{padding:.9rem 1rem;}.nav-right{gap:.7rem;}.hero-name{font-size:clamp(2rem,8vw,3rem);}.hero-cta{flex-direction:column;align-items:flex-start;}.contact-cards{grid-template-columns:1fr 1fr;}.stat-num{font-size:1.7rem;}.edu-card{padding:1.5rem 1.3rem;}.gmail-address{font-size:.82rem;}.fun-stats-row{grid-template-columns:1fr 1fr;}}
 </style>
 </head>
 <body>
@@ -919,7 +993,6 @@
         <div class="gmail-glow-ring"></div>
         <div class="gmail-preferred-tag">Best way to reach me</div>
         <div class="gmail-icon-wrap">
-          <!-- Official Gmail M logo SVG -->
           <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
             <path fill="#EA4335" d="M6 36V12l18 12z"/>
             <path fill="#FBBC05" d="M42 36V12L24 24z"/>
@@ -965,11 +1038,9 @@
         <span class="cc-arrow">&#8599;</span>
       </a>
 
-
       <!-- Instagram -->
       <a href="https://www.instagram.com/ferdous_foysal_hridoy?igsh=MTluOGRzM2tuMjRrag==" target="_blank" rel="noopener noreferrer" class="contact-card instagram">
         <div class="cc-icon">
-          <!-- Official Instagram gradient logo -->
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <radialGradient id="ig-grad" cx="30%" cy="107%" r="150%">
@@ -1001,6 +1072,30 @@
       </a>
     </div>
 
+    <!-- ─── FUN STATS ROW ─── -->
+    <div class="fun-stats-row reveal">
+      <div class="fun-stat-card">
+        <span class="fun-stat-icon">👁️</span>
+        <span class="fun-stat-num" id="visitorCount">—</span>
+        <span class="fun-stat-label">Total Visitors</span>
+      </div>
+      <div class="fun-stat-card">
+        <span class="fun-stat-icon">☕</span>
+        <span class="fun-stat-num" id="coffeeCount">0</span>
+        <span class="fun-stat-label">Coffees Consumed</span>
+      </div>
+      <div class="fun-stat-card">
+        <span class="fun-stat-icon">🌙</span>
+        <span class="fun-stat-num">Late Night</span>
+        <span class="fun-stat-label">Preferred Coding Time</span>
+      </div>
+      <div class="fun-stat-card">
+        <span class="fun-stat-icon">🔥</span>
+        <span class="fun-stat-num" id="daysCount">0</span>
+        <span class="fun-stat-label">Days Building Stuff</span>
+      </div>
+    </div>
+
     <div class="contact-cta-section reveal">
       <span class="contact-avail"><span class="avail-dot"></span>Open to work</span>
     </div>
@@ -1019,7 +1114,7 @@
     document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
     function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
     animRing();
-    document.querySelectorAll('a,button,.btn,.skill-pill,.project-card,.stat-card,.contact-card,.contact-avail,.edu-item,.edu-card,.project-live-btn,.theme-toggle,#scroll-top,.gmail-hero-card').forEach(el=>{
+    document.querySelectorAll('a,button,.btn,.skill-pill,.project-card,.stat-card,.contact-card,.contact-avail,.edu-item,.edu-card,.project-live-btn,.theme-toggle,#scroll-top,.gmail-hero-card,.fun-stat-card').forEach(el=>{
       el.style.cursor='none';
       el.addEventListener('mouseenter',()=>{cursor.style.width='20px';cursor.style.height='20px';ring.style.width='56px';ring.style.height='56px';ring.style.opacity='.85';cursor.style.background='var(--accent3)';});
       el.addEventListener('mouseleave',()=>{cursor.style.width='12px';cursor.style.height='12px';ring.style.width='38px';ring.style.height='38px';ring.style.opacity='.55';cursor.style.background='var(--accent)';});
@@ -1076,6 +1171,56 @@
   function closeMobileMenu(){mobileMenu.classList.remove('open');hamburger.classList.remove('open');document.body.style.overflow='';}
   hamburger.addEventListener('click',()=>{const isOpen=mobileMenu.classList.toggle('open');hamburger.classList.toggle('open',isOpen);document.body.style.overflow=isOpen?'hidden':'';});
   mobileClose.addEventListener('click',closeMobileMenu);
+
+  // VISITOR COUNTER (countapi.xyz - free, no auth required)
+  (async () => {
+    try {
+      const res = await fetch('https://api.countapi.xyz/hit/foysalhridoy-portfolio/visits');
+      const data = await res.json();
+      if (data && data.value) {
+        const el = document.getElementById('visitorCount');
+        let start = Math.max(0, data.value - 40);
+        const end = data.value;
+        const step = Math.max(1, Math.ceil((end - start) / 60));
+        const timer = setInterval(() => {
+          start = Math.min(start + step, end);
+          el.textContent = start.toLocaleString();
+          if (start >= end) clearInterval(timer);
+        }, 18);
+      }
+    } catch(e) {
+      const el = document.getElementById('visitorCount');
+      if (el) el.textContent = 'You! 👋';
+    }
+  })();
+
+  // COFFEE COUNTER - animated
+  (() => {
+    const el = document.getElementById('coffeeCount');
+    const target = 247;
+    let c = 0;
+    const step = Math.ceil(target / 55);
+    const t = setInterval(() => {
+      c = Math.min(c + step, target);
+      el.textContent = c + '+';
+      if (c >= target) clearInterval(t);
+    }, 22);
+  })();
+
+  // DAYS BUILDING - calculated from when you started your CSE journey
+  (() => {
+    const start = new Date('2022-09-01');
+    const now = new Date();
+    const days = Math.floor((now - start) / (1000 * 60 * 60 * 24));
+    const el = document.getElementById('daysCount');
+    let c = 0;
+    const step = Math.max(1, Math.ceil(days / 60));
+    const t = setInterval(() => {
+      c = Math.min(c + step, days);
+      el.textContent = c.toLocaleString() + '+';
+      if (c >= days) clearInterval(t);
+    }, 16);
+  })();
 
   // REVEAL
   const reveals=document.querySelectorAll('.reveal');
