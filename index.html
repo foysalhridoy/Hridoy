@@ -12,58 +12,33 @@
 <link rel="apple-touch-icon" href="https://i.postimg.cc/4yZ58zTD/Hridoy-Bro.jpg">
 <title>Md. Ferdous Foysal Hridoy</title>
 
-<!-- UPGRADED FONTS: Clash Display (bold headings) + Cabinet Grotesk (body) + JetBrains Mono (code) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;700;800;900&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 
 <style>
-/* ═══════════════════════════════════════════
-   DESIGN SYSTEM — OBSIDIAN AMBER v1
-   Dark: Deep Obsidian + Warm Amber Gold
-   Light: Warm Parchment + Deep Espresso
-   
-   WHY THIS PALETTE:
-   — Amber gold is rare in dev portfolios (everyone uses cyan/purple)
-   — Warm obsidian feels premium, not cold/corporate
-   — High contrast ratio → better readability
-   — Memorable & distinctive identity
-═══════════════════════════════════════════ */
 :root,
 [data-theme="dark"] {
-  /* Backgrounds — warm obsidian, not cold black */
   --bg:      #0b0f17;
   --bg2:     #0e1420;
   --bg3:     #111827;
-
-  /* Accent system — amber gold hierarchy */
-  --accent:  #6ee7f7;   /* Warm amber gold — primary */
-  --accent2: #818cf8;   /* Periwinkle indigo */
-  --accent3: #f472b6;   /* Rose pink */
+  --accent:  #6ee7f7;
+  --accent2: #818cf8;
+  --accent3: #f472b6;
   --accent-glow: rgba(110,231,247,0.15);
-
-  /* Text */
   --text:    #e2e8f0;
   --text2:   #94a3b8;
   --muted:   #475569;
-
-  /* Surfaces */
   --card:    rgba(15,23,42,0.8);
   --border:  rgba(110,231,247,0.12);
   --border2: rgba(110,231,247,0.06);
-
-  /* Effects */
   --glow:    0 0 40px rgba(110,231,247,0.12);
   --glow-strong: 0 0 60px rgba(110,231,247,0.22);
   --shadow:  0 20px 60px rgba(0,0,0,0.55);
-
-  /* Typography */
   --font-head: 'Syne', sans-serif;
   --font-body: 'Space Grotesk', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-
-  /* Nav */
   --nav-bg: rgba(11,15,23,0.75);
   --noise-opacity: .38;
   --about-text-color: rgba(226,232,240,.72);
@@ -103,7 +78,6 @@
   --form-bg: rgba(255,252,247,0.85);
 }
 
-/* ─── RESET & BASE ─────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -118,12 +92,10 @@ body {
 }
 @media (pointer: coarse) { body { cursor: auto; } #cursor, #cursor-ring { display: none; } }
 
-/* ─── SCROLLBAR ───────────────────────── */
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 
-/* ─── NOISE TEXTURE ───────────────────── */
 body::after {
   content: '';
   position: fixed; inset: 0;
@@ -133,7 +105,6 @@ body::after {
   transition: opacity .4s;
 }
 
-/* ─── CUSTOM CURSOR ───────────────────── */
 #cursor {
   position: fixed; width: 10px; height: 10px;
   background: var(--cursor-color); border-radius: 50%;
@@ -153,7 +124,6 @@ body::after {
 }
 #bg-canvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 
-/* ─── NAVIGATION ──────────────────────── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
@@ -189,7 +159,6 @@ nav.scrolled { padding: .85rem 4rem; }
 
 .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 
-/* ─── THEME TOGGLE ────────────────────── */
 .theme-toggle {
   position: relative; width: 54px; height: 27px;
   background: var(--card); border: 1.5px solid var(--border); border-radius: 99px;
@@ -222,10 +191,8 @@ nav.scrolled { padding: .85rem 4rem; }
 [data-theme="light"] .toggle-knob::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1.5px dashed rgba(245,158,11,.45); animation: spinSlow 6s linear infinite; }
 @keyframes spinSlow { to { transform: rotate(360deg); } }
 
-/* ─── SECTIONS ────────────────────────── */
 section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 
-/* ─── HERO ────────────────────────────── */
 #hero {
   display: grid; grid-template-columns: 1fr 1fr;
   align-items: center; gap: 4rem;
@@ -293,7 +260,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   transform: translateY(-2px);
 }
 
-/* ─── HERO PHOTO ──────────────────────── */
 .hero-photo { display: flex; justify-content: center; align-items: center; animation: fadeUp .9s .18s ease both; }
 .photo-wrap { position: relative; width: 310px; height: 310px; }
 .photo-wrap img {
@@ -325,13 +291,11 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 @keyframes rotateBorder { from{transform:rotate(0deg);}to{transform:rotate(360deg);} }
 @keyframes fadeUp { from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);} }
 
-/* ─── SECTION HEADER ──────────────────── */
 .section-header { margin-bottom: 3.5rem; display: flex; align-items: center; gap: 1.5rem; }
 .section-num { font-family: var(--font-mono); font-size: .65rem; color: var(--accent); letter-spacing: .22em; font-weight: 300; }
 .section-title { font-family: var(--font-head); font-size: clamp(1.7rem, 2.8vw, 2.5rem); font-weight: 800; letter-spacing: -.03em; white-space: nowrap; }
 .section-line { flex: 1; height: 1px; background: linear-gradient(90deg,var(--border),transparent); }
 
-/* ─── ABOUT ───────────────────────────── */
 #about { display: grid; grid-template-columns: 1.25fr .75fr; gap: 5rem; align-items: start; }
 .about-left { display: flex; flex-direction: column; gap: 0; }
 .about-text { font-size: 1.02rem; line-height: 1.9; color: var(--about-text-color); }
@@ -362,7 +326,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 }
 .stat-label { font-family: var(--font-mono); font-size: .58rem; color: var(--muted); letter-spacing: .12em; text-transform: uppercase; display: block; line-height: 1.4; font-weight: 300; }
 
-/* ─── EDUCATION ───────────────────────── */
 #education { background: var(--bg2); transition: background .4s; }
 .edu-timeline { position: relative; display: flex; flex-direction: column; gap: 2rem; }
 .edu-timeline::before {
@@ -435,7 +398,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 }
 [data-theme="light"] .edu-meta-chip { background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.1); }
 
-/* ─── SKILLS ──────────────────────────── */
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(128px,1fr)); gap: .9rem; }
 .skill-pill {
   background: var(--card); border: 1px solid var(--border2); padding: 1.4rem 1rem; border-radius: 6px;
@@ -463,70 +425,355 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .skill-pill i.devicon-mysql-plain { color: #4479a1; }
 .skill-pill i.devicon-figma-plain { color: #f24e1e; }
 
-/* ─── PROJECTS ────────────────────────── */
-.projects-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(340px,1fr)); gap: 1.8rem; }
+/* ═══════════════════════════════════════════
+   PROJECTS — HEAVILY ENHANCED
+   Dark: cinematic glow + depth layers
+   Light: visible borders + vivid hover fx
+═══════════════════════════════════════════ */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2rem;
+}
+
 .project-card {
-  background: var(--card); border: 1px solid var(--border2); border-radius: 14px;
-  overflow: hidden; transition: all .4s cubic-bezier(.22,.68,0,1.2);
-  position: relative; display: flex; flex-direction: column;
+  background: var(--card);
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  cursor: none;
+  /* Dark theme: subtle but visible border */
+  border: 1px solid rgba(110,231,247,0.14);
+  box-shadow:
+    0 4px 20px rgba(0,0,0,0.35),
+    0 1px 0 rgba(110,231,247,0.06) inset;
+  transition:
+    border-color .4s cubic-bezier(.22,.68,0,1.2),
+    transform .45s cubic-bezier(.22,.68,0,1.2),
+    box-shadow .45s cubic-bezier(.22,.68,0,1.2);
 }
-.project-card:hover { border-color: var(--accent); transform: translateY(-8px); box-shadow: var(--shadow), 0 0 40px rgba(110,231,247,.08); }
-.project-preview { position: relative; width: 100%; height: 200px; overflow: hidden; background: var(--bg3); flex-shrink: 0; pointer-events: none; }
+
+/* Light theme: much more visible border */
+[data-theme="light"] .project-card {
+  border: 1.5px solid rgba(13,116,144,0.22);
+  box-shadow:
+    0 4px 18px rgba(13,116,144,0.09),
+    0 1px 4px rgba(13,116,144,0.07),
+    0 0 0 1px rgba(13,116,144,0.06) inset;
+  background: rgba(255,252,247,0.98);
+}
+
+/* Hover lift */
+.project-card:hover {
+  transform: translateY(-10px) scale(1.015);
+  border-color: var(--accent);
+  box-shadow:
+    0 24px 60px rgba(0,0,0,0.45),
+    0 0 0 1px rgba(110,231,247,0.25),
+    0 0 50px rgba(110,231,247,0.1),
+    0 0 80px rgba(110,231,247,0.05);
+}
+
+[data-theme="light"] .project-card:hover {
+  border-color: var(--accent);
+  box-shadow:
+    0 20px 50px rgba(13,116,144,0.18),
+    0 0 0 2px rgba(13,116,144,0.3),
+    0 0 40px rgba(13,116,144,0.12);
+  transform: translateY(-10px) scale(1.015);
+}
+
+/* Animated gradient border on hover using pseudo */
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  padding: 1.5px;
+  background: linear-gradient(
+    135deg,
+    var(--accent),
+    var(--accent2),
+    var(--accent3),
+    var(--accent)
+  );
+  background-size: 300% 300%;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity .4s;
+  animation: gradBorderMove 4s linear infinite;
+  z-index: 5;
+  pointer-events: none;
+}
+.project-card:hover::before { opacity: 1; }
+
+@keyframes gradBorderMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Shine sweep effect */
+.project-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -110%;
+  width: 60%; height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255,255,255,0.04) 40%,
+    rgba(255,255,255,0.09) 50%,
+    rgba(255,255,255,0.04) 60%,
+    transparent 100%
+  );
+  transform: skewX(-12deg);
+  transition: left .65s ease;
+  pointer-events: none;
+  z-index: 4;
+}
+.project-card:hover::after { left: 130%; }
+
+[data-theme="light"] .project-card::after {
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255,255,255,0.15) 40%,
+    rgba(255,255,255,0.35) 50%,
+    rgba(255,255,255,0.15) 60%,
+    transparent 100%
+  );
+}
+
+/* ── Project image area ──────────────────── */
+.project-preview {
+  position: relative; width: 100%; height: 215px;
+  overflow: hidden; background: var(--bg3); flex-shrink: 0;
+  pointer-events: none;
+}
+
 .project-preview img {
-  width: 100%; height: 100%; object-fit: cover; object-position: top;
-  transition: transform .6s cubic-bezier(.22,.68,0,1.2), filter .4s;
-  filter: brightness(.82) saturate(.88);
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top;
+  transition: transform .7s cubic-bezier(.22,.68,0,1.2), filter .5s;
+  filter: brightness(.78) saturate(.82);
 }
-.project-card:hover .project-preview img { transform: scale(1.05); filter: brightness(1) saturate(1.06); }
+.project-card:hover .project-preview img {
+  transform: scale(1.08);
+  filter: brightness(1.02) saturate(1.1);
+}
+
+/* Gradient overlay from image to card body */
 .project-preview::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to bottom,transparent 40%,var(--bg3) 100%); z-index: 1;
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 30%,
+    rgba(0,0,0,0.22) 65%,
+    var(--bg3) 100%
+  );
+  z-index: 1;
 }
-.project-top-bar { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3)); opacity: 0; transition: opacity .3s; z-index: 3; }
-.project-card:hover .project-top-bar { opacity: 1; }
-.project-body { padding: 1.5rem 1.7rem 1.7rem; display: flex; flex-direction: column; flex: 1; }
-.project-meta-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: .8rem; }
-.project-num { font-family: var(--font-mono); font-size: .6rem; color: var(--muted); letter-spacing: .2em; font-weight: 300; }
+[data-theme="light"] .project-preview::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(248,245,240,0) 30%,
+    rgba(248,245,240,0.1) 65%,
+    rgba(248,245,240,0.9) 100%
+  );
+}
+
+/* Number overlay on image */
+.project-preview-num {
+  position: absolute;
+  top: 14px; left: 16px;
+  font-family: var(--font-mono);
+  font-size: .62rem; letter-spacing: .22em;
+  color: rgba(255,255,255,.55);
+  background: rgba(0,0,0,.38);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.12);
+  padding: .22rem .7rem;
+  border-radius: 4px;
+  z-index: 3;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+[data-theme="light"] .project-preview-num {
+  color: rgba(255,255,255,.85);
+  background: rgba(0,0,0,.5);
+}
+
+/* Featured badge on image */
+.project-preview-badge {
+  position: absolute;
+  top: 14px; right: 16px;
+  font-family: var(--font-mono);
+  font-size: .56rem; letter-spacing: .1em;
+  background: rgba(110,231,247,.15);
+  border: 1px solid rgba(110,231,247,.35);
+  color: var(--accent);
+  padding: .22rem .65rem;
+  border-radius: 99px;
+  z-index: 3;
+  display: flex; align-items: center; gap: .3rem;
+  backdrop-filter: blur(8px);
+  font-weight: 400;
+}
+
+/* ── Project body ────────────────────────── */
+.project-body {
+  padding: 1.4rem 1.7rem 1.7rem;
+  display: flex; flex-direction: column; flex: 1;
+  position: relative; z-index: 2;
+}
+
+/* Subtle inner top border line */
+.project-body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 1.7rem; right: 1.7rem;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(110,231,247,.1), rgba(129,140,248,.07), transparent);
+}
+[data-theme="light"] .project-body::before {
+  background: linear-gradient(90deg, rgba(13,116,144,.15), rgba(67,56,202,.1), transparent);
+}
+
+/* ── Top bar (rainbow stripe, always visible) */
+.project-top-bar {
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+  background-size: 200% 100%;
+  opacity: 0.45;
+  transition: opacity .35s, background-position .6s;
+  z-index: 6;
+  border-radius: 18px 18px 0 0;
+}
+.project-card:hover .project-top-bar {
+  opacity: 1;
+  background-position: 100% 0;
+}
+[data-theme="light"] .project-top-bar { opacity: 0.6; }
+[data-theme="light"] .project-card:hover .project-top-bar { opacity: 1; }
+
+.project-meta-row {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: .75rem;
+}
+.project-num {
+  font-family: var(--font-mono); font-size: .58rem;
+  color: var(--muted); letter-spacing: .2em; font-weight: 300;
+}
 .project-featured {
   font-family: var(--font-mono); font-size: .57rem;
   background: rgba(110,231,247,.07); border: 1px solid rgba(110,231,247,.18);
   color: var(--accent); padding: .2rem .6rem; border-radius: 99px; letter-spacing: .1em;
   display: flex; align-items: center; gap: .3rem; font-weight: 300;
 }
+
 .project-title {
-  font-family: var(--font-head); font-size: 1.22rem; font-weight: 800;
-  margin-bottom: .65rem; letter-spacing: -.01em; transition: color .2s; line-height: 1.25;
+  font-family: var(--font-head); font-size: 1.26rem; font-weight: 800;
+  margin-bottom: .65rem; letter-spacing: -.02em;
+  transition: color .25s, text-shadow .25s;
+  line-height: 1.22;
+  color: var(--text);
 }
-.project-card:hover .project-title { color: var(--accent); }
-.project-desc { font-size: .85rem; color: var(--text2); line-height: 1.8; margin-bottom: 1.5rem; flex: 1; }
+.project-card:hover .project-title {
+  color: var(--accent);
+  text-shadow: 0 0 28px rgba(110,231,247,.25);
+}
+[data-theme="light"] .project-card:hover .project-title {
+  text-shadow: 0 0 20px rgba(13,116,144,.2);
+}
+
+.project-desc {
+  font-size: .86rem; color: var(--text2);
+  line-height: 1.82; margin-bottom: 1.5rem; flex: 1;
+}
+
+/* ── Project footer ─────────────────────── */
 .project-footer {
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-  padding-top: 1.2rem; border-top: 1px solid var(--border2);
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border2);
+  position: relative;
 }
+[data-theme="light"] .project-footer {
+  border-top-color: rgba(13,116,144,0.14);
+}
+
+/* Live button */
 .project-live-btn {
   display: inline-flex; align-items: center; gap: .55rem;
   font-family: var(--font-mono); font-size: .66rem; letter-spacing: .14em;
-  text-transform: uppercase; text-decoration: none; color: #0e0b06;
-  background: var(--accent); padding: .6rem 1.3rem; border-radius: 4px;
-  font-weight: 700; transition: all .25s; cursor: none;
-  box-shadow: 0 0 20px rgba(110,231,247,.2); position: relative; overflow: hidden; z-index: 2;
+  text-transform: uppercase; text-decoration: none; color: var(--bg);
+  background: var(--accent); padding: .65rem 1.35rem; border-radius: 6px;
+  font-weight: 700; transition: all .3s cubic-bezier(.22,.68,0,1.2);
+  cursor: none; position: relative; overflow: hidden; z-index: 2;
+  box-shadow: 0 4px 18px rgba(110,231,247,.3);
 }
-.project-live-btn::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg,var(--accent3),var(--accent)); opacity: 0; transition: opacity .3s; }
+.project-live-btn::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--accent3), var(--accent2));
+  opacity: 0; transition: opacity .3s;
+}
 .project-live-btn:hover::before { opacity: 1; }
-.project-live-btn:hover { transform: translateY(-2px); box-shadow: 0 0 32px rgba(110,231,247,.4); }
+.project-live-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(110,231,247,.45);
+}
+[data-theme="light"] .project-live-btn {
+  box-shadow: 0 4px 16px rgba(13,116,144,.3);
+}
+[data-theme="light"] .project-live-btn:hover {
+  box-shadow: 0 8px 28px rgba(13,116,144,.4);
+}
 .project-live-btn span, .project-live-btn .btn-arrow { position: relative; z-index: 1; }
-.project-live-btn .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #0e0b06; flex-shrink: 0; animation: livePulse 2s infinite; position: relative; z-index: 1; }
+.project-live-btn .live-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--bg);
+  flex-shrink: 0; animation: livePulse 2s infinite; position: relative; z-index: 1;
+}
 @keyframes livePulse { 0%,100%{box-shadow:0 0 0 0 rgba(11,15,23,.5);}50%{box-shadow:0 0 0 3px rgba(11,15,23,0);} }
 .project-live-btn .btn-arrow { transition: transform .2s; font-size: .8rem; }
-.project-live-btn:hover .btn-arrow { transform: translateX(3px); }
+.project-live-btn:hover .btn-arrow { transform: translateX(4px); }
+
 .project-type-tag {
-  font-family: var(--font-mono); font-size: .56rem; letter-spacing: .1em;
+  font-family: var(--font-mono); font-size: .58rem; letter-spacing: .1em;
   text-transform: uppercase; color: var(--muted);
   background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07);
-  padding: .3rem .7rem; border-radius: 4px; font-weight: 300;
+  padding: .32rem .75rem; border-radius: 5px; font-weight: 300;
+  transition: color .25s, border-color .25s, background .25s;
+}
+.project-card:hover .project-type-tag {
+  color: var(--text2);
+  border-color: rgba(110,231,247,.15);
+  background: rgba(110,231,247,.05);
+}
+[data-theme="light"] .project-type-tag {
+  background: rgba(13,116,144,.05);
+  border: 1px solid rgba(13,116,144,.18);
+  color: var(--muted);
+}
+[data-theme="light"] .project-card:hover .project-type-tag {
+  background: rgba(13,116,144,.1);
+  border-color: rgba(13,116,144,.3);
+  color: var(--accent);
 }
 
-/* ─── CONTACT ─────────────────────────── */
+/* ═══════════════════════════════════════════
+   END PROJECTS
+═══════════════════════════════════════════ */
+
 #contact { background: var(--bg2); overflow: hidden; position: relative; padding-bottom: 5rem; transition: background .4s; }
 .contact-wrap { position: relative; z-index: 2; max-width: 1000px; margin: 0 auto; text-align: center; }
 .contact-headline { font-family: var(--font-head); font-size: clamp(1rem,2.5vw,1.35rem); font-weight: 400; color: var(--muted); letter-spacing: .14em; margin-bottom: .6rem; font-style: italic; opacity: .7; }
@@ -540,7 +787,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 @keyframes gradShift { 0%,100%{background-position:0%}50%{background-position:100%} }
 .contact-sub { font-size: .94rem; color: var(--text2); line-height: 1.88; margin: 0 auto 3.5rem; max-width: 480px; opacity: .88; }
 
-/* ─── GITHUB STATS CARD ───────────────── */
 .github-stats-section { margin-bottom: 2rem; display: flex; justify-content: center; }
 .github-stats-card {
   background: var(--card); border: 1px solid var(--border2); border-radius: 20px;
@@ -585,7 +831,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   font-family: var(--font-mono); font-size: .54rem; color: var(--muted);
   letter-spacing: .1em; text-transform: uppercase; font-weight: 300; display: block;
 }
-/* Contribution bar */
 .contrib-bar-wrap { margin-bottom: .5rem; }
 .contrib-bar-label {
   display: flex; justify-content: space-between; align-items: center;
@@ -612,7 +857,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .github-loading-dots::after { content: '...'; animation: dots 1.4s infinite; }
 @keyframes dots { 0%{content:'.';} 33%{content:'..';} 66%{content:'...';} }
 
-/* Gmail hero card */
 .gmail-hero { margin-bottom: 2rem; display: flex; justify-content: center; }
 .gmail-hero-card {
   position: relative; background: var(--contact-card-bg);
@@ -656,7 +900,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   box-shadow: 0 4px 14px rgba(234,67,53,.28); z-index: 3;
 }
 
-/* Contact social cards */
 .contact-cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin: 2.5rem 0 2rem; }
 .contact-card {
   position: relative; background: var(--contact-card-bg);
@@ -696,7 +939,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .cc-arrow { position: absolute; bottom: .9rem; right: 1.1rem; font-size: .8rem; opacity: 0; transform: translateX(-5px) translateY(5px); transition: opacity .25s,transform .25s; color: var(--accent); }
 .contact-card:hover .cc-arrow { opacity: .75; transform: translateX(0) translateY(0); }
 
-/* GitHub repos */
 .github-repos-section { margin: 2rem 0 2rem; }
 .github-chart-container { background: var(--card); border: 1px solid var(--border2); border-radius: 20px; padding: 1.8rem; transition: all .3s; backdrop-filter: blur(4px); }
 .github-chart-container:hover { border-color: var(--accent); box-shadow: var(--glow); }
@@ -711,7 +953,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .repo-stats span { display: flex; align-items: center; gap: .3rem; }
 .loading-repos { text-align: center; padding: 2rem; font-family: var(--font-mono); color: var(--muted); font-size: .8rem; font-weight: 300; }
 
-/* ─── CONTACT FORM ────────────────────── */
 .contact-form-section { margin: 2rem auto; max-width: 580px; width: 100%; }
 .contact-form-container {
   background: var(--form-bg); border: 1px solid var(--border2); border-radius: 24px;
@@ -768,7 +1009,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 @keyframes pulseStatus { 0%,100%{opacity:.65;}50%{opacity:1;} }
 @keyframes fadeInUp { from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);} }
 
-/* ─── HAMBURGER & MOBILE MENU ─────────── */
 .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
 .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--accent); border-radius: 2px; transition: all .3s; }
 .nav-hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
@@ -785,7 +1025,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .mobile-menu a:hover { color: var(--accent); }
 .mobile-close { position: absolute; top: 1.5rem; right: 1.5rem; font-family: var(--font-mono); font-size: .68rem; color: var(--muted); background: none; border: 1px solid var(--border); padding: .5rem 1rem; border-radius: 2px; cursor: pointer; letter-spacing: .1em; font-weight: 300; }
 
-/* ─── FOOTER ──────────────────────────── */
 footer {
   position: relative; z-index: 2; text-align: center; padding: 2rem;
   border-top: 1px solid var(--border2);
@@ -794,15 +1033,12 @@ footer {
 }
 footer span { color: var(--accent); }
 
-/* ─── SCROLL REVEAL ───────────────────── */
 .reveal { opacity: 0; transform: translateY(36px); transition: opacity .65s ease, transform .65s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ─── TYPEWRITER ──────────────────────── */
 .typewriter::after { content: '|'; animation: blink 1s infinite; color: var(--accent); }
 @keyframes blink { 0%,100%{opacity:1;}50%{opacity:0;} }
 
-/* ─── GLITCH ──────────────────────────── */
 .glitch { position: relative; }
 .glitch::before, .glitch::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; }
 .glitch::before { color: var(--accent2); clip-path: polygon(0 30%,100% 30%,100% 50%,0 50%); transform: translateX(-3px); animation: glitch1 4s infinite; opacity: 0; }
@@ -810,7 +1046,6 @@ footer span { color: var(--accent); }
 @keyframes glitch1 { 0%,94%{opacity:0;transform:translateX(0);}95%{opacity:1;transform:translateX(-3px);}96%{opacity:0;transform:translateX(3px);}100%{opacity:0;} }
 @keyframes glitch2 { 0%,94%{opacity:0;transform:translateX(0);}95%{opacity:0;}96%{opacity:1;transform:translateX(3px);}97%,100%{opacity:0;} }
 
-/* ─── SCROLL-TO-TOP ───────────────────── */
 #scroll-top {
   position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
   width: 46px; height: 46px; border-radius: 50%;
@@ -828,7 +1063,6 @@ footer span { color: var(--accent); }
 #scroll-top:hover { border-color: var(--accent); box-shadow: var(--glow-strong); transform: translateY(-3px) scale(1.06); }
 #scroll-top:hover .arrow-icon { transform: translateY(-2px); }
 
-/* ─── RESPONSIVE ──────────────────────── */
 @media (max-width:1100px){section{padding:6rem 3rem 4rem;}#hero{gap:2.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
 @media (max-width:900px){nav{padding:1rem 1.5rem;}section{padding:5rem 1.8rem 4rem;}#hero{grid-template-columns:1fr;gap:3rem;padding-top:7rem;}.hero-photo{order:-1;}.photo-wrap{width:210px;height:210px;}#about{grid-template-columns:1fr;gap:2.5rem;}.skills-grid{grid-template-columns:repeat(3,1fr);}.contact-cards{grid-template-columns:repeat(2,1fr);}.edu-timeline::before{left:36px;}.gmail-hero-card{padding:1.7rem 1.8rem;gap:1.4rem;}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
 @media (max-width:700px){section{padding:5rem 1.2rem 3.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.about-stats{grid-template-columns:1fr 1fr;}.projects-grid{grid-template-columns:1fr;}.edu-item{grid-template-columns:58px 1fr;gap:0 1rem;}.edu-node{width:58px;height:58px;font-size:1.3rem;border-radius:14px;}.edu-timeline::before{left:29px;}.gmail-hero-card{flex-direction:column;text-align:center;padding:1.7rem 1.5rem;}.gmail-hero-content{text-align:center;}.gmail-primary-label{justify-content:center;}.gmail-sub-text{justify-content:center;flex-wrap:wrap;}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
@@ -997,56 +1231,114 @@ footer span { color: var(--accent); }
     <div class="section-line"></div>
   </div>
   <div class="projects-grid">
+
     <div class="project-card reveal">
       <div class="project-top-bar"></div>
-      <div class="project-preview"><img src="https://i.postimg.cc/tTmNXWh6/1774610888858.png" alt="Al-Quran Bangla" loading="lazy"></div>
+      <div class="project-preview">
+        <div class="project-preview-num">PROJECT_01</div>
+        <div class="project-preview-badge">⭐ Featured</div>
+        <img src="https://i.postimg.cc/tTmNXWh6/1774610888858.png" alt="Al-Quran Bangla" loading="lazy">
+      </div>
       <div class="project-body">
-        <div class="project-meta-row"><span class="project-num">PROJECT_01</span><span class="project-featured">⭐ Featured</span></div>
+        <div class="project-meta-row">
+          <span class="project-num">PROJECT_01</span>
+          <span class="project-featured">⭐ Featured</span>
+        </div>
         <h3 class="project-title">Al-Quran Bangla</h3>
         <p class="project-desc">A beautifully crafted Al-Quran web app with full Bangla translation. Clean UI, fast access to all surahs and verses, built to make the Quran accessible to everyone.</p>
-        <div class="project-footer"><a href="https://foysalhridoy.github.io/Al-Quran/" target="_blank" rel="noopener noreferrer" class="project-live-btn"><span class="live-dot"></span><span>Live Demo</span><span class="btn-arrow">→</span></a><span class="project-type-tag">Web App</span></div>
+        <div class="project-footer">
+          <a href="https://foysalhridoy.github.io/Al-Quran/" target="_blank" rel="noopener noreferrer" class="project-live-btn">
+            <span class="live-dot"></span><span>Live Demo</span><span class="btn-arrow">→</span>
+          </a>
+          <span class="project-type-tag">Web App</span>
+        </div>
       </div>
     </div>
+
     <div class="project-card reveal">
       <div class="project-top-bar"></div>
-      <div class="project-preview"><img src="https://i.postimg.cc/Y0WnZbJC/1774611152512.png" alt="Movie Website" loading="lazy"></div>
+      <div class="project-preview">
+        <div class="project-preview-num">PROJECT_02</div>
+        <img src="https://i.postimg.cc/Y0WnZbJC/1774611152512.png" alt="Movie Website" loading="lazy">
+      </div>
       <div class="project-body">
-        <div class="project-meta-row"><span class="project-num">PROJECT_02</span></div>
+        <div class="project-meta-row">
+          <span class="project-num">PROJECT_02</span>
+        </div>
         <h3 class="project-title">Movie Website</h3>
         <p class="project-desc">A slick movie browsing website. Explore films, view details, and get the cinema experience right in your browser. Clean design meets great content.</p>
-        <div class="project-footer"><a href="https://foysalhridoy.github.io/WWH/" target="_blank" rel="noopener noreferrer" class="project-live-btn"><span class="live-dot"></span><span>Live Demo</span><span class="btn-arrow">→</span></a><span class="project-type-tag">Web App</span></div>
+        <div class="project-footer">
+          <a href="https://foysalhridoy.github.io/WWH/" target="_blank" rel="noopener noreferrer" class="project-live-btn">
+            <span class="live-dot"></span><span>Live Demo</span><span class="btn-arrow">→</span>
+          </a>
+          <span class="project-type-tag">Web App</span>
+        </div>
       </div>
     </div>
+
     <div class="project-card reveal">
       <div class="project-top-bar"></div>
-      <div class="project-preview"><img src="https://i.postimg.cc/d3jdhCCV/1774611284398.png" alt="QR Code Generator" loading="lazy"></div>
+      <div class="project-preview">
+        <div class="project-preview-num">PROJECT_03</div>
+        <img src="https://i.postimg.cc/d3jdhCCV/1774611284398.png" alt="QR Code Generator" loading="lazy">
+      </div>
       <div class="project-body">
-        <div class="project-meta-row"><span class="project-num">PROJECT_03</span></div>
+        <div class="project-meta-row">
+          <span class="project-num">PROJECT_03</span>
+        </div>
         <h3 class="project-title">QR Code Generator</h3>
         <p class="project-desc">Generate custom QR codes instantly for any URL, text or data. Fast, smart and beautifully simple. Your one-stop QR solution.</p>
-        <div class="project-footer"><a href="https://foysal01.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-live-btn"><span class="live-dot"></span><span>Live Demo</span><span class="btn-arrow">→</span></a><span class="project-type-tag">Tool</span></div>
+        <div class="project-footer">
+          <a href="https://foysal01.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-live-btn">
+            <span class="live-dot"></span><span>Live Demo</span><span class="btn-arrow">→</span>
+          </a>
+          <span class="project-type-tag">Tool</span>
+        </div>
       </div>
     </div>
+
     <div class="project-card reveal">
       <div class="project-top-bar"></div>
-      <div class="project-preview"><img src="https://i.postimg.cc/sD1DQS7b/1774611418324.png" alt="Smart Calendar" loading="lazy"></div>
+      <div class="project-preview">
+        <div class="project-preview-num">PROJECT_04</div>
+        <img src="https://i.postimg.cc/sD1DQS7b/1774611418324.png" alt="Smart Calendar" loading="lazy">
+      </div>
       <div class="project-body">
-        <div class="project-meta-row"><span class="project-num">PROJECT_04</span></div>
+        <div class="project-meta-row">
+          <span class="project-num">PROJECT_04</span>
+        </div>
         <h3 class="project-title">Smart Calendar</h3>
         <p class="project-desc">A real-time day, time and calendar app. Know exactly where you are in time, built with precision and a clean, intuitive interface.</p>
-        <div class="project-footer"><a href="https://foysal02.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-live-btn"><span class="live-dot"></span><span>Live Demo</span><span class="btn-arrow">→</span></a><span class="project-type-tag">Utility</span></div>
+        <div class="project-footer">
+          <a href="https://foysal02.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-live-btn">
+            <span class="live-dot"></span><span>Live Demo</span><span class="btn-arrow">→</span>
+          </a>
+          <span class="project-type-tag">Utility</span>
+        </div>
       </div>
     </div>
+
     <div class="project-card reveal">
       <div class="project-top-bar"></div>
-      <div class="project-preview"><img src="https://i.postimg.cc/Y0F7RNRj/1774611502413.png" alt="Photo Resizer" loading="lazy"></div>
+      <div class="project-preview">
+        <div class="project-preview-num">PROJECT_05</div>
+        <img src="https://i.postimg.cc/Y0F7RNRj/1774611502413.png" alt="Photo Resizer" loading="lazy">
+      </div>
       <div class="project-body">
-        <div class="project-meta-row"><span class="project-num">PROJECT_05</span></div>
+        <div class="project-meta-row">
+          <span class="project-num">PROJECT_05</span>
+        </div>
         <h3 class="project-title">Photo Resizer</h3>
         <p class="project-desc">Resize, compress, and optimize your photos directly in the browser. No uploads to servers. Your privacy is respected, fully client-side.</p>
-        <div class="project-footer"><a href="https://foysal03.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-live-btn"><span class="live-dot"></span><span>Live Demo</span><span class="btn-arrow">→</span></a><span class="project-type-tag">Tool</span></div>
+        <div class="project-footer">
+          <a href="https://foysal03.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-live-btn">
+            <span class="live-dot"></span><span>Live Demo</span><span class="btn-arrow">→</span>
+          </a>
+          <span class="project-type-tag">Tool</span>
+        </div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -1057,7 +1349,6 @@ footer span { color: var(--accent); }
     <h2 class="contact-big reveal"><span class="grad">Say Hello!</span></h2>
     <p class="contact-sub reveal">I'm always open to interesting projects, collaborations, or just a good conversation about tech. Drop me a message! I'll get back to you!</p>
 
-    <!-- Gmail primary CTA -->
     <div class="gmail-hero reveal">
       <a href="mailto:ffoysalhridoy@gmail.com" class="gmail-hero-card">
         <div class="gmail-preferred-tag">Best way to reach me</div>
@@ -1073,7 +1364,6 @@ footer span { color: var(--accent); }
       </a>
     </div>
 
-    <!-- Social cards -->
     <div class="contact-cards reveal">
       <a href="https://github.com/foysalhridoy" target="_blank" class="contact-card github">
         <div class="cc-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></div>
@@ -1097,7 +1387,6 @@ footer span { color: var(--accent); }
       </a>
     </div>
 
-    <!-- GITHUB STATS CARD (NEW) -->
     <div class="github-stats-section reveal">
       <div class="github-stats-card" id="githubStatsCard">
         <div class="github-loading">
@@ -1106,7 +1395,6 @@ footer span { color: var(--accent); }
       </div>
     </div>
 
-    <!-- GitHub Repos -->
     <div class="github-repos-section reveal">
       <div class="github-chart-container">
         <div class="repos-title"><i class="devicon-github-original"></i> Top Contributed Repositories</div>
@@ -1114,7 +1402,6 @@ footer span { color: var(--accent); }
       </div>
     </div>
 
-    <!-- CONTACT FORM -->
     <div class="contact-form-section reveal">
       <div class="contact-form-container">
         <div class="form-title"><span>✉️</span> Send a Message</div>
@@ -1142,9 +1429,6 @@ footer span { color: var(--accent); }
 <footer><p>Designed &amp; Built by <span>Md. Ferdous Foysal Hridoy</span> &mdash; &copy; 2026</p></footer>
 
 <script>
-/* ═══════════════════════════════════════════
-   CURSOR
-═══════════════════════════════════════════ */
 const cursor = document.getElementById('cursor');
 const ring   = document.getElementById('cursor-ring');
 let mx = 0, my = 0, rx = 0, ry = 0;
@@ -1177,9 +1461,6 @@ if (window.matchMedia('(pointer: fine)').matches) {
   });
 }
 
-/* ═══════════════════════════════════════════
-   CANVAS BACKGROUND — warm amber particles
-═══════════════════════════════════════════ */
 const canvas = document.getElementById('bg-canvas');
 const ctx    = canvas.getContext('2d');
 let W, H, particles = [];
@@ -1225,9 +1506,6 @@ function drawGrid() {
   requestAnimationFrame(animCanvas);
 })();
 
-/* ═══════════════════════════════════════════
-   SCROLL-TO-TOP
-═══════════════════════════════════════════ */
 const progressCircle  = document.querySelector('#scroll-top svg.progress-ring circle');
 const circumference   = 2 * Math.PI * 20;
 
@@ -1239,18 +1517,12 @@ window.addEventListener('scroll', () => {
 });
 document.getElementById('scroll-top').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-/* ═══════════════════════════════════════════
-   THEME TOGGLE
-═══════════════════════════════════════════ */
 let isDark = true;
 document.getElementById('themeToggle').addEventListener('click', () => {
   isDark = !isDark;
   document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
 });
 
-/* ═══════════════════════════════════════════
-   TYPEWRITER
-═══════════════════════════════════════════ */
 const phrases  = ['Full Stack Developer', 'WebRTC Enthusiast', 'AI Explorer', 'CSE @ DIU', 'Open Source Contributor'];
 const typeEl   = document.getElementById('typetext');
 let pi = 0, ci = 0, deleting = false;
@@ -1266,9 +1538,6 @@ let pi = 0, ci = 0, deleting = false;
   setTimeout(type, deleting ? 42 : 78);
 })();
 
-/* ═══════════════════════════════════════════
-   MOBILE MENU
-═══════════════════════════════════════════ */
 const hamburger  = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 function closeMobileMenu() { mobileMenu.classList.remove('open'); hamburger.classList.remove('open'); document.body.style.overflow = ''; }
@@ -1279,9 +1548,6 @@ hamburger.addEventListener('click', () => {
 });
 document.getElementById('mobileClose').addEventListener('click', closeMobileMenu);
 
-/* ═══════════════════════════════════════════
-   GITHUB STATS CARD (NEW)
-═══════════════════════════════════════════ */
 async function fetchGitHubStats() {
   const card = document.getElementById('githubStatsCard');
   const username = 'foysalhridoy';
@@ -1297,19 +1563,16 @@ async function fetchGitHubStats() {
     const user  = await userRes.json();
     const repos = reposRes.ok ? await reposRes.json() : [];
 
-    /* compute stats */
     const totalStars  = repos.reduce((s, r) => s + r.stargazers_count, 0);
     const totalForks  = repos.reduce((s, r) => s + r.forks_count, 0);
     const repoCount   = user.public_repos || repos.length;
     const followers   = user.followers || 0;
 
-    /* language breakdown */
     const langMap = {};
     repos.forEach(r => { if (r.language) langMap[r.language] = (langMap[r.language] || 0) + 1; });
     const topLangs = Object.entries(langMap).sort((a,b) => b[1]-a[1]).slice(0,5);
     const totalLangRepos = topLangs.reduce((s,[,c]) => s+c, 0);
 
-    /* lang colors */
     const langColors = {
       JavaScript: { bg:'rgba(247,223,30,.12)', border:'rgba(247,223,30,.28)', color:'#f7df1e' },
       Python:     { bg:'rgba(55,118,171,.12)', border:'rgba(55,118,171,.28)', color:'#3776ab' },
@@ -1322,7 +1585,6 @@ async function fetchGitHubStats() {
     };
     const defColor = { bg:'rgba(232,168,56,.10)', border:'rgba(232,168,56,.22)', color:'#e8a838' };
 
-    /* contribution bar data */
     const bars = [
       { label:'Public Repos',  value: Math.min(repoCount, 30), max: 30 },
       { label:'Total Stars',   value: Math.min(totalStars, 50), max: 50 },
@@ -1336,38 +1598,18 @@ async function fetchGitHubStats() {
           <div class="github-stats-subtitle">${username} · Last updated live</div>
         </div>
       </div>
-
       <div class="github-stats-grid">
-        <div class="github-stat-item">
-          <span class="github-stat-value">${repoCount}</span>
-          <span class="github-stat-label">Repositories</span>
-        </div>
-        <div class="github-stat-item">
-          <span class="github-stat-value">${followers}</span>
-          <span class="github-stat-label">Followers</span>
-        </div>
-        <div class="github-stat-item">
-          <span class="github-stat-value">${totalStars}</span>
-          <span class="github-stat-label">Total Stars</span>
-        </div>
-        <div class="github-stat-item">
-          <span class="github-stat-value">${totalForks}</span>
-          <span class="github-stat-label">Total Forks</span>
-        </div>
+        <div class="github-stat-item"><span class="github-stat-value">${repoCount}</span><span class="github-stat-label">Repositories</span></div>
+        <div class="github-stat-item"><span class="github-stat-value">${followers}</span><span class="github-stat-label">Followers</span></div>
+        <div class="github-stat-item"><span class="github-stat-value">${totalStars}</span><span class="github-stat-label">Total Stars</span></div>
+        <div class="github-stat-item"><span class="github-stat-value">${totalForks}</span><span class="github-stat-label">Total Forks</span></div>
       </div>
-
       ${bars.map(b => `
         <div class="contrib-bar-wrap">
-          <div class="contrib-bar-label">
-            <span>${b.label}</span>
-            <span>${b.value}${b.max > b.value ? '' : '+'}</span>
-          </div>
-          <div class="contrib-bar-track">
-            <div class="contrib-bar-fill" data-width="${Math.round((b.value/b.max)*100)}%"></div>
-          </div>
+          <div class="contrib-bar-label"><span>${b.label}</span><span>${b.value}${b.max > b.value ? '' : '+'}</span></div>
+          <div class="contrib-bar-track"><div class="contrib-bar-fill" data-width="${Math.round((b.value/b.max)*100)}%"></div></div>
         </div>
       `).join('')}
-
       ${topLangs.length ? `
         <div class="github-lang-row">
           ${topLangs.map(([lang, count]) => {
@@ -1379,7 +1621,6 @@ async function fetchGitHubStats() {
       ` : ''}
     `;
 
-    /* animate contribution bars after render */
     setTimeout(() => {
       card.querySelectorAll('.contrib-bar-fill').forEach(el => {
         el.style.width = el.dataset.width;
@@ -1407,9 +1648,6 @@ async function fetchGitHubStats() {
 }
 fetchGitHubStats();
 
-/* ═══════════════════════════════════════════
-   GITHUB REPOS
-═══════════════════════════════════════════ */
 async function fetchGitHubRepos() {
   const container = document.getElementById('github-repos-list');
   try {
@@ -1429,9 +1667,6 @@ async function fetchGitHubRepos() {
 }
 fetchGitHubRepos();
 
-/* ═══════════════════════════════════════════
-   CONTACT FORM — Formspree
-═══════════════════════════════════════════ */
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   const btn     = document.getElementById('submitBtn');
@@ -1481,9 +1716,6 @@ document.getElementById('contactForm').addEventListener('submit', async function
   btnIcon.style.animation = '';
 });
 
-/* ═══════════════════════════════════════════
-   SCROLL REVEAL
-═══════════════════════════════════════════ */
 const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
