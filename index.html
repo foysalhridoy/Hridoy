@@ -706,7 +706,7 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 
 /* ── Project body ────────────────────────── */
 .project-body {
-  padding: 1.4rem 1.7rem 1.7rem;
+  padding: 1rem 1.7rem 1.7rem;
   display: flex; flex-direction: column; flex: 1;
   position: relative; z-index: 2;
 }
@@ -742,12 +742,11 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 [data-theme="light"] .project-card:hover .project-top-bar { opacity: 1; }
 
 .project-meta-row {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: .75rem;
+  display: flex; align-items: center; justify-content: flex-end;
+  margin-bottom: .5rem;
 }
 .project-num {
-  font-family: var(--font-mono); font-size: .58rem;
-  color: var(--muted); letter-spacing: .2em; font-weight: 300;
+  display: none;
 }
 .project-featured {
   font-family: var(--font-mono); font-size: .57rem;
@@ -1451,7 +1450,7 @@ footer span { color: var(--accent); }
       </div>
       <div class="project-body">
         <div class="project-meta-row">
-          <span class="project-num">PROJECT_01</span>
+          <!-- project number removed from here, only featured badge remains for first project -->
           <span class="project-featured">⭐ Featured</span>
         </div>
         <h3 class="project-title">Al-Quran Bangla</h3>
@@ -1473,7 +1472,7 @@ footer span { color: var(--accent); }
       </div>
       <div class="project-body">
         <div class="project-meta-row">
-          <span class="project-num">PROJECT_02</span>
+          <!-- no project number, no featured badge -->
         </div>
         <h3 class="project-title">Movie Website</h3>
         <p class="project-desc">A slick movie browsing website. Explore films, view details, and get the cinema experience right in your browser. Clean design meets great content.</p>
@@ -1494,7 +1493,7 @@ footer span { color: var(--accent); }
       </div>
       <div class="project-body">
         <div class="project-meta-row">
-          <span class="project-num">PROJECT_03</span>
+          <!-- no project number -->
         </div>
         <h3 class="project-title">QR Code Generator</h3>
         <p class="project-desc">Generate custom QR codes instantly for any URL, text or data. Fast, smart and beautifully simple. Your one-stop QR solution.</p>
@@ -1515,7 +1514,7 @@ footer span { color: var(--accent); }
       </div>
       <div class="project-body">
         <div class="project-meta-row">
-          <span class="project-num">PROJECT_04</span>
+          <!-- no project number -->
         </div>
         <h3 class="project-title">Smart Calendar</h3>
         <p class="project-desc">A real-time day, time and calendar app. Know exactly where you are in time, built with precision and a clean, intuitive interface.</p>
@@ -1536,7 +1535,7 @@ footer span { color: var(--accent); }
       </div>
       <div class="project-body">
         <div class="project-meta-row">
-          <span class="project-num">PROJECT_05</span>
+          <!-- no project number -->
         </div>
         <h3 class="project-title">Photo Resizer</h3>
         <p class="project-desc">Resize, compress, and optimize your photos directly in the browser. No uploads to servers. Your privacy is respected, fully client-side.</p>
