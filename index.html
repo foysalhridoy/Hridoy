@@ -795,6 +795,17 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   backdrop-filter: blur(8px);
 }
 .github-stats-card:hover { border-color: var(--accent); box-shadow: var(--glow); }
+
+/* ── LIGHT THEME: bold borders for contact section ── */
+[data-theme="light"] .github-stats-card {
+  border: 2px solid rgba(13,116,144,0.35);
+  box-shadow: 0 4px 18px rgba(13,116,144,0.1);
+}
+[data-theme="light"] .github-stats-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 30px rgba(13,116,144,0.18);
+}
+
 .github-stats-header {
   display: flex; align-items: center; gap: .8rem; margin-bottom: 1.6rem;
 }
@@ -821,6 +832,15 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   transition: all .25s;
 }
 .github-stat-item:hover { border-color: rgba(110,231,247,.22); transform: translateY(-2px); }
+
+[data-theme="light"] .github-stat-item {
+  border: 1.5px solid rgba(13,116,144,0.2);
+  background: rgba(13,116,144,0.04);
+}
+[data-theme="light"] .github-stat-item:hover {
+  border-color: rgba(13,116,144,0.4);
+}
+
 .github-stat-value {
   font-family: var(--font-head); font-size: 1.4rem; font-weight: 800;
   color: var(--accent); display: block; margin-bottom: .3rem;
@@ -868,6 +888,17 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   flex-wrap: wrap; justify-content: center;
 }
 .gmail-hero-card:hover { transform: translateY(-7px) scale(1.015); border-color: rgba(234,67,53,.55); box-shadow: var(--shadow), 0 0 40px rgba(234,67,53,.1); }
+
+/* ── LIGHT THEME: bold gmail border ── */
+[data-theme="light"] .gmail-hero-card {
+  border: 2.5px solid rgba(234,67,53,0.45);
+  box-shadow: 0 4px 16px rgba(234,67,53,0.1);
+}
+[data-theme="light"] .gmail-hero-card:hover {
+  border-color: rgba(234,67,53,0.7);
+  box-shadow: var(--shadow), 0 0 40px rgba(234,67,53,0.15);
+}
+
 .gmail-icon-wrap {
   width: 68px; height: 68px; border-radius: 16px;
   background: rgba(234,67,53,.07); border: 1.5px solid rgba(234,67,53,.18);
@@ -923,6 +954,18 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .contact-card.facebook::after { background: linear-gradient(90deg, #1877f2, #42b0ff); }
 .contact-card:hover::after { opacity: 1; }
 .contact-card:hover { transform: translateY(-9px) scale(1.02); border-color: var(--accent); }
+
+/* ── LIGHT THEME: bold contact card borders ── */
+[data-theme="light"] .contact-card {
+  border: 2px solid rgba(13,116,144,0.28);
+  box-shadow: 0 3px 14px rgba(13,116,144,0.09);
+}
+[data-theme="light"] .contact-card.github  { border-color: rgba(163,113,247,0.35); }
+[data-theme="light"] .contact-card.linkedin { border-color: rgba(0,119,181,0.35); }
+[data-theme="light"] .contact-card.instagram { border-color: rgba(220,39,67,0.3); }
+[data-theme="light"] .contact-card.facebook { border-color: rgba(24,119,242,0.35); }
+[data-theme="light"] .contact-card:hover { border-color: var(--accent); box-shadow: 0 8px 28px rgba(13,116,144,0.16); }
+
 .cc-icon { width: 48px; height: 48px; border-radius: 13px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.1rem; transition: transform .3s; position: relative; z-index: 1; }
 .contact-card:hover .cc-icon { transform: scale(1.16) rotate(-5deg); }
 .cc-icon svg { width: 22px; height: 22px; fill: currentColor; }
@@ -942,6 +985,17 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .github-repos-section { margin: 2rem 0 2rem; }
 .github-chart-container { background: var(--card); border: 1px solid var(--border2); border-radius: 20px; padding: 1.8rem; transition: all .3s; backdrop-filter: blur(4px); }
 .github-chart-container:hover { border-color: var(--accent); box-shadow: var(--glow); }
+
+/* ── LIGHT THEME: bold repos container border ── */
+[data-theme="light"] .github-chart-container {
+  border: 2px solid rgba(13,116,144,0.32);
+  box-shadow: 0 4px 16px rgba(13,116,144,0.09);
+}
+[data-theme="light"] .github-chart-container:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 30px rgba(13,116,144,0.18);
+}
+
 .repos-title { font-family: var(--font-head); font-size: 1.35rem; font-weight: 700; margin-bottom: 1.2rem; display: flex; align-items: center; gap: .8rem; color: var(--accent); }
 .repos-title i { font-size: 1.5rem; }
 .repo-list { display: flex; flex-direction: column; gap: .2rem; }
@@ -960,6 +1014,17 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   transition: all .4s ease; animation: fadeInUp .6s ease;
 }
 .contact-form-container:hover { border-color: var(--accent); box-shadow: var(--glow); transform: translateY(-3px); }
+
+/* ── LIGHT THEME: bold form container border ── */
+[data-theme="light"] .contact-form-container {
+  border: 2px solid rgba(13,116,144,0.35);
+  box-shadow: 0 4px 18px rgba(13,116,144,0.1);
+}
+[data-theme="light"] .contact-form-container:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 32px rgba(13,116,144,0.2);
+}
+
 .form-title {
   font-family: var(--font-head); font-size: 1.18rem; font-weight: 700;
   margin-bottom: 1.8rem; color: var(--accent); letter-spacing: -.01em;
@@ -981,6 +1046,19 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   transform: scale(1.008);
 }
 .form-group textarea { resize: vertical; min-height: 110px; }
+
+/* ── LIGHT THEME: bold input/textarea borders ── */
+[data-theme="light"] .form-group input,
+[data-theme="light"] .form-group textarea {
+  border: 2px solid rgba(13,116,144,0.35);
+  background: rgba(255,252,247,0.95);
+}
+[data-theme="light"] .form-group input:focus,
+[data-theme="light"] .form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(13,116,144,0.12), 0 0 20px rgba(13,116,144,0.08);
+}
+
 .submit-btn {
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   color: var(--bg); border: none; padding: 1rem 2rem; border-radius: 40px;
