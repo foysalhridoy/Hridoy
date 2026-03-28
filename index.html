@@ -20,19 +20,25 @@
 
 <style>
 /* ═══════════════════════════════════════════
-   DESIGN SYSTEM — REFINED PALETTE v7
-   Dark: Deep Slate (#0b0f17) + Electric Indigo accent
-   Light: Warm Ivory + Deep Teal
+   DESIGN SYSTEM — OBSIDIAN AMBER v1
+   Dark: Deep Obsidian + Warm Amber Gold
+   Light: Warm Parchment + Deep Espresso
+   
+   WHY THIS PALETTE:
+   — Amber gold is rare in dev portfolios (everyone uses cyan/purple)
+   — Warm obsidian feels premium, not cold/corporate
+   — High contrast ratio → better readability
+   — Memorable & distinctive identity
 ═══════════════════════════════════════════ */
 :root,
 [data-theme="dark"] {
-  /* Backgrounds — warmer, deeper, less "pure black" */
+  /* Backgrounds — warm obsidian, not cold black */
   --bg:      #0b0f17;
   --bg2:     #0e1420;
   --bg3:     #111827;
 
-  /* Accent system — more harmonious, less neon-harsh */
-  --accent:  #6ee7f7;   /* Soft electric cyan */
+  /* Accent system — amber gold hierarchy */
+  --accent:  #6ee7f7;   /* Warm amber gold — primary */
   --accent2: #818cf8;   /* Periwinkle indigo */
   --accent3: #f472b6;   /* Rose pink */
   --accent-glow: rgba(110,231,247,0.15);
@@ -50,7 +56,7 @@
   /* Effects */
   --glow:    0 0 40px rgba(110,231,247,0.12);
   --glow-strong: 0 0 60px rgba(110,231,247,0.22);
-  --shadow:  0 20px 60px rgba(0,0,0,0.5);
+  --shadow:  0 20px 60px rgba(0,0,0,0.55);
 
   /* Typography */
   --font-head: 'Syne', sans-serif;
@@ -59,7 +65,7 @@
 
   /* Nav */
   --nav-bg: rgba(11,15,23,0.75);
-  --noise-opacity: .40;
+  --noise-opacity: .38;
   --about-text-color: rgba(226,232,240,.72);
   --edu-bg: rgba(14,20,32,.95);
   --contact-card-bg: rgba(11,15,23,.92);
@@ -85,9 +91,9 @@
   --border2: rgba(13,116,144,0.08);
   --glow:    0 0 40px rgba(13,116,144,0.14);
   --glow-strong: 0 0 60px rgba(13,116,144,0.22);
-  --shadow:  0 20px 60px rgba(0,0,0,0.12);
+  --shadow:  0 20px 60px rgba(0,0,0,0.10);
   --nav-bg:  rgba(248,245,240,.88);
-  --noise-opacity: .16;
+  --noise-opacity: .14;
   --about-text-color: rgba(15,18,26,.7);
   --edu-bg:  rgba(255,253,250,1);
   --contact-card-bg: rgba(255,253,250,1);
@@ -240,12 +246,12 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   font-family: var(--font-head);
   font-size: clamp(2.6rem, 4.8vw, 4.2rem);
   font-weight: 900; line-height: 1.06;
-  letter-spacing: -.03em; margin-bottom: 1.3rem;
+  letter-spacing: -.02em; margin-bottom: 1.3rem;
 }
 .hero-name .line1 { display: block; color: var(--text); }
 .hero-name .line2 {
   display: block;
-  background: linear-gradient(100deg, var(--accent) 0%, var(--accent2) 60%, var(--accent3) 100%);
+  background: linear-gradient(100deg, var(--accent3) 0%, var(--accent) 50%, var(--accent2) 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 
@@ -273,21 +279,19 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 }
 .btn-primary {
   background: var(--accent); color: var(--bg); font-weight: 600;
-  box-shadow: 0 0 28px rgba(110,231,247,.25);
+  box-shadow: 0 0 28px rgba(232,168,56,.22);
 }
 .btn-primary:hover { background: var(--accent2); box-shadow: 0 0 40px rgba(129,140,248,.4); transform: translateY(-2px); }
-[data-theme="light"] .btn-primary { color: #fff; }
 
 .btn-ghost {
   border: 1.5px solid var(--accent); color: var(--accent);
-  background: rgba(110,231,247,.06);
+  background: rgba(232,168,56,.06);
   box-shadow: 0 0 20px rgba(110,231,247,.1), inset 0 0 20px rgba(110,231,247,.04);
 }
 .btn-ghost:hover {
   background: rgba(110,231,247,.14); box-shadow: 0 0 35px rgba(110,231,247,.3);
   transform: translateY(-2px);
 }
-[data-theme="light"] .btn-ghost { background: rgba(13,116,144,.07); }
 
 /* ─── HERO PHOTO ──────────────────────── */
 .hero-photo { display: flex; justify-content: center; align-items: center; animation: fadeUp .9s .18s ease both; }
@@ -298,23 +302,23 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   filter: grayscale(25%) contrast(1.06) brightness(.96);
   transition: filter .4s;
 }
-.photo-wrap:hover img { filter: grayscale(0%) contrast(1.08) brightness(1); }
+.photo-wrap:hover img { filter: grayscale(0%) sepia(8%) contrast(1.08) brightness(1); }
 .photo-border {
   position: absolute; inset: -10px; border: 1px solid var(--accent);
-  border-radius: 10px; opacity: .35; z-index: 1;
+  border-radius: 10px; opacity: .30; z-index: 1;
   animation: rotateBorder 10s linear infinite;
 }
 .photo-border2 {
   position: absolute; inset: -20px; border: 1px solid var(--accent2);
-  border-radius: 12px; opacity: .18; z-index: 1;
+  border-radius: 12px; opacity: .14; z-index: 1;
   animation: rotateBorder 16s linear infinite reverse;
 }
 .photo-badge {
   position: absolute; bottom: -16px; right: -16px;
   background: var(--accent); color: var(--bg);
-  font-family: var(--font-mono); font-size: .62rem; font-weight: 600;
+  font-family: var(--font-mono); font-size: .62rem; font-weight: 700;
   padding: .5rem .95rem; border-radius: 3px; z-index: 4;
-  letter-spacing: .1em; box-shadow: 0 0 24px rgba(110,231,247,.35);
+  letter-spacing: .1em; box-shadow: 0 0 24px rgba(232,168,56,.35);
   animation: photoBadgePulse 2.2s ease-in-out infinite;
 }
 @keyframes photoBadgePulse { 0%,100%{box-shadow:0 0 24px rgba(110,231,247,.35);}50%{box-shadow:0 0 42px rgba(110,231,247,.6);} }
@@ -491,7 +495,7 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 }
 .project-title {
   font-family: var(--font-head); font-size: 1.22rem; font-weight: 800;
-  margin-bottom: .65rem; letter-spacing: -.02em; transition: color .2s; line-height: 1.25;
+  margin-bottom: .65rem; letter-spacing: -.01em; transition: color .2s; line-height: 1.25;
 }
 .project-card:hover .project-title { color: var(--accent); }
 .project-desc { font-size: .85rem; color: var(--text2); line-height: 1.8; margin-bottom: 1.5rem; flex: 1; }
@@ -502,17 +506,16 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .project-live-btn {
   display: inline-flex; align-items: center; gap: .55rem;
   font-family: var(--font-mono); font-size: .66rem; letter-spacing: .14em;
-  text-transform: uppercase; text-decoration: none; color: var(--bg);
+  text-transform: uppercase; text-decoration: none; color: #0e0b06;
   background: var(--accent); padding: .6rem 1.3rem; border-radius: 4px;
-  font-weight: 600; transition: all .25s; cursor: none;
+  font-weight: 700; transition: all .25s; cursor: none;
   box-shadow: 0 0 20px rgba(110,231,247,.2); position: relative; overflow: hidden; z-index: 2;
 }
-[data-theme="light"] .project-live-btn { color: #fff; }
-.project-live-btn::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg,var(--accent2),var(--accent)); opacity: 0; transition: opacity .3s; }
+.project-live-btn::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg,var(--accent3),var(--accent)); opacity: 0; transition: opacity .3s; }
 .project-live-btn:hover::before { opacity: 1; }
 .project-live-btn:hover { transform: translateY(-2px); box-shadow: 0 0 32px rgba(110,231,247,.4); }
 .project-live-btn span, .project-live-btn .btn-arrow { position: relative; z-index: 1; }
-.project-live-btn .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--bg); flex-shrink: 0; animation: livePulse 2s infinite; position: relative; z-index: 1; }
+.project-live-btn .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #0e0b06; flex-shrink: 0; animation: livePulse 2s infinite; position: relative; z-index: 1; }
 @keyframes livePulse { 0%,100%{box-shadow:0 0 0 0 rgba(11,15,23,.5);}50%{box-shadow:0 0 0 3px rgba(11,15,23,0);} }
 .project-live-btn .btn-arrow { transition: transform .2s; font-size: .8rem; }
 .project-live-btn:hover .btn-arrow { transform: translateX(3px); }
@@ -529,13 +532,85 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .contact-headline { font-family: var(--font-head); font-size: clamp(1rem,2.5vw,1.35rem); font-weight: 400; color: var(--muted); letter-spacing: .14em; margin-bottom: .6rem; font-style: italic; opacity: .7; }
 .contact-big { font-family: var(--font-head); font-size: clamp(2.4rem,5.5vw,4.6rem); font-weight: 900; line-height: 1.06; letter-spacing: -.04em; margin-bottom: 1.6rem; }
 .contact-big .grad {
-  background: linear-gradient(100deg,var(--accent),var(--accent2),var(--accent3));
+  background: linear-gradient(100deg,var(--accent3),var(--accent),var(--accent2));
   background-size: 200%;
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   animation: gradShift 5s ease infinite;
 }
 @keyframes gradShift { 0%,100%{background-position:0%}50%{background-position:100%} }
 .contact-sub { font-size: .94rem; color: var(--text2); line-height: 1.88; margin: 0 auto 3.5rem; max-width: 480px; opacity: .88; }
+
+/* ─── GITHUB STATS CARD ───────────────── */
+.github-stats-section { margin-bottom: 2rem; display: flex; justify-content: center; }
+.github-stats-card {
+  background: var(--card); border: 1px solid var(--border2); border-radius: 20px;
+  padding: 1.8rem 2rem; width: 100%; max-width: 680px;
+  transition: border-color .3s, box-shadow .3s;
+  backdrop-filter: blur(8px);
+}
+.github-stats-card:hover { border-color: var(--accent); box-shadow: var(--glow); }
+.github-stats-header {
+  display: flex; align-items: center; gap: .8rem; margin-bottom: 1.6rem;
+}
+.github-stats-header-icon {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: rgba(110,231,247,.08); border: 1px solid rgba(110,231,247,.18);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+}
+.github-stats-header-text { flex: 1; }
+.github-stats-title {
+  font-family: var(--font-head); font-size: 1rem; font-weight: 700;
+  color: var(--accent); letter-spacing: -.01em;
+  margin-bottom: .12rem;
+}
+.github-stats-subtitle {
+  font-family: var(--font-mono); font-size: .6rem; color: var(--muted);
+  letter-spacing: .12em; text-transform: uppercase; font-weight: 300;
+}
+.github-stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: .75rem; margin-bottom: 1.4rem; }
+.github-stat-item {
+  background: rgba(110,231,247,.04); border: 1px solid rgba(110,231,247,.08);
+  border-radius: 12px; padding: 1rem .8rem; text-align: center;
+  transition: all .25s;
+}
+.github-stat-item:hover { border-color: rgba(110,231,247,.22); transform: translateY(-2px); }
+.github-stat-value {
+  font-family: var(--font-head); font-size: 1.4rem; font-weight: 800;
+  color: var(--accent); display: block; margin-bottom: .3rem;
+  background: linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.github-stat-label {
+  font-family: var(--font-mono); font-size: .54rem; color: var(--muted);
+  letter-spacing: .1em; text-transform: uppercase; font-weight: 300; display: block;
+}
+/* Contribution bar */
+.contrib-bar-wrap { margin-bottom: .5rem; }
+.contrib-bar-label {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-mono); font-size: .6rem; color: var(--muted);
+  margin-bottom: .5rem; font-weight: 300; letter-spacing: .06em;
+}
+.contrib-bar-track {
+  height: 5px; background: rgba(232,168,56,.08); border-radius: 99px; overflow: hidden;
+}
+.contrib-bar-fill {
+  height: 100%; border-radius: 99px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+  width: 0; transition: width 1.4s cubic-bezier(.22,.68,0,1.2);
+}
+.github-lang-row { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1rem; }
+.lang-chip {
+  font-family: var(--font-mono); font-size: .58rem; letter-spacing: .08em;
+  padding: .28rem .7rem; border-radius: 99px; font-weight: 400;
+  border: 1px solid; transition: transform .2s;
+  cursor: default;
+}
+.lang-chip:hover { transform: translateY(-2px); }
+.github-loading { text-align: center; padding: 2rem; font-family: var(--font-mono); color: var(--muted); font-size: .78rem; }
+.github-loading-dots::after { content: '...'; animation: dots 1.4s infinite; }
+@keyframes dots { 0%{content:'.';} 33%{content:'..';} 66%{content:'...';} }
 
 /* Gmail hero card */
 .gmail-hero { margin-bottom: 2rem; display: flex; justify-content: center; }
@@ -637,7 +712,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .loading-repos { text-align: center; padding: 2rem; font-family: var(--font-mono); color: var(--muted); font-size: .8rem; font-weight: 300; }
 
 /* ─── CONTACT FORM ────────────────────── */
-/* Uses Formspree — no API key needed, just replace YOUR_FORM_ID below */
 .contact-form-section { margin: 2rem auto; max-width: 580px; width: 100%; }
 .contact-form-container {
   background: var(--form-bg); border: 1px solid var(--border2); border-radius: 24px;
@@ -650,7 +724,7 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   margin-bottom: 1.8rem; color: var(--accent); letter-spacing: -.01em;
   display: flex; align-items: center; gap: .6rem; justify-content: center;
 }
-.form-title span { font-size: 1.3rem; animation: bounce 2s ease-in-out infinite; }
+.form-title span { font-size: 1.3rem; animation: bounce 2s ease-in-out infinite; font-style: normal; }
 @keyframes bounce { 0%,100%{transform:translateY(0);}50%{transform:translateY(-3px);} }
 .form-group { margin-bottom: 1.2rem; text-align: left; }
 .form-group input, .form-group textarea {
@@ -670,15 +744,14 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   color: var(--bg); border: none; padding: 1rem 2rem; border-radius: 40px;
   font-family: var(--font-mono); font-size: .72rem; letter-spacing: .14em;
-  text-transform: uppercase; font-weight: 600; cursor: none;
+  text-transform: uppercase; font-weight: 700; cursor: none;
   transition: all .3s; width: 100%;
   display: flex; align-items: center; justify-content: center; gap: .8rem;
   position: relative; overflow: hidden;
 }
-[data-theme="light"] .submit-btn { color: #fff; }
 .submit-btn::before {
   content: ''; position: absolute; top: 50%; left: 50%;
-  width: 0; height: 0; border-radius: 50%; background: rgba(255,255,255,.25);
+  width: 0; height: 0; border-radius: 50%; background: rgba(255,255,255,.22);
   transform: translate(-50%,-50%); transition: width .6s, height .6s;
 }
 .submit-btn:hover::before { width: 320px; height: 320px; }
@@ -691,7 +764,7 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 }
 .form-status.success { background: rgba(52,168,83,.12); color: #34a853; border: 1px solid rgba(52,168,83,.28); display: block; }
 .form-status.error   { background: rgba(234,67,53,.12);  color: #ea4335; border: 1px solid rgba(234,67,53,.28); display: block; }
-.form-status.sending { background: rgba(110,231,247,.08); color: var(--accent); border: 1px solid rgba(110,231,247,.28); display: block; animation: pulseStatus 1.2s ease-in-out infinite; }
+.form-status.sending { background: rgba(232,168,56,.08); color: var(--accent); border: 1px solid rgba(232,168,56,.28); display: block; animation: pulseStatus 1.2s ease-in-out infinite; }
 @keyframes pulseStatus { 0%,100%{opacity:.65;}50%{opacity:1;} }
 @keyframes fadeInUp { from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);} }
 
@@ -732,8 +805,8 @@ footer span { color: var(--accent); }
 /* ─── GLITCH ──────────────────────────── */
 .glitch { position: relative; }
 .glitch::before, .glitch::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; }
-.glitch::before { color: var(--accent3); clip-path: polygon(0 30%,100% 30%,100% 50%,0 50%); transform: translateX(-3px); animation: glitch1 4s infinite; opacity: 0; }
-.glitch::after  { color: var(--accent2); clip-path: polygon(0 60%,100% 60%,100% 80%,0 80%); transform: translateX(3px);  animation: glitch2 4s infinite .3s; opacity: 0; }
+.glitch::before { color: var(--accent2); clip-path: polygon(0 30%,100% 30%,100% 50%,0 50%); transform: translateX(-3px); animation: glitch1 4s infinite; opacity: 0; }
+.glitch::after  { color: var(--accent3); clip-path: polygon(0 60%,100% 60%,100% 80%,0 80%); transform: translateX(3px);  animation: glitch2 4s infinite .3s; opacity: 0; }
 @keyframes glitch1 { 0%,94%{opacity:0;transform:translateX(0);}95%{opacity:1;transform:translateX(-3px);}96%{opacity:0;transform:translateX(3px);}100%{opacity:0;} }
 @keyframes glitch2 { 0%,94%{opacity:0;transform:translateX(0);}95%{opacity:0;}96%{opacity:1;transform:translateX(3px);}97%,100%{opacity:0;} }
 
@@ -756,11 +829,11 @@ footer span { color: var(--accent); }
 #scroll-top:hover .arrow-icon { transform: translateY(-2px); }
 
 /* ─── RESPONSIVE ──────────────────────── */
-@media (max-width:1100px){section{padding:6rem 3rem 4rem;}#hero{gap:2.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:900px){nav{padding:1rem 1.5rem;}section{padding:5rem 1.8rem 4rem;}#hero{grid-template-columns:1fr;gap:3rem;padding-top:7rem;}.hero-photo{order:-1;}.photo-wrap{width:210px;height:210px;}#about{grid-template-columns:1fr;gap:2.5rem;}.skills-grid{grid-template-columns:repeat(3,1fr);}.contact-cards{grid-template-columns:repeat(2,1fr);}.edu-timeline::before{left:36px;}.gmail-hero-card{padding:1.7rem 1.8rem;gap:1.4rem;}}
-@media (max-width:700px){section{padding:5rem 1.2rem 3.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.about-stats{grid-template-columns:1fr 1fr;}.projects-grid{grid-template-columns:1fr;}.edu-item{grid-template-columns:58px 1fr;gap:0 1rem;}.edu-node{width:58px;height:58px;font-size:1.3rem;border-radius:14px;}.edu-timeline::before{left:29px;}.gmail-hero-card{flex-direction:column;text-align:center;padding:1.7rem 1.5rem;}.gmail-hero-content{text-align:center;}.gmail-primary-label{justify-content:center;}.gmail-sub-text{justify-content:center;flex-wrap:wrap;}}
-@media (max-width:600px){.nav-hamburger{display:flex;}.nav-links{display:none!important;}.projects-grid{grid-template-columns:1fr;}.skills-grid{grid-template-columns:repeat(2,1fr);}.contact-big{font-size:clamp(1.9rem,8.5vw,2.8rem);}.contact-cards{grid-template-columns:repeat(2,1fr);}#scroll-top{bottom:1.3rem;right:1.3rem;width:42px;height:42px;}}
-@media (max-width:480px){nav{padding:.9rem 1rem;}.nav-right{gap:.7rem;}.hero-name{font-size:clamp(1.9rem,7.5vw,2.8rem);}.hero-cta{flex-direction:column;align-items:flex-start;}.contact-cards{grid-template-columns:1fr 1fr;}.stat-num{font-size:1.65rem;}.edu-card{padding:1.4rem 1.2rem;}.gmail-address{font-size:.82rem;}}
+@media (max-width:1100px){section{padding:6rem 3rem 4rem;}#hero{gap:2.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:900px){nav{padding:1rem 1.5rem;}section{padding:5rem 1.8rem 4rem;}#hero{grid-template-columns:1fr;gap:3rem;padding-top:7rem;}.hero-photo{order:-1;}.photo-wrap{width:210px;height:210px;}#about{grid-template-columns:1fr;gap:2.5rem;}.skills-grid{grid-template-columns:repeat(3,1fr);}.contact-cards{grid-template-columns:repeat(2,1fr);}.edu-timeline::before{left:36px;}.gmail-hero-card{padding:1.7rem 1.8rem;gap:1.4rem;}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:700px){section{padding:5rem 1.2rem 3.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.about-stats{grid-template-columns:1fr 1fr;}.projects-grid{grid-template-columns:1fr;}.edu-item{grid-template-columns:58px 1fr;gap:0 1rem;}.edu-node{width:58px;height:58px;font-size:1.3rem;border-radius:14px;}.edu-timeline::before{left:29px;}.gmail-hero-card{flex-direction:column;text-align:center;padding:1.7rem 1.5rem;}.gmail-hero-content{text-align:center;}.gmail-primary-label{justify-content:center;}.gmail-sub-text{justify-content:center;flex-wrap:wrap;}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:600px){.nav-hamburger{display:flex;}.nav-links{display:none!important;}.projects-grid{grid-template-columns:1fr;}.skills-grid{grid-template-columns:repeat(2,1fr);}.contact-big{font-size:clamp(1.9rem,8.5vw,2.8rem);}.contact-cards{grid-template-columns:repeat(2,1fr);}#scroll-top{bottom:1.3rem;right:1.3rem;width:42px;height:42px;}.github-stats-grid{grid-template-columns:1fr 1fr;}}
+@media (max-width:480px){nav{padding:.9rem 1rem;}.nav-right{gap:.7rem;}.hero-name{font-size:clamp(1.9rem,7.5vw,2.8rem);}.hero-cta{flex-direction:column;align-items:flex-start;}.contact-cards{grid-template-columns:1fr 1fr;}.stat-num{font-size:1.65rem;}.edu-card{padding:1.4rem 1.2rem;}.gmail-address{font-size:.82rem;}.github-stats-grid{grid-template-columns:1fr 1fr;}}
 </style>
 </head>
 <body>
@@ -1024,7 +1097,24 @@ footer span { color: var(--accent); }
       </a>
     </div>
 
-    <!-- CONTACT FORM — Powered by Formspree -->
+    <!-- GITHUB STATS CARD (NEW) -->
+    <div class="github-stats-section reveal">
+      <div class="github-stats-card" id="githubStatsCard">
+        <div class="github-loading">
+          <span class="github-loading-dots">Loading GitHub stats</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- GitHub Repos -->
+    <div class="github-repos-section reveal">
+      <div class="github-chart-container">
+        <div class="repos-title"><i class="devicon-github-original"></i> Top Contributed Repositories</div>
+        <div id="github-repos-list" class="repo-list"><div class="loading-repos">Loading repositories from GitHub...</div></div>
+      </div>
+    </div>
+
+    <!-- CONTACT FORM -->
     <div class="contact-form-section reveal">
       <div class="contact-form-container">
         <div class="form-title"><span>✉️</span> Send a Message</div>
@@ -1046,14 +1136,6 @@ footer span { color: var(--accent); }
       </div>
     </div>
 
-    <!-- GitHub Repos -->
-    <div class="github-repos-section reveal">
-      <div class="github-chart-container">
-        <div class="repos-title"><i class="devicon-github-original"></i> Top Contributed Repositories</div>
-        <div id="github-repos-list" class="repo-list"><div class="loading-repos">Loading repositories from GitHub...</div></div>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -1061,7 +1143,7 @@ footer span { color: var(--accent); }
 
 <script>
 /* ═══════════════════════════════════════════
-   CURSOR — only on fine pointer devices
+   CURSOR
 ═══════════════════════════════════════════ */
 const cursor = document.getElementById('cursor');
 const ring   = document.getElementById('cursor-ring');
@@ -1081,7 +1163,7 @@ if (window.matchMedia('(pointer: fine)').matches) {
     requestAnimationFrame(animRing);
   })();
 
-  const hoverTargets = 'a,button,.btn,.skill-pill,.project-card,.stat-card,.contact-card,.edu-item,.project-live-btn,.theme-toggle,#scroll-top,.gmail-hero-card,.github-chart-container,.submit-btn';
+  const hoverTargets = 'a,button,.btn,.skill-pill,.project-card,.stat-card,.contact-card,.edu-item,.project-live-btn,.theme-toggle,#scroll-top,.gmail-hero-card,.github-chart-container,.submit-btn,.github-stats-card';
   document.querySelectorAll(hoverTargets).forEach(el => {
     el.style.cursor = 'none';
     el.addEventListener('mouseenter', () => {
@@ -1096,7 +1178,7 @@ if (window.matchMedia('(pointer: fine)').matches) {
 }
 
 /* ═══════════════════════════════════════════
-   CANVAS BACKGROUND PARTICLES
+   CANVAS BACKGROUND — warm amber particles
 ═══════════════════════════════════════════ */
 const canvas = document.getElementById('bg-canvas');
 const ctx    = canvas.getContext('2d');
@@ -1117,7 +1199,7 @@ class Particle {
     this.size   = Math.random() * 1.4 + .3;
     this.speedX = (Math.random() - .5) * .28;
     this.speedY = (Math.random() - .5) * .28;
-    this.opacity = Math.random() * .45 + .08;
+    this.opacity = Math.random() * .40 + .06;
     const r = Math.random();
     this.color = r > .6 ? '#6ee7f7' : r > .35 ? '#818cf8' : '#f472b6';
   }
@@ -1144,7 +1226,7 @@ function drawGrid() {
 })();
 
 /* ═══════════════════════════════════════════
-   SCROLL-TO-TOP BUTTON + PROGRESS RING
+   SCROLL-TO-TOP
 ═══════════════════════════════════════════ */
 const progressCircle  = document.querySelector('#scroll-top svg.progress-ring circle');
 const circumference   = 2 * Math.PI * 20;
@@ -1198,6 +1280,134 @@ hamburger.addEventListener('click', () => {
 document.getElementById('mobileClose').addEventListener('click', closeMobileMenu);
 
 /* ═══════════════════════════════════════════
+   GITHUB STATS CARD (NEW)
+═══════════════════════════════════════════ */
+async function fetchGitHubStats() {
+  const card = document.getElementById('githubStatsCard');
+  const username = 'foysalhridoy';
+
+  try {
+    const [userRes, reposRes] = await Promise.all([
+      fetch(`https://api.github.com/users/${username}`),
+      fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
+    ]);
+
+    if (!userRes.ok) throw new Error();
+
+    const user  = await userRes.json();
+    const repos = reposRes.ok ? await reposRes.json() : [];
+
+    /* compute stats */
+    const totalStars  = repos.reduce((s, r) => s + r.stargazers_count, 0);
+    const totalForks  = repos.reduce((s, r) => s + r.forks_count, 0);
+    const repoCount   = user.public_repos || repos.length;
+    const followers   = user.followers || 0;
+
+    /* language breakdown */
+    const langMap = {};
+    repos.forEach(r => { if (r.language) langMap[r.language] = (langMap[r.language] || 0) + 1; });
+    const topLangs = Object.entries(langMap).sort((a,b) => b[1]-a[1]).slice(0,5);
+    const totalLangRepos = topLangs.reduce((s,[,c]) => s+c, 0);
+
+    /* lang colors */
+    const langColors = {
+      JavaScript: { bg:'rgba(247,223,30,.12)', border:'rgba(247,223,30,.28)', color:'#f7df1e' },
+      Python:     { bg:'rgba(55,118,171,.12)', border:'rgba(55,118,171,.28)', color:'#3776ab' },
+      HTML:       { bg:'rgba(227,79,38,.12)',  border:'rgba(227,79,38,.28)',  color:'#e34f26' },
+      CSS:        { bg:'rgba(21,114,182,.12)', border:'rgba(21,114,182,.28)', color:'#1572b6' },
+      Java:       { bg:'rgba(248,152,32,.12)', border:'rgba(248,152,32,.28)', color:'#f89820' },
+      'C#':       { bg:'rgba(155,73,147,.12)', border:'rgba(155,73,147,.28)', color:'#9b4993' },
+      'C++':      { bg:'rgba(101,154,210,.12)',border:'rgba(101,154,210,.28)',color:'#659ad2' },
+      C:          { bg:'rgba(168,185,204,.12)',border:'rgba(168,185,204,.28)',color:'#a8b9cc' },
+    };
+    const defColor = { bg:'rgba(232,168,56,.10)', border:'rgba(232,168,56,.22)', color:'#e8a838' };
+
+    /* contribution bar data */
+    const bars = [
+      { label:'Public Repos',  value: Math.min(repoCount, 30), max: 30 },
+      { label:'Total Stars',   value: Math.min(totalStars, 50), max: 50 },
+    ];
+
+    card.innerHTML = `
+      <div class="github-stats-header">
+        <div class="github-stats-header-icon">🐙</div>
+        <div class="github-stats-header-text">
+          <div class="github-stats-title">GitHub Overview</div>
+          <div class="github-stats-subtitle">${username} · Last updated live</div>
+        </div>
+      </div>
+
+      <div class="github-stats-grid">
+        <div class="github-stat-item">
+          <span class="github-stat-value">${repoCount}</span>
+          <span class="github-stat-label">Repositories</span>
+        </div>
+        <div class="github-stat-item">
+          <span class="github-stat-value">${followers}</span>
+          <span class="github-stat-label">Followers</span>
+        </div>
+        <div class="github-stat-item">
+          <span class="github-stat-value">${totalStars}</span>
+          <span class="github-stat-label">Total Stars</span>
+        </div>
+        <div class="github-stat-item">
+          <span class="github-stat-value">${totalForks}</span>
+          <span class="github-stat-label">Total Forks</span>
+        </div>
+      </div>
+
+      ${bars.map(b => `
+        <div class="contrib-bar-wrap">
+          <div class="contrib-bar-label">
+            <span>${b.label}</span>
+            <span>${b.value}${b.max > b.value ? '' : '+'}</span>
+          </div>
+          <div class="contrib-bar-track">
+            <div class="contrib-bar-fill" data-width="${Math.round((b.value/b.max)*100)}%"></div>
+          </div>
+        </div>
+      `).join('')}
+
+      ${topLangs.length ? `
+        <div class="github-lang-row">
+          ${topLangs.map(([lang, count]) => {
+            const c = langColors[lang] || defColor;
+            const pct = Math.round((count / totalLangRepos) * 100);
+            return `<span class="lang-chip" style="background:${c.bg};border-color:${c.border};color:${c.color}">${lang} ${pct}%</span>`;
+          }).join('')}
+        </div>
+      ` : ''}
+    `;
+
+    /* animate contribution bars after render */
+    setTimeout(() => {
+      card.querySelectorAll('.contrib-bar-fill').forEach(el => {
+        el.style.width = el.dataset.width;
+      });
+    }, 200);
+
+  } catch(e) {
+    card.innerHTML = `
+      <div class="github-stats-header">
+        <div class="github-stats-header-icon">🐙</div>
+        <div class="github-stats-header-text">
+          <div class="github-stats-title">GitHub Overview</div>
+          <div class="github-stats-subtitle">foysalhridoy</div>
+        </div>
+      </div>
+      <div class="github-stats-grid">
+        <div class="github-stat-item"><span class="github-stat-value">5+</span><span class="github-stat-label">Repositories</span></div>
+        <div class="github-stat-item"><span class="github-stat-value">—</span><span class="github-stat-label">Followers</span></div>
+        <div class="github-stat-item"><span class="github-stat-value">—</span><span class="github-stat-label">Stars</span></div>
+        <div class="github-stat-item"><span class="github-stat-value">—</span><span class="github-stat-label">Forks</span></div>
+      </div>
+      <div style="font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-align:center;margin-top:.5rem;">Live data unavailable · Visit <a href="https://github.com/foysalhridoy" target="_blank" style="color:var(--accent)">github.com/foysalhridoy</a></div>
+    `;
+  }
+}
+fetchGitHubStats();
+
+/* ═══════════════════════════════════════════
    GITHUB REPOS
 ═══════════════════════════════════════════ */
 async function fetchGitHubRepos() {
@@ -1220,7 +1430,7 @@ async function fetchGitHubRepos() {
 fetchGitHubRepos();
 
 /* ═══════════════════════════════════════════
-   CONTACT FORM — Formspree (xnjojbqv)
+   CONTACT FORM — Formspree
 ═══════════════════════════════════════════ */
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
   e.preventDefault();
@@ -1235,43 +1445,30 @@ document.getElementById('contactForm').addEventListener('submit', async function
 
   if (!name || !email || !message) {
     status.textContent = '⚠️ Please fill in all fields.';
-    status.className   = 'form-status error';
-    return;
+    status.className   = 'form-status error'; return;
   }
-
-  // Email format validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     status.textContent = '⚠️ Please enter a valid email address.';
-    status.className   = 'form-status error';
-    return;
+    status.className   = 'form-status error'; return;
   }
 
-  btn.disabled   = true;
-  btnText.textContent = 'Sending...';
-  btnIcon.style.animation = 'spinIcon 1s linear infinite';
-  btnIcon.textContent = '⟳';
-  status.textContent = 'Sending your message...';
-  status.className   = 'form-status sending';
+  btn.disabled = true; btnText.textContent = 'Sending...';
+  btnIcon.style.animation = 'spinIcon 1s linear infinite'; btnIcon.textContent = '⟳';
+  status.textContent = 'Sending your message...'; status.className = 'form-status sending';
 
   const FORMSPREE_ID = 'xnjojbqv';
-
   try {
     const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({ name, email, message, _replyto: email })
     });
-
     if (!res.ok) throw new Error('server_error');
-
     status.textContent = '✓ Message sent! I\'ll get back to you soon.';
-    status.className   = 'form-status success';
-    this.reset();
+    status.className   = 'form-status success'; this.reset();
     setTimeout(() => { status.className = 'form-status'; status.textContent = ''; }, 6000);
-
-  } catch (err) {
-    // Graceful fallback: open native mail client
+  } catch {
     const subject = encodeURIComponent('Portfolio Contact from ' + name);
     const body    = encodeURIComponent(message + '\n\nFrom: ' + name + '\nEmail: ' + email);
     window.location.href = `mailto:ffoysalhridoy@gmail.com?subject=${subject}&body=${body}`;
