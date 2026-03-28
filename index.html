@@ -48,6 +48,9 @@
   --cursor-ring-color: var(--accent);
   --cursor-mix-blend: screen;
   --form-bg: rgba(15,23,42,0.55);
+  /* Dark theme bold border variables */
+  --dark-box-border: rgba(110,231,247,0.28);
+  --dark-box-border-hover: rgba(110,231,247,0.55);
 }
 
 [data-theme="light"] {
@@ -302,13 +305,39 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .about-text p { margin-bottom: 1.25rem; text-align: justify; }
 .about-text strong { color: var(--accent); font-weight: 600; }
 .about-right { display: flex; flex-direction: column; gap: 0; align-self: start; }
-.about-stats-label { font-family: var(--font-mono); font-size: .6rem; letter-spacing: .24em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem; font-weight: 300; }
+
+/* ── At a Glance label — section-header style ── */
+.about-stats-label {
+  font-family: var(--font-head);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  color: var(--text);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.about-stats-label::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 1.2em;
+  background: linear-gradient(180deg, var(--accent), var(--accent2));
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
 .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+/* ── Stat cards — bold borders both themes ── */
 .stat-card {
-  background: var(--card); border: 1px solid var(--border2);
+  background: var(--card);
+  border: 2px solid rgba(110,231,247,0.32);
   padding: 1.6rem 1rem; border-radius: 8px; text-align: center;
   transition: border-color .3s, transform .3s, box-shadow .3s;
   cursor: default; position: relative; overflow: hidden;
+  box-shadow: 0 2px 12px rgba(110,231,247,0.08);
 }
 .stat-card::before {
   content: ''; position: absolute; inset: 0;
@@ -316,7 +345,21 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   opacity: 0; transition: opacity .3s;
 }
 .stat-card:hover::before { opacity: 1; }
-.stat-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: var(--glow); }
+.stat-card:hover {
+  border-color: rgba(110,231,247,0.65);
+  transform: translateY(-4px);
+  box-shadow: var(--glow);
+}
+
+[data-theme="light"] .stat-card {
+  border: 2px solid rgba(13,116,144,0.38);
+  box-shadow: 0 3px 14px rgba(13,116,144,0.1);
+}
+[data-theme="light"] .stat-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 28px rgba(13,116,144,0.18);
+}
+
 .stat-num {
   font-family: var(--font-head); font-size: 2rem; font-weight: 900;
   line-height: 1.1; letter-spacing: -.03em;
@@ -346,10 +389,14 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .edu-item.hsc .edu-node { background: linear-gradient(135deg,rgba(129,140,248,.12),rgba(244,114,182,.07)); border-color: rgba(129,140,248,.25); }
 .edu-item.ssc .edu-node { background: linear-gradient(135deg,rgba(244,114,182,.12),rgba(129,140,248,.07)); border-color: rgba(244,114,182,.25); }
 
+/* ── Education cards — bold borders both themes ── */
 .edu-card {
-  background: var(--edu-bg); border: 1px solid var(--border2); border-radius: 16px;
+  background: var(--edu-bg);
+  border: 2px solid rgba(110,231,247,0.28);
+  border-radius: 16px;
   padding: 2rem 2.2rem; position: relative; overflow: hidden;
   transition: border-color .35s, box-shadow .35s, background .4s;
+  box-shadow: 0 2px 12px rgba(110,231,247,0.07);
 }
 .edu-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0;
@@ -359,7 +406,17 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .edu-item.hsc .edu-card::before { background: linear-gradient(90deg,var(--accent2),var(--accent3)); }
 .edu-item.ssc .edu-card::before { background: linear-gradient(90deg,var(--accent3),var(--accent2)); }
 .edu-item:hover .edu-card::before { opacity: 1; }
-.edu-item:hover .edu-card { border-color: var(--border); box-shadow: var(--glow); }
+.edu-item.university:hover .edu-card { border-color: rgba(110,231,247,0.6); box-shadow: var(--glow); }
+.edu-item.hsc:hover .edu-card { border-color: rgba(129,140,248,0.6); box-shadow: 0 0 40px rgba(129,140,248,0.12); }
+.edu-item.ssc:hover .edu-card { border-color: rgba(244,114,182,0.6); box-shadow: 0 0 40px rgba(244,114,182,0.12); }
+
+[data-theme="light"] .edu-item.university .edu-card { border: 2px solid rgba(13,116,144,0.35); }
+[data-theme="light"] .edu-item.hsc .edu-card { border: 2px solid rgba(67,56,202,0.32); }
+[data-theme="light"] .edu-item.ssc .edu-card { border: 2px solid rgba(190,24,93,0.3); }
+[data-theme="light"] .edu-item:hover .edu-card { box-shadow: 0 8px 28px rgba(13,116,144,0.15); }
+[data-theme="light"] .edu-item.university:hover .edu-card { border-color: var(--accent); }
+[data-theme="light"] .edu-item.hsc:hover .edu-card { border-color: var(--accent2); }
+[data-theme="light"] .edu-item.ssc:hover .edu-card { border-color: var(--accent3); }
 
 .edu-card-inner { position: relative; z-index: 1; }
 .edu-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1.2rem; margin-bottom: .7rem; flex-wrap: wrap; }
@@ -398,12 +455,16 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 }
 [data-theme="light"] .edu-meta-chip { background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.1); }
 
+/* ── Skill pills — bold borders both themes ── */
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(128px,1fr)); gap: .9rem; }
 .skill-pill {
-  background: var(--card); border: 1px solid var(--border2); padding: 1.4rem 1rem; border-radius: 6px;
+  background: var(--card);
+  border: 2px solid rgba(110,231,247,0.28);
+  padding: 1.4rem 1rem; border-radius: 6px;
   text-align: center; font-family: var(--font-mono); font-size: .72rem;
   letter-spacing: .08em; transition: all .25s; position: relative; overflow: hidden;
   cursor: default; color: var(--text2); font-weight: 300;
+  box-shadow: 0 2px 10px rgba(110,231,247,0.06);
 }
 .skill-pill::before {
   content: ''; position: absolute; inset: 0;
@@ -411,7 +472,22 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   opacity: 0; transition: opacity .3s;
 }
 .skill-pill:hover::before { opacity: 1; }
-.skill-pill:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-4px); box-shadow: var(--glow); }
+.skill-pill:hover {
+  border-color: rgba(110,231,247,0.65);
+  color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: var(--glow);
+}
+
+[data-theme="light"] .skill-pill {
+  border: 2px solid rgba(13,116,144,0.32);
+  box-shadow: 0 2px 10px rgba(13,116,144,0.08);
+}
+[data-theme="light"] .skill-pill:hover {
+  border-color: var(--accent);
+  box-shadow: 0 6px 24px rgba(13,116,144,0.16);
+}
+
 .skill-pill i { display: block; font-size: 1.9rem; margin-bottom: .6rem; transition: transform .25s; }
 .skill-pill:hover i { transform: scale(1.14); }
 .skill-pill i.devicon-c-plain { color: #a8b9cc; }
@@ -787,16 +863,22 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 @keyframes gradShift { 0%,100%{background-position:0%}50%{background-position:100%} }
 .contact-sub { font-size: .94rem; color: var(--text2); line-height: 1.88; margin: 0 auto 3.5rem; max-width: 480px; opacity: .88; }
 
+/* ── GitHub Stats Card — bold borders both themes ── */
 .github-stats-section { margin-bottom: 2rem; display: flex; justify-content: center; }
 .github-stats-card {
-  background: var(--card); border: 1px solid var(--border2); border-radius: 20px;
+  background: var(--card);
+  border: 2px solid rgba(110,231,247,0.30);
+  border-radius: 20px;
   padding: 1.8rem 2rem; width: 100%; max-width: 680px;
   transition: border-color .3s, box-shadow .3s;
   backdrop-filter: blur(8px);
+  box-shadow: 0 2px 14px rgba(110,231,247,0.08);
 }
-.github-stats-card:hover { border-color: var(--accent); box-shadow: var(--glow); }
+.github-stats-card:hover {
+  border-color: rgba(110,231,247,0.60);
+  box-shadow: var(--glow);
+}
 
-/* ── LIGHT THEME: bold borders for contact section ── */
 [data-theme="light"] .github-stats-card {
   border: 2px solid rgba(13,116,144,0.35);
   box-shadow: 0 4px 18px rgba(13,116,144,0.1);
@@ -826,19 +908,27 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   letter-spacing: .12em; text-transform: uppercase; font-weight: 300;
 }
 .github-stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: .75rem; margin-bottom: 1.4rem; }
+
+/* ── GitHub stat items — bold borders both themes ── */
 .github-stat-item {
-  background: rgba(110,231,247,.04); border: 1px solid rgba(110,231,247,.08);
+  background: rgba(110,231,247,.04);
+  border: 2px solid rgba(110,231,247,0.22);
   border-radius: 12px; padding: 1rem .8rem; text-align: center;
   transition: all .25s;
 }
-.github-stat-item:hover { border-color: rgba(110,231,247,.22); transform: translateY(-2px); }
+.github-stat-item:hover {
+  border-color: rgba(110,231,247,0.50);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(110,231,247,0.12);
+}
 
 [data-theme="light"] .github-stat-item {
-  border: 1.5px solid rgba(13,116,144,0.2);
+  border: 2px solid rgba(13,116,144,0.30);
   background: rgba(13,116,144,0.04);
 }
 [data-theme="light"] .github-stat-item:hover {
-  border-color: rgba(13,116,144,0.4);
+  border-color: rgba(13,116,144,0.55);
+  box-shadow: 0 4px 16px rgba(13,116,144,0.12);
 }
 
 .github-stat-value {
@@ -877,25 +967,31 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .github-loading-dots::after { content: '...'; animation: dots 1.4s infinite; }
 @keyframes dots { 0%{content:'.';} 33%{content:'..';} 66%{content:'...';} }
 
+/* ── Gmail hero card — bold borders both themes ── */
 .gmail-hero { margin-bottom: 2rem; display: flex; justify-content: center; }
 .gmail-hero-card {
   position: relative; background: var(--contact-card-bg);
-  border: 1.5px solid rgba(234,67,53,.3); border-radius: 20px;
+  border: 2px solid rgba(234,67,53,.38);
+  border-radius: 20px;
   padding: 2.3rem 2.8rem; display: flex; align-items: center; gap: 2rem;
   text-decoration: none; overflow: hidden;
   transition: transform .35s cubic-bezier(.22,.68,0,1.2), border-color .3s, box-shadow .3s;
   cursor: none; width: 100%; max-width: 560px;
   flex-wrap: wrap; justify-content: center;
+  box-shadow: 0 3px 16px rgba(234,67,53,0.1);
 }
-.gmail-hero-card:hover { transform: translateY(-7px) scale(1.015); border-color: rgba(234,67,53,.55); box-shadow: var(--shadow), 0 0 40px rgba(234,67,53,.1); }
+.gmail-hero-card:hover {
+  transform: translateY(-7px) scale(1.015);
+  border-color: rgba(234,67,53,.65);
+  box-shadow: var(--shadow), 0 0 40px rgba(234,67,53,.18);
+}
 
-/* ── LIGHT THEME: bold gmail border ── */
 [data-theme="light"] .gmail-hero-card {
   border: 2.5px solid rgba(234,67,53,0.45);
   box-shadow: 0 4px 16px rgba(234,67,53,0.1);
 }
 [data-theme="light"] .gmail-hero-card:hover {
-  border-color: rgba(234,67,53,0.7);
+  border-color: rgba(234,67,53,0.70);
   box-shadow: var(--shadow), 0 0 40px rgba(234,67,53,0.15);
 }
 
@@ -931,14 +1027,17 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   box-shadow: 0 4px 14px rgba(234,67,53,.28); z-index: 3;
 }
 
+/* ── Contact social cards — bold borders both themes ── */
 .contact-cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin: 2.5rem 0 2rem; }
 .contact-card {
   position: relative; background: var(--contact-card-bg);
-  border: 1px solid var(--border2); border-radius: 16px;
+  border: 2px solid rgba(110,231,247,0.22);
+  border-radius: 16px;
   padding: 1.8rem .8rem 2.2rem; text-decoration: none; overflow: hidden;
   transition: transform .35s cubic-bezier(.22,.68,0,1.2), border-color .3s, box-shadow .3s;
   cursor: none; display: flex; flex-direction: column;
   align-items: center; text-align: center; gap: 0; min-height: 168px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
 }
 .contact-card::before {
   content: ''; position: absolute; top: -60%; left: -80%;
@@ -953,18 +1052,29 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .contact-card.instagram::after { background: linear-gradient(90deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
 .contact-card.facebook::after { background: linear-gradient(90deg, #1877f2, #42b0ff); }
 .contact-card:hover::after { opacity: 1; }
-.contact-card:hover { transform: translateY(-9px) scale(1.02); border-color: var(--accent); }
+.contact-card:hover { transform: translateY(-9px) scale(1.02); }
 
-/* ── LIGHT THEME: bold contact card borders ── */
-[data-theme="light"] .contact-card {
-  border: 2px solid rgba(13,116,144,0.28);
-  box-shadow: 0 3px 14px rgba(13,116,144,0.09);
-}
-[data-theme="light"] .contact-card.github  { border-color: rgba(163,113,247,0.35); }
-[data-theme="light"] .contact-card.linkedin { border-color: rgba(0,119,181,0.35); }
-[data-theme="light"] .contact-card.instagram { border-color: rgba(220,39,67,0.3); }
-[data-theme="light"] .contact-card.facebook { border-color: rgba(24,119,242,0.35); }
-[data-theme="light"] .contact-card:hover { border-color: var(--accent); box-shadow: 0 8px 28px rgba(13,116,144,0.16); }
+/* Dark theme per-platform border colors */
+.contact-card.github { border-color: rgba(163,113,247,0.32); }
+.contact-card.linkedin { border-color: rgba(0,119,181,0.32); }
+.contact-card.instagram { border-color: rgba(220,39,67,0.28); }
+.contact-card.facebook { border-color: rgba(24,119,242,0.32); }
+
+.contact-card.github:hover { border-color: #a371f7; box-shadow: 0 8px 28px rgba(163,113,247,0.2); }
+.contact-card.linkedin:hover { border-color: #0077b5; box-shadow: 0 8px 28px rgba(0,119,181,0.2); }
+.contact-card.instagram:hover { border-color: #dc2743; box-shadow: 0 8px 28px rgba(220,39,67,0.2); }
+.contact-card.facebook:hover { border-color: #1877f2; box-shadow: 0 8px 28px rgba(24,119,242,0.2); }
+
+/* Light theme contact card borders */
+[data-theme="light"] .contact-card.github  { border-color: rgba(163,113,247,0.40); box-shadow: 0 3px 14px rgba(163,113,247,0.1); }
+[data-theme="light"] .contact-card.linkedin { border-color: rgba(0,119,181,0.38); box-shadow: 0 3px 14px rgba(0,119,181,0.1); }
+[data-theme="light"] .contact-card.instagram { border-color: rgba(220,39,67,0.35); box-shadow: 0 3px 14px rgba(220,39,67,0.09); }
+[data-theme="light"] .contact-card.facebook { border-color: rgba(24,119,242,0.38); box-shadow: 0 3px 14px rgba(24,119,242,0.1); }
+
+[data-theme="light"] .contact-card.github:hover  { border-color: #a371f7; box-shadow: 0 8px 28px rgba(163,113,247,0.2); }
+[data-theme="light"] .contact-card.linkedin:hover { border-color: #0077b5; box-shadow: 0 8px 28px rgba(0,119,181,0.2); }
+[data-theme="light"] .contact-card.instagram:hover { border-color: #dc2743; box-shadow: 0 8px 28px rgba(220,39,67,0.2); }
+[data-theme="light"] .contact-card.facebook:hover { border-color: #1877f2; box-shadow: 0 8px 28px rgba(24,119,242,0.2); }
 
 .cc-icon { width: 48px; height: 48px; border-radius: 13px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.1rem; transition: transform .3s; position: relative; z-index: 1; }
 .contact-card:hover .cc-icon { transform: scale(1.16) rotate(-5deg); }
@@ -982,11 +1092,20 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .cc-arrow { position: absolute; bottom: .9rem; right: 1.1rem; font-size: .8rem; opacity: 0; transform: translateX(-5px) translateY(5px); transition: opacity .25s,transform .25s; color: var(--accent); }
 .contact-card:hover .cc-arrow { opacity: .75; transform: translateX(0) translateY(0); }
 
+/* ── GitHub repos container — bold borders both themes ── */
 .github-repos-section { margin: 2rem 0 2rem; }
-.github-chart-container { background: var(--card); border: 1px solid var(--border2); border-radius: 20px; padding: 1.8rem; transition: all .3s; backdrop-filter: blur(4px); }
-.github-chart-container:hover { border-color: var(--accent); box-shadow: var(--glow); }
+.github-chart-container {
+  background: var(--card);
+  border: 2px solid rgba(110,231,247,0.28);
+  border-radius: 20px; padding: 1.8rem;
+  transition: all .3s; backdrop-filter: blur(4px);
+  box-shadow: 0 2px 12px rgba(110,231,247,0.07);
+}
+.github-chart-container:hover {
+  border-color: rgba(110,231,247,0.55);
+  box-shadow: var(--glow);
+}
 
-/* ── LIGHT THEME: bold repos container border ── */
 [data-theme="light"] .github-chart-container {
   border: 2px solid rgba(13,116,144,0.32);
   box-shadow: 0 4px 16px rgba(13,116,144,0.09);
@@ -1007,15 +1126,22 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .repo-stats span { display: flex; align-items: center; gap: .3rem; }
 .loading-repos { text-align: center; padding: 2rem; font-family: var(--font-mono); color: var(--muted); font-size: .8rem; font-weight: 300; }
 
+/* ── Contact form container & inputs — bold borders both themes ── */
 .contact-form-section { margin: 2rem auto; max-width: 580px; width: 100%; }
 .contact-form-container {
-  background: var(--form-bg); border: 1px solid var(--border2); border-radius: 24px;
+  background: var(--form-bg);
+  border: 2px solid rgba(110,231,247,0.28);
+  border-radius: 24px;
   padding: 2.2rem; backdrop-filter: blur(10px);
   transition: all .4s ease; animation: fadeInUp .6s ease;
+  box-shadow: 0 2px 14px rgba(110,231,247,0.08);
 }
-.contact-form-container:hover { border-color: var(--accent); box-shadow: var(--glow); transform: translateY(-3px); }
+.contact-form-container:hover {
+  border-color: rgba(110,231,247,0.55);
+  box-shadow: var(--glow);
+  transform: translateY(-3px);
+}
 
-/* ── LIGHT THEME: bold form container border ── */
 [data-theme="light"] .contact-form-container {
   border: 2px solid rgba(13,116,144,0.35);
   box-shadow: 0 4px 18px rgba(13,116,144,0.1);
@@ -1033,25 +1159,31 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .form-title span { font-size: 1.3rem; animation: bounce 2s ease-in-out infinite; font-style: normal; }
 @keyframes bounce { 0%,100%{transform:translateY(0);}50%{transform:translateY(-3px);} }
 .form-group { margin-bottom: 1.2rem; text-align: left; }
+
+/* Dark theme input/textarea bold borders */
 .form-group input, .form-group textarea {
   width: 100%; padding: 1rem 1.2rem;
-  background: var(--card); border: 1.5px solid var(--border2); border-radius: 14px;
+  background: var(--card);
+  border: 2px solid rgba(110,231,247,0.28);
+  border-radius: 14px;
   font-family: var(--font-body); font-size: .9rem; color: var(--text);
   transition: all .3s; outline: none;
+  box-shadow: 0 1px 8px rgba(110,231,247,0.06);
 }
 .form-group input::placeholder, .form-group textarea::placeholder { color: var(--muted); font-family: var(--font-body); }
 .form-group input:focus, .form-group textarea:focus {
-  border-color: var(--accent);
+  border-color: rgba(110,231,247,0.65);
   box-shadow: 0 0 0 4px rgba(110,231,247,.12), 0 0 20px rgba(110,231,247,.08);
   transform: scale(1.008);
 }
 .form-group textarea { resize: vertical; min-height: 110px; }
 
-/* ── LIGHT THEME: bold input/textarea borders ── */
+/* Light theme input/textarea bold borders */
 [data-theme="light"] .form-group input,
 [data-theme="light"] .form-group textarea {
-  border: 2px solid rgba(13,116,144,0.35);
+  border: 2px solid rgba(13,116,144,0.38);
   background: rgba(255,252,247,0.95);
+  box-shadow: 0 1px 8px rgba(13,116,144,0.07);
 }
 [data-theme="light"] .form-group input:focus,
 [data-theme="light"] .form-group textarea:focus {
