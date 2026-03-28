@@ -1024,18 +1024,11 @@ footer span { color: var(--accent); }
       </a>
     </div>
 
-    <!-- ══════════════════════════════════
-         CONTACT FORM — Powered by Formspree
-         Steps to activate:
-         1. Go to https://formspree.io and sign up (free)
-         2. Create a new form → copy your Form ID
-         3. Replace "YOUR_FORM_ID" in the action URL below
-         4. Done — messages go directly to your email
-    ═══════════════════════════════════════ -->
+    <!-- CONTACT FORM — Powered by Formspree -->
     <div class="contact-form-section reveal">
       <div class="contact-form-container">
         <div class="form-title"><span>✉️</span> Send a Message</div>
-        <form id="https://formspree.io/f/xnjojbqv">
+        <form id="contactForm">
           <div class="form-group">
             <input type="text"  id="senderName"    name="name"    placeholder="Your Name"     required autocomplete="name">
           </div>
@@ -1227,9 +1220,7 @@ async function fetchGitHubRepos() {
 fetchGitHubRepos();
 
 /* ═══════════════════════════════════════════
-   CONTACT FORM — Formspree
-   Replace YOUR_FORM_ID with your actual ID from formspree.io
-   Example: https://formspree.io/f/xpznkqvw
+   CONTACT FORM — Formspree (xnjojbqv)
 ═══════════════════════════════════════════ */
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
   e.preventDefault();
@@ -1263,14 +1254,9 @@ document.getElementById('contactForm').addEventListener('submit', async function
   status.textContent = 'Sending your message...';
   status.className   = 'form-status sending';
 
-  const FORMSPREE_ID = 'YOUR_FORM_ID'; // ← Replace this with your Formspree form ID
+  const FORMSPREE_ID = 'xnjojbqv';
 
   try {
-    if (FORMSPREE_ID === 'YOUR_FORM_ID') {
-      // Fallback: open mailto if Formspree not configured
-      throw new Error('not_configured');
-    }
-
     const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
