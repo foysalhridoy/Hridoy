@@ -1233,14 +1233,14 @@ footer span { color: var(--accent); }
 #scroll-top:hover { border-color: var(--accent); box-shadow: var(--glow-strong); transform: translateY(-3px) scale(1.06); }
 #scroll-top:hover .arrow-icon { transform: translateY(-2px); }
 
-/* ─── Availability Badge — always visible ─── */
+/* ─── Availability Badge — FIXED ─── */
 #avail-badge {
   position: fixed;
-  /* Sit flush on the left edge, rotated so text reads bottom-to-top */
   left: 0;
   top: 50%;
-  transform: translateY(-50%) rotate(-90deg) translateX(-50%);
-  transform-origin: 0 50%;
+  /* Step 1: center vertically, Step 2: rotate, Step 3: shift up so badge sits on left edge */
+  transform: translateY(-50%) rotate(-90deg) translateY(100%);
+  transform-origin: left center;
   z-index: 150;
   display: flex;
   align-items: center;
@@ -1252,13 +1252,12 @@ footer span { color: var(--accent); }
   color: var(--accent);
   background: var(--card);
   border: 1px solid rgba(110,231,247,.35);
-  /* rounded on the bottom side (which visually faces right) */
-  padding: .45rem 1.1rem;
+  padding: .45rem 1.2rem;
   border-radius: 0 0 10px 10px;
   white-space: nowrap;
   box-shadow: 0 4px 18px rgba(110,231,247,.12);
   pointer-events: none;
-  /* no transition needed — always visible */
+  backdrop-filter: blur(10px);
 }
 [data-theme="light"] #avail-badge {
   background: rgba(255,252,247,0.96);
@@ -1272,6 +1271,10 @@ footer span { color: var(--accent); }
 @keyframes abPulse {
   0%,100%{box-shadow:0 0 0 0 rgba(52,168,83,.5);}
   50%{box-shadow:0 0 0 5px rgba(52,168,83,0);}
+}
+/* Hide badge on mobile to avoid overlap */
+@media (max-width: 768px) {
+  #avail-badge { display: none; }
 }
 
 /* ─── Skill Tooltips ─── */
@@ -2114,13 +2117,11 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
       const rect = pill.getBoundingClientRect();
       tip.style.opacity = '0';
       tip.style.display = 'block';
-      // position after it's in DOM so offsetWidth is available
       requestAnimationFrame(function() {
         const tw = tip.offsetWidth;
         const th = tip.offsetHeight;
         let left = rect.left + rect.width / 2 - tw / 2;
         let top  = rect.top - th - 10;
-        // keep within viewport
         if (left < 8) left = 8;
         if (left + tw > window.innerWidth - 8) left = window.innerWidth - tw - 8;
         if (top < 8) top = rect.bottom + 10;
