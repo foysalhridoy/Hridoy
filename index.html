@@ -193,12 +193,15 @@ nav.scrolled { padding: .85rem 4rem; }
 [data-theme="light"] .toggle-knob::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1.5px dashed rgba(245,158,11,.45); animation: spinSlow 6s linear infinite; }
 @keyframes spinSlow { to { transform: rotate(360deg); } }
 
-section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
+/* ═══════════════════════════════
+   FIX 1: Section padding কমানো
+═══════════════════════════════ */
+section { position: relative; z-index: 2; padding: 4rem 6rem 3rem; }
 
 #hero {
   display: grid; grid-template-columns: 1fr 1fr;
   align-items: center; gap: 4rem;
-  min-height: 100vh; padding-top: 9rem;
+  min-height: 100vh; padding-top: 9rem; padding-bottom: 2rem;
 }
 .hero-text { animation: fadeUp .9s ease both; }
 
@@ -497,7 +500,7 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .skill-pill i.devicon-figma-plain { color: #f24e1e; }
 
 /* ═══════════════════════════════════════════════════════════
-   PROJECTS — CINEMATIC REDESIGN
+   PROJECTS
 ═══════════════════════════════════════════════════════════ */
 
 #projects { background: var(--bg); }
@@ -508,7 +511,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   gap: 2.4rem;
 }
 
-/* ── Outer card shell ── */
 .project-card {
   background: transparent;
   border-radius: 22px;
@@ -544,7 +546,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   border-color: rgba(13,116,144,0.18);
 }
 
-/* Ambient glow orb behind card — REMOVED hover conic border effect */
 .project-card::before {
   content: '';
   position: absolute;
@@ -557,8 +558,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   pointer-events: none;
 }
 .project-card:hover::before { opacity: 1; }
-
-/* ::after conic spinner removed entirely */
 
 .project-card:hover {
   transform: translateY(-14px) scale(1.018);
@@ -582,7 +581,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
     0 0 50px rgba(13,116,144,0.15);
 }
 
-/* ── Image area ── */
 .project-preview {
   position: relative; width: 100%; height: 225px;
   overflow: hidden; background: var(--bg3); flex-shrink: 0;
@@ -600,7 +598,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   filter: brightness(1.0) saturate(1.15) contrast(1.02);
 }
 
-/* Bottom fade from image into card body */
 .project-preview::after {
   content: '';
   position: absolute; inset: 0;
@@ -621,7 +618,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   );
 }
 
-/* Scanline overlay on image for depth */
 .project-preview::before {
   content: '';
   position: absolute; inset: 0;
@@ -637,25 +633,11 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 }
 .project-card:hover .project-preview::before { opacity: 1; }
 
-/* Top color bar that grows on hover */
-.project-top-bar {
-  position: absolute; top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3), var(--accent));
-  background-size: 300% 100%;
-  opacity: 0.5;
-  transition: opacity .4s, height .35s, background-position .6s;
-  z-index: 10;
-  border-radius: 22px 22px 0 0;
-}
-.project-card:hover .project-top-bar {
-  opacity: 1;
-  height: 4px;
-  background-position: 100% 0;
-}
-[data-theme="light"] .project-top-bar { opacity: 0.65; }
+/* ═══════════════════════════════
+   FIX 2: Project top bar সরানো
+═══════════════════════════════ */
+.project-top-bar { display: none; }
 
-/* Corner accent dots */
 .project-corner-tl,
 .project-corner-br {
   position: absolute;
@@ -671,7 +653,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .project-card:hover .project-corner-tl,
 .project-card:hover .project-corner-br { opacity: 0.7; }
 
-/* Image overlay label */
 .project-preview-num {
   position: absolute;
   top: 14px; left: 16px;
@@ -693,7 +674,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   background: rgba(0,0,0,.55);
 }
 
-/* Featured badge */
 .project-preview-badge {
   position: absolute;
   top: 14px; right: 16px;
@@ -717,14 +697,11 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   flex-shrink: 0;
 }
 
-/* ── Card body ── */
 .project-body {
   padding: 1.4rem 1.8rem 1.8rem;
   display: flex; flex-direction: column; flex: 1;
   position: relative; z-index: 2;
 }
-
-/* REMOVED: horizontal separator line from project-body::before */
 
 .project-meta-row {
   display: flex; align-items: center; justify-content: flex-end;
@@ -772,7 +749,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 }
 .project-card:hover .project-desc { opacity: 1; }
 
-/* ── Project footer ── */
 .project-footer {
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;
   padding-top: 1.2rem;
@@ -780,7 +756,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 }
 [data-theme="light"] .project-footer { border-top-color: rgba(13,116,144,0.14); }
 
-/* Live button */
 .project-live-btn {
   display: inline-flex; align-items: center; gap: .55rem;
   font-family: var(--font-mono); font-size: .66rem; letter-spacing: .14em;
@@ -840,7 +815,7 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 }
 
 /* ═══════════════════════════════════════════
-   GITHUB SECTION — Standalone before Contact
+   GITHUB SECTION
 ═══════════════════════════════════════════ */
 
 #github-section {
@@ -1126,7 +1101,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .cc-arrow { position: absolute; bottom: .9rem; right: 1.1rem; font-size: .8rem; opacity: 0; transform: translateX(-5px) translateY(5px); transition: opacity .25s,transform .25s; color: var(--accent); }
 .contact-card:hover .cc-arrow { opacity: .75; transform: translateX(0) translateY(0); }
 
-/* ── Contact Form ── */
 .contact-form-section { margin: 2rem auto; max-width: 580px; width: 100%; }
 .contact-form-container {
   background: var(--form-bg);
@@ -1151,7 +1125,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   box-shadow: 0 8px 32px rgba(13,116,144,0.2);
 }
 
-/* ── Form title with gradient "Say Hello" effect ── */
 .form-title {
   font-family: var(--font-head); font-size: 1.35rem; font-weight: 900;
   margin-bottom: 1.8rem; letter-spacing: -.03em;
@@ -1278,9 +1251,9 @@ footer span { color: var(--accent); }
 #scroll-top:hover { border-color: var(--accent); box-shadow: var(--glow-strong); transform: translateY(-3px) scale(1.06); }
 #scroll-top:hover .arrow-icon { transform: translateY(-2px); }
 
-@media (max-width:1100px){section{padding:6rem 3rem 4rem;}#hero{gap:2.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:900px){nav{padding:1rem 1.5rem;}section{padding:5rem 1.8rem 4rem;}#hero{grid-template-columns:1fr;gap:3rem;padding-top:7rem;}.hero-photo{order:-1;}.photo-wrap{width:210px;height:210px;}#about{grid-template-columns:1fr;gap:2.5rem;}.skills-grid{grid-template-columns:repeat(3,1fr);}.contact-cards{grid-template-columns:repeat(2,1fr);}.edu-timeline::before{left:36px;}.gmail-hero-card{padding:1.7rem 1.8rem;gap:1.4rem;}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:700px){section{padding:5rem 1.2rem 3.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.about-stats{grid-template-columns:1fr 1fr;}.projects-grid{grid-template-columns:1fr;}.edu-item{grid-template-columns:58px 1fr;gap:0 1rem;}.edu-node{width:58px;height:58px;font-size:1.3rem;border-radius:14px;}.edu-timeline::before{left:29px;}.gmail-hero-card{flex-direction:column;text-align:center;padding:1.7rem 1.5rem;}.gmail-hero-content{text-align:center;}.gmail-primary-label{justify-content:center;}.gmail-sub-text{justify-content:center;flex-wrap:wrap;}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:1100px){section{padding:4rem 3rem 3rem;}#hero{gap:2.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:900px){nav{padding:1rem 1.5rem;}section{padding:3.5rem 1.8rem 3rem;}#hero{grid-template-columns:1fr;gap:3rem;padding-top:7rem;}.hero-photo{order:-1;}.photo-wrap{width:210px;height:210px;}#about{grid-template-columns:1fr;gap:2.5rem;}.skills-grid{grid-template-columns:repeat(3,1fr);}.contact-cards{grid-template-columns:repeat(2,1fr);}.edu-timeline::before{left:36px;}.gmail-hero-card{padding:1.7rem 1.8rem;gap:1.4rem;}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:700px){section{padding:3rem 1.2rem 2.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.about-stats{grid-template-columns:1fr 1fr;}.projects-grid{grid-template-columns:1fr;}.edu-item{grid-template-columns:58px 1fr;gap:0 1rem;}.edu-node{width:58px;height:58px;font-size:1.3rem;border-radius:14px;}.edu-timeline::before{left:29px;}.gmail-hero-card{flex-direction:column;text-align:center;padding:1.7rem 1.5rem;}.gmail-hero-content{text-align:center;}.gmail-primary-label{justify-content:center;}.gmail-sub-text{justify-content:center;flex-wrap:wrap;}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
 @media (max-width:600px){.nav-hamburger{display:flex;}.nav-links{display:none!important;}.projects-grid{grid-template-columns:1fr;}.skills-grid{grid-template-columns:repeat(2,1fr);}.contact-big{font-size:clamp(1.9rem,8.5vw,2.8rem);}.contact-cards{grid-template-columns:repeat(2,1fr);}#scroll-top{bottom:1.3rem;right:1.3rem;width:42px;height:42px;}.github-stats-grid{grid-template-columns:1fr 1fr;}}
 @media (max-width:480px){nav{padding:.9rem 1rem;}.nav-right{gap:.7rem;}.hero-name{font-size:clamp(1.9rem,7.5vw,2.8rem);}.hero-cta{flex-direction:column;align-items:flex-start;}.contact-cards{grid-template-columns:1fr 1fr;}.stat-num{font-size:1.65rem;}.edu-card{padding:1.4rem 1.2rem;}.gmail-address{font-size:.82rem;}.github-stats-grid{grid-template-columns:1fr 1fr;}}
 </style>
@@ -1563,7 +1536,7 @@ footer span { color: var(--accent); }
   </div>
 </section>
 
-<!-- GITHUB SECTION — Standalone -->
+<!-- GITHUB SECTION -->
 <section id="github-section">
   <div class="section-header reveal">
     <span class="section-num">05</span>
@@ -1635,7 +1608,6 @@ footer span { color: var(--accent); }
 
     <div class="contact-form-section reveal">
       <div class="contact-form-container">
-        <!-- CHANGED: removed 💌 emoji, added gradient "Send Me a Message" heading -->
         <div class="form-title"><span class="form-title-grad">Send Me a Message</span></div>
         <form id="contactForm">
           <div class="form-group">
@@ -1805,7 +1777,6 @@ async function fetchGitHubStats() {
     const topLangs = Object.entries(langMap).sort((a,b) => b[1]-a[1]).slice(0,5);
     const totalLangRepos = topLangs.reduce((s,[,c]) => s+c, 0);
 
-    // FIXED: JavaScript chip uses darker color in light theme via a class-based approach
     const langColors = {
       JavaScript: { bg:'rgba(180,140,0,.12)', border:'rgba(180,140,0,.35)', color:'#a07800', darkBg:'rgba(247,223,30,.12)', darkBorder:'rgba(247,223,30,.28)', darkColor:'#f7df1e' },
       Python:     { bg:'rgba(55,118,171,.12)', border:'rgba(55,118,171,.28)', color:'#3776ab', darkBg:'rgba(55,118,171,.12)', darkBorder:'rgba(55,118,171,.28)', darkColor:'#3776ab' },
@@ -1854,7 +1825,6 @@ async function fetchGitHubStats() {
       ` : ''}
     `;
 
-    // Apply correct colors based on current theme
     applyLangChipTheme();
 
     setTimeout(() => {
@@ -1899,7 +1869,6 @@ function applyLangChipTheme() {
   });
 }
 
-// Re-apply lang chip colors on theme toggle
 document.getElementById('themeToggle').addEventListener('click', () => {
   setTimeout(applyLangChipTheme, 10);
 });
