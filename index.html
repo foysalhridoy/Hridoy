@@ -48,7 +48,6 @@
   --cursor-ring-color: var(--accent);
   --cursor-mix-blend: screen;
   --form-bg: rgba(15,23,42,0.55);
-  /* Dark theme bold border variables */
   --dark-box-border: rgba(110,231,247,0.28);
   --dark-box-border-hover: rgba(110,231,247,0.55);
 }
@@ -306,7 +305,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .about-text strong { color: var(--accent); font-weight: 600; }
 .about-right { display: flex; flex-direction: column; gap: 0; align-self: start; }
 
-/* ── At a Glance label — section-header style ── */
 .about-stats-label {
   font-family: var(--font-head);
   font-size: clamp(1.1rem, 2vw, 1.5rem);
@@ -330,7 +328,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 
 .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
-/* ── Stat cards — bold borders both themes ── */
 .stat-card {
   background: var(--card);
   border: 2px solid rgba(110,231,247,0.32);
@@ -389,7 +386,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .edu-item.hsc .edu-node { background: linear-gradient(135deg,rgba(129,140,248,.12),rgba(244,114,182,.07)); border-color: rgba(129,140,248,.25); }
 .edu-item.ssc .edu-node { background: linear-gradient(135deg,rgba(244,114,182,.12),rgba(129,140,248,.07)); border-color: rgba(244,114,182,.25); }
 
-/* ── Education cards — bold borders both themes ── */
 .edu-card {
   background: var(--edu-bg);
   border: 2px solid rgba(110,231,247,0.28);
@@ -455,7 +451,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 }
 [data-theme="light"] .edu-meta-chip { background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.1); }
 
-/* ── Skill pills — bold borders both themes ── */
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(128px,1fr)); gap: .9rem; }
 .skill-pill {
   background: var(--card);
@@ -501,253 +496,278 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .skill-pill i.devicon-mysql-plain { color: #4479a1; }
 .skill-pill i.devicon-figma-plain { color: #f24e1e; }
 
-/* ═══════════════════════════════════════════
-   PROJECTS — HEAVILY ENHANCED
-   Dark: cinematic glow + depth layers
-   Light: visible borders + vivid hover fx
-═══════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════
+   PROJECTS — CINEMATIC REDESIGN
+   Ultra-premium cards with depth, parallax glow, and drama
+═══════════════════════════════════════════════════════════ */
+
+#projects { background: var(--bg); }
+
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 2.4rem;
 }
 
+/* ── Outer card shell ── */
 .project-card {
-  background: var(--card);
-  border-radius: 18px;
-  overflow: hidden;
+  background: transparent;
+  border-radius: 22px;
+  overflow: visible;
   position: relative;
   display: flex;
   flex-direction: column;
   cursor: none;
-  /* Dark theme: subtle but visible border */
-  border: 1px solid rgba(110,231,247,0.14);
+  /* Layered border effect via box-shadow */
   box-shadow:
-    0 4px 20px rgba(0,0,0,0.35),
-    0 1px 0 rgba(110,231,247,0.06) inset;
+    0 0 0 1px rgba(110,231,247,0.10),
+    0 8px 32px rgba(0,0,0,0.45),
+    0 2px 8px rgba(0,0,0,0.3);
   transition:
-    border-color .4s cubic-bezier(.22,.68,0,1.2),
-    transform .45s cubic-bezier(.22,.68,0,1.2),
-    box-shadow .45s cubic-bezier(.22,.68,0,1.2);
+    box-shadow .5s cubic-bezier(.22,.68,0,1.2),
+    transform .5s cubic-bezier(.22,.68,0,1.2);
+  isolation: isolate;
 }
 
-/* Light theme: much more visible border */
-[data-theme="light"] .project-card {
-  border: 1.5px solid rgba(13,116,144,0.22);
-  box-shadow:
-    0 4px 18px rgba(13,116,144,0.09),
-    0 1px 4px rgba(13,116,144,0.07),
-    0 0 0 1px rgba(13,116,144,0.06) inset;
-  background: rgba(255,252,247,0.98);
+.project-card-inner {
+  background: rgba(10, 16, 28, 0.92);
+  border-radius: 22px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+  border: 1px solid rgba(110,231,247,0.10);
+  transition: border-color .5s;
 }
 
-/* Hover lift */
-.project-card:hover {
-  transform: translateY(-10px) scale(1.015);
-  border-color: var(--accent);
-  box-shadow:
-    0 24px 60px rgba(0,0,0,0.45),
-    0 0 0 1px rgba(110,231,247,0.25),
-    0 0 50px rgba(110,231,247,0.1),
-    0 0 80px rgba(110,231,247,0.05);
+[data-theme="light"] .project-card-inner {
+  background: rgba(255, 252, 247, 0.98);
+  border-color: rgba(13,116,144,0.18);
 }
 
-[data-theme="light"] .project-card:hover {
-  border-color: var(--accent);
-  box-shadow:
-    0 20px 50px rgba(13,116,144,0.18),
-    0 0 0 2px rgba(13,116,144,0.3),
-    0 0 40px rgba(13,116,144,0.12);
-  transform: translateY(-10px) scale(1.015);
-}
-
-/* Animated gradient border on hover using pseudo */
+/* Ambient glow orb behind card */
 .project-card::before {
   content: '';
   position: absolute;
-  inset: 0;
-  border-radius: 18px;
-  padding: 1.5px;
-  background: linear-gradient(
-    135deg,
-    var(--accent),
-    var(--accent2),
-    var(--accent3),
-    var(--accent)
-  );
-  background-size: 300% 300%;
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: destination-out;
-  mask-composite: exclude;
+  inset: -24px;
+  border-radius: 36px;
+  background: radial-gradient(ellipse at 50% 60%, rgba(110,231,247,0.08) 0%, transparent 70%);
   opacity: 0;
-  transition: opacity .4s;
-  animation: gradBorderMove 4s linear infinite;
-  z-index: 5;
+  transition: opacity .5s;
+  z-index: -1;
   pointer-events: none;
 }
 .project-card:hover::before { opacity: 1; }
 
-@keyframes gradBorderMove {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Shine sweep effect */
+/* Animated rainbow border ring on hover */
 .project-card::after {
   content: '';
   position: absolute;
-  top: 0; left: -110%;
-  width: 60%; height: 100%;
-  background: linear-gradient(
-    105deg,
-    transparent 0%,
-    rgba(255,255,255,0.04) 40%,
-    rgba(255,255,255,0.09) 50%,
-    rgba(255,255,255,0.04) 60%,
-    transparent 100%
+  inset: -1.5px;
+  border-radius: 23px;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    var(--accent) 0%,
+    var(--accent2) 25%,
+    var(--accent3) 50%,
+    var(--accent) 75%,
+    var(--accent2) 100%
   );
-  transform: skewX(-12deg);
-  transition: left .65s ease;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity .4s;
   pointer-events: none;
-  z-index: 4;
 }
-.project-card:hover::after { left: 130%; }
+.project-card:hover::after { opacity: 1; animation: spinConic 3s linear infinite; }
+@property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+@keyframes spinConic { to { --angle: 360deg; } }
 
-[data-theme="light"] .project-card::after {
-  background: linear-gradient(
-    105deg,
-    transparent 0%,
-    rgba(255,255,255,0.15) 40%,
-    rgba(255,255,255,0.35) 50%,
-    rgba(255,255,255,0.15) 60%,
-    transparent 100%
-  );
+.project-card:hover {
+  transform: translateY(-14px) scale(1.018);
+  box-shadow:
+    0 0 0 1px transparent,
+    0 32px 80px rgba(0,0,0,0.6),
+    0 0 60px rgba(110,231,247,0.12),
+    0 0 120px rgba(110,231,247,0.06);
+}
+.project-card:hover .project-card-inner {
+  border-color: transparent;
 }
 
-/* ── Project image area ──────────────────── */
+[data-theme="light"] .project-card::before {
+  background: radial-gradient(ellipse at 50% 60%, rgba(13,116,144,0.12) 0%, transparent 70%);
+}
+[data-theme="light"] .project-card:hover {
+  box-shadow:
+    0 0 0 1px transparent,
+    0 28px 70px rgba(0,0,0,0.18),
+    0 0 50px rgba(13,116,144,0.15);
+}
+
+/* ── Image area ── */
 .project-preview {
-  position: relative; width: 100%; height: 215px;
+  position: relative; width: 100%; height: 225px;
   overflow: hidden; background: var(--bg3); flex-shrink: 0;
-  pointer-events: none;
 }
 
 .project-preview img {
   width: 100%; height: 100%;
   object-fit: cover; object-position: top;
-  transition: transform .7s cubic-bezier(.22,.68,0,1.2), filter .5s;
-  filter: brightness(.78) saturate(.82);
+  transition: transform .8s cubic-bezier(.22,.68,0,1.2), filter .5s;
+  filter: brightness(.72) saturate(.78) contrast(1.04);
+  will-change: transform;
 }
 .project-card:hover .project-preview img {
-  transform: scale(1.08);
-  filter: brightness(1.02) saturate(1.1);
+  transform: scale(1.10);
+  filter: brightness(1.0) saturate(1.15) contrast(1.02);
 }
 
-/* Gradient overlay from image to card body */
+/* Bottom fade from image into card body */
 .project-preview::after {
   content: '';
   position: absolute; inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0) 30%,
-    rgba(0,0,0,0.22) 65%,
-    var(--bg3) 100%
+    transparent 20%,
+    rgba(10,16,28,0.15) 60%,
+    rgba(10,16,28,0.85) 100%
   );
   z-index: 1;
 }
 [data-theme="light"] .project-preview::after {
   background: linear-gradient(
     to bottom,
-    rgba(248,245,240,0) 30%,
-    rgba(248,245,240,0.1) 65%,
-    rgba(248,245,240,0.9) 100%
+    transparent 20%,
+    rgba(248,245,240,0.08) 60%,
+    rgba(248,245,240,0.88) 100%
   );
 }
 
-/* Number overlay on image */
+/* Scanline overlay on image for depth */
+.project-preview::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.03) 2px,
+    rgba(0,0,0,0.03) 4px
+  );
+  z-index: 2; pointer-events: none;
+  opacity: 0; transition: opacity .4s;
+}
+.project-card:hover .project-preview::before { opacity: 1; }
+
+/* Top color bar that grows on hover */
+.project-top-bar {
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3), var(--accent));
+  background-size: 300% 100%;
+  opacity: 0.5;
+  transition: opacity .4s, height .35s, background-position .6s;
+  z-index: 10;
+  border-radius: 22px 22px 0 0;
+}
+.project-card:hover .project-top-bar {
+  opacity: 1;
+  height: 4px;
+  background-position: 100% 0;
+}
+[data-theme="light"] .project-top-bar { opacity: 0.65; }
+
+/* Corner accent dots */
+.project-corner-tl,
+.project-corner-br {
+  position: absolute;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity .3s .1s;
+  z-index: 10;
+}
+.project-corner-tl { top: 12px; left: 12px; box-shadow: 0 0 12px var(--accent); }
+.project-corner-br { bottom: 12px; right: 12px; background: var(--accent3); box-shadow: 0 0 12px var(--accent3); }
+.project-card:hover .project-corner-tl,
+.project-card:hover .project-corner-br { opacity: 0.7; }
+
+/* Image overlay label */
 .project-preview-num {
   position: absolute;
   top: 14px; left: 16px;
   font-family: var(--font-mono);
-  font-size: .62rem; letter-spacing: .22em;
-  color: rgba(255,255,255,.55);
-  background: rgba(0,0,0,.38);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,.12);
-  padding: .22rem .7rem;
+  font-size: .60rem; letter-spacing: .24em;
+  color: rgba(255,255,255,.50);
+  background: rgba(0,0,0,.40);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.10);
+  padding: .22rem .75rem;
   border-radius: 4px;
-  z-index: 3;
+  z-index: 5;
   text-transform: uppercase;
   font-weight: 300;
+  transition: color .3s, background .3s;
 }
-[data-theme="light"] .project-preview-num {
+.project-card:hover .project-preview-num {
   color: rgba(255,255,255,.85);
-  background: rgba(0,0,0,.5);
+  background: rgba(0,0,0,.55);
 }
 
-/* Featured badge on image */
+/* Featured badge */
 .project-preview-badge {
   position: absolute;
   top: 14px; right: 16px;
   font-family: var(--font-mono);
   font-size: .56rem; letter-spacing: .1em;
-  background: rgba(110,231,247,.15);
-  border: 1px solid rgba(110,231,247,.35);
+  background: rgba(110,231,247,.14);
+  border: 1px solid rgba(110,231,247,.38);
   color: var(--accent);
   padding: .22rem .65rem;
   border-radius: 99px;
-  z-index: 3;
+  z-index: 5;
   display: flex; align-items: center; gap: .3rem;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
   font-weight: 400;
 }
+.project-preview-badge::before {
+  content: '';
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--accent);
+  animation: pulseDot 1.8s infinite;
+  flex-shrink: 0;
+}
 
-/* ── Project body ────────────────────────── */
+/* ── Card body ── */
 .project-body {
-  padding: 1rem 1.7rem 1.7rem;
+  padding: 1.4rem 1.8rem 1.8rem;
   display: flex; flex-direction: column; flex: 1;
   position: relative; z-index: 2;
 }
 
-/* Subtle inner top border line */
+/* Inner separator line */
 .project-body::before {
   content: '';
   position: absolute;
-  top: 0; left: 1.7rem; right: 1.7rem;
+  top: 0; left: 1.8rem; right: 1.8rem;
   height: 1px;
-  background: linear-gradient(90deg, rgba(110,231,247,.1), rgba(129,140,248,.07), transparent);
+  background: linear-gradient(90deg,
+    rgba(110,231,247,0.12),
+    rgba(129,140,248,0.08),
+    transparent
+  );
 }
 [data-theme="light"] .project-body::before {
-  background: linear-gradient(90deg, rgba(13,116,144,.15), rgba(67,56,202,.1), transparent);
+  background: linear-gradient(90deg, rgba(13,116,144,.18), rgba(67,56,202,.1), transparent);
 }
-
-/* ── Top bar (rainbow stripe, always visible) */
-.project-top-bar {
-  position: absolute; top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
-  background-size: 200% 100%;
-  opacity: 0.45;
-  transition: opacity .35s, background-position .6s;
-  z-index: 6;
-  border-radius: 18px 18px 0 0;
-}
-.project-card:hover .project-top-bar {
-  opacity: 1;
-  background-position: 100% 0;
-}
-[data-theme="light"] .project-top-bar { opacity: 0.6; }
-[data-theme="light"] .project-card:hover .project-top-bar { opacity: 1; }
 
 .project-meta-row {
   display: flex; align-items: center; justify-content: flex-end;
   margin-bottom: .5rem;
 }
-.project-num {
-  display: none;
-}
+.project-num { display: none; }
 .project-featured {
   font-family: var(--font-mono); font-size: .57rem;
   background: rgba(110,231,247,.07); border: 1px solid rgba(110,231,247,.18);
@@ -756,62 +776,73 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 }
 
 .project-title {
-  font-family: var(--font-head); font-size: 1.26rem; font-weight: 800;
-  margin-bottom: .65rem; letter-spacing: -.02em;
-  transition: color .25s, text-shadow .25s;
-  line-height: 1.22;
+  font-family: var(--font-head); font-size: 1.32rem; font-weight: 800;
+  margin-bottom: .7rem; letter-spacing: -.025em;
+  transition: color .3s, text-shadow .3s;
+  line-height: 1.2;
   color: var(--text);
+  position: relative;
 }
+.project-title::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 2px;
+  transition: width .4s cubic-bezier(.22,.68,0,1.2);
+}
+.project-card:hover .project-title::after { width: 40px; }
 .project-card:hover .project-title {
   color: var(--accent);
-  text-shadow: 0 0 28px rgba(110,231,247,.25);
+  text-shadow: 0 0 32px rgba(110,231,247,.22);
 }
 [data-theme="light"] .project-card:hover .project-title {
   text-shadow: 0 0 20px rgba(13,116,144,.2);
 }
 
 .project-desc {
-  font-size: .86rem; color: var(--text2);
-  line-height: 1.82; margin-bottom: 1.5rem; flex: 1;
+  font-size: .875rem; color: var(--text2);
+  line-height: 1.85; margin-bottom: 1.6rem; flex: 1;
+  opacity: .88;
+  transition: opacity .3s;
 }
+.project-card:hover .project-desc { opacity: 1; }
 
-/* ── Project footer ─────────────────────── */
+/* ── Project footer ── */
 .project-footer {
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;
   padding-top: 1.2rem;
   border-top: 1px solid var(--border2);
-  position: relative;
 }
-[data-theme="light"] .project-footer {
-  border-top-color: rgba(13,116,144,0.14);
-}
+[data-theme="light"] .project-footer { border-top-color: rgba(13,116,144,0.14); }
 
 /* Live button */
 .project-live-btn {
   display: inline-flex; align-items: center; gap: .55rem;
   font-family: var(--font-mono); font-size: .66rem; letter-spacing: .14em;
   text-transform: uppercase; text-decoration: none; color: var(--bg);
-  background: var(--accent); padding: .65rem 1.35rem; border-radius: 6px;
-  font-weight: 700; transition: all .3s cubic-bezier(.22,.68,0,1.2);
+  background: var(--accent); padding: .65rem 1.4rem; border-radius: 8px;
+  font-weight: 700; transition: all .35s cubic-bezier(.22,.68,0,1.2);
   cursor: none; position: relative; overflow: hidden; z-index: 2;
-  box-shadow: 0 4px 18px rgba(110,231,247,.3);
+  box-shadow: 0 4px 20px rgba(110,231,247,.28), 0 0 0 0 rgba(110,231,247,.3);
 }
 .project-live-btn::before {
   content: '';
   position: absolute; inset: 0;
   background: linear-gradient(135deg, var(--accent3), var(--accent2));
-  opacity: 0; transition: opacity .3s;
+  opacity: 0; transition: opacity .35s;
 }
 .project-live-btn:hover::before { opacity: 1; }
 .project-live-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(110,231,247,.45);
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 10px 36px rgba(110,231,247,.45), 0 0 0 4px rgba(110,231,247,.12);
 }
 [data-theme="light"] .project-live-btn {
   box-shadow: 0 4px 16px rgba(13,116,144,.3);
 }
 [data-theme="light"] .project-live-btn:hover {
-  box-shadow: 0 8px 28px rgba(13,116,144,.4);
+  box-shadow: 0 10px 30px rgba(13,116,144,.42), 0 0 0 4px rgba(13,116,144,.12);
 }
 .project-live-btn span, .project-live-btn .btn-arrow { position: relative; z-index: 1; }
 .project-live-btn .live-dot {
@@ -831,8 +862,8 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 }
 .project-card:hover .project-type-tag {
   color: var(--text2);
-  border-color: rgba(110,231,247,.15);
-  background: rgba(110,231,247,.05);
+  border-color: rgba(110,231,247,.18);
+  background: rgba(110,231,247,.06);
 }
 [data-theme="light"] .project-type-tag {
   background: rgba(13,116,144,.05);
@@ -846,29 +877,25 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 }
 
 /* ═══════════════════════════════════════════
-   END PROJECTS
+   GITHUB SECTION — Standalone before Contact
 ═══════════════════════════════════════════ */
 
-#contact { background: var(--bg2); overflow: hidden; position: relative; padding-bottom: 5rem; transition: background .4s; }
-.contact-wrap { position: relative; z-index: 2; max-width: 1000px; margin: 0 auto; text-align: center; }
-.contact-headline { font-family: var(--font-head); font-size: clamp(1rem,2.5vw,1.35rem); font-weight: 400; color: var(--muted); letter-spacing: .14em; margin-bottom: .6rem; font-style: italic; opacity: .7; }
-.contact-big { font-family: var(--font-head); font-size: clamp(2.4rem,5.5vw,4.6rem); font-weight: 900; line-height: 1.06; letter-spacing: -.04em; margin-bottom: 1.6rem; }
-.contact-big .grad {
-  background: linear-gradient(100deg,var(--accent3),var(--accent),var(--accent2));
-  background-size: 200%;
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  animation: gradShift 5s ease infinite;
+#github-section {
+  background: var(--bg2);
+  transition: background .4s;
 }
-@keyframes gradShift { 0%,100%{background-position:0%}50%{background-position:100%} }
-.contact-sub { font-size: .94rem; color: var(--text2); line-height: 1.88; margin: 0 auto 3.5rem; max-width: 480px; opacity: .88; }
 
-/* ── GitHub Stats Card — bold borders both themes ── */
+.github-section-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
 .github-stats-section { margin-bottom: 2rem; display: flex; justify-content: center; }
 .github-stats-card {
   background: var(--card);
   border: 2px solid rgba(110,231,247,0.30);
   border-radius: 20px;
-  padding: 1.8rem 2rem; width: 100%; max-width: 680px;
+  padding: 1.8rem 2rem; width: 100%; max-width: 860px;
   transition: border-color .3s, box-shadow .3s;
   backdrop-filter: blur(8px);
   box-shadow: 0 2px 14px rgba(110,231,247,0.08);
@@ -908,7 +935,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 }
 .github-stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: .75rem; margin-bottom: 1.4rem; }
 
-/* ── GitHub stat items — bold borders both themes ── */
 .github-stat-item {
   background: rgba(110,231,247,.04);
   border: 2px solid rgba(110,231,247,0.22);
@@ -966,7 +992,56 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .github-loading-dots::after { content: '...'; animation: dots 1.4s infinite; }
 @keyframes dots { 0%{content:'.';} 33%{content:'..';} 66%{content:'...';} }
 
-/* ── Gmail hero card — bold borders both themes ── */
+.github-repos-section { margin: 2rem 0 0; }
+.github-chart-container {
+  background: var(--card);
+  border: 2px solid rgba(110,231,247,0.28);
+  border-radius: 20px; padding: 1.8rem;
+  transition: all .3s; backdrop-filter: blur(4px);
+  box-shadow: 0 2px 12px rgba(110,231,247,0.07);
+}
+.github-chart-container:hover {
+  border-color: rgba(110,231,247,0.55);
+  box-shadow: var(--glow);
+}
+
+[data-theme="light"] .github-chart-container {
+  border: 2px solid rgba(13,116,144,0.32);
+  box-shadow: 0 4px 16px rgba(13,116,144,0.09);
+}
+[data-theme="light"] .github-chart-container:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 30px rgba(13,116,144,0.18);
+}
+
+.repos-title { font-family: var(--font-head); font-size: 1.35rem; font-weight: 700; margin-bottom: 1.2rem; display: flex; align-items: center; gap: .8rem; color: var(--accent); }
+.repos-title i { font-size: 1.5rem; }
+.repo-list { display: flex; flex-direction: column; gap: .2rem; }
+.repo-item { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: .75rem 0; border-bottom: 1px solid var(--border2); transition: all .2s; }
+.repo-item:last-child { border-bottom: none; }
+.repo-name { font-family: var(--font-mono); font-weight: 400; font-size: .82rem; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: .5rem; cursor: none; }
+.repo-name:hover { color: var(--accent); }
+.repo-stats { display: flex; gap: 1rem; font-family: var(--font-mono); font-size: .68rem; color: var(--muted); font-weight: 300; }
+.repo-stats span { display: flex; align-items: center; gap: .3rem; }
+.loading-repos { text-align: center; padding: 2rem; font-family: var(--font-mono); color: var(--muted); font-size: .8rem; font-weight: 300; }
+
+/* ═══════════════════════════════════════════
+   CONTACT SECTION
+═══════════════════════════════════════════ */
+
+#contact { background: var(--bg); overflow: hidden; position: relative; padding-bottom: 5rem; transition: background .4s; }
+.contact-wrap { position: relative; z-index: 2; max-width: 1000px; margin: 0 auto; text-align: center; }
+.contact-headline { font-family: var(--font-head); font-size: clamp(1rem,2.5vw,1.35rem); font-weight: 400; color: var(--muted); letter-spacing: .14em; margin-bottom: .6rem; font-style: italic; opacity: .7; }
+.contact-big { font-family: var(--font-head); font-size: clamp(2.4rem,5.5vw,4.6rem); font-weight: 900; line-height: 1.06; letter-spacing: -.04em; margin-bottom: 1.6rem; }
+.contact-big .grad {
+  background: linear-gradient(100deg,var(--accent3),var(--accent),var(--accent2));
+  background-size: 200%;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  animation: gradShift 5s ease infinite;
+}
+@keyframes gradShift { 0%,100%{background-position:0%}50%{background-position:100%} }
+.contact-sub { font-size: .94rem; color: var(--text2); line-height: 1.88; margin: 0 auto 3.5rem; max-width: 480px; opacity: .88; }
+
 .gmail-hero { margin-bottom: 2rem; display: flex; justify-content: center; }
 .gmail-hero-card {
   position: relative; background: var(--contact-card-bg);
@@ -1026,7 +1101,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   box-shadow: 0 4px 14px rgba(234,67,53,.28); z-index: 3;
 }
 
-/* ── Contact social cards — bold borders both themes ── */
 .contact-cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin: 2.5rem 0 2rem; }
 .contact-card {
   position: relative; background: var(--contact-card-bg);
@@ -1053,7 +1127,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .contact-card:hover::after { opacity: 1; }
 .contact-card:hover { transform: translateY(-9px) scale(1.02); }
 
-/* Dark theme per-platform border colors */
 .contact-card.github { border-color: rgba(163,113,247,0.32); }
 .contact-card.linkedin { border-color: rgba(0,119,181,0.32); }
 .contact-card.instagram { border-color: rgba(220,39,67,0.28); }
@@ -1064,7 +1137,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .contact-card.instagram:hover { border-color: #dc2743; box-shadow: 0 8px 28px rgba(220,39,67,0.2); }
 .contact-card.facebook:hover { border-color: #1877f2; box-shadow: 0 8px 28px rgba(24,119,242,0.2); }
 
-/* Light theme contact card borders */
 [data-theme="light"] .contact-card.github  { border-color: rgba(163,113,247,0.40); box-shadow: 0 3px 14px rgba(163,113,247,0.1); }
 [data-theme="light"] .contact-card.linkedin { border-color: rgba(0,119,181,0.38); box-shadow: 0 3px 14px rgba(0,119,181,0.1); }
 [data-theme="light"] .contact-card.instagram { border-color: rgba(220,39,67,0.35); box-shadow: 0 3px 14px rgba(220,39,67,0.09); }
@@ -1091,41 +1163,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .cc-arrow { position: absolute; bottom: .9rem; right: 1.1rem; font-size: .8rem; opacity: 0; transform: translateX(-5px) translateY(5px); transition: opacity .25s,transform .25s; color: var(--accent); }
 .contact-card:hover .cc-arrow { opacity: .75; transform: translateX(0) translateY(0); }
 
-/* ── GitHub repos container — bold borders both themes ── */
-.github-repos-section { margin: 2rem 0 2rem; }
-.github-chart-container {
-  background: var(--card);
-  border: 2px solid rgba(110,231,247,0.28);
-  border-radius: 20px; padding: 1.8rem;
-  transition: all .3s; backdrop-filter: blur(4px);
-  box-shadow: 0 2px 12px rgba(110,231,247,0.07);
-}
-.github-chart-container:hover {
-  border-color: rgba(110,231,247,0.55);
-  box-shadow: var(--glow);
-}
-
-[data-theme="light"] .github-chart-container {
-  border: 2px solid rgba(13,116,144,0.32);
-  box-shadow: 0 4px 16px rgba(13,116,144,0.09);
-}
-[data-theme="light"] .github-chart-container:hover {
-  border-color: var(--accent);
-  box-shadow: 0 8px 30px rgba(13,116,144,0.18);
-}
-
-.repos-title { font-family: var(--font-head); font-size: 1.35rem; font-weight: 700; margin-bottom: 1.2rem; display: flex; align-items: center; gap: .8rem; color: var(--accent); }
-.repos-title i { font-size: 1.5rem; }
-.repo-list { display: flex; flex-direction: column; gap: .2rem; }
-.repo-item { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: .75rem 0; border-bottom: 1px solid var(--border2); transition: all .2s; }
-.repo-item:last-child { border-bottom: none; }
-.repo-name { font-family: var(--font-mono); font-weight: 400; font-size: .82rem; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: .5rem; cursor: none; }
-.repo-name:hover { color: var(--accent); }
-.repo-stats { display: flex; gap: 1rem; font-family: var(--font-mono); font-size: .68rem; color: var(--muted); font-weight: 300; }
-.repo-stats span { display: flex; align-items: center; gap: .3rem; }
-.loading-repos { text-align: center; padding: 2rem; font-family: var(--font-mono); color: var(--muted); font-size: .8rem; font-weight: 300; }
-
-/* ── Contact form container & inputs — bold borders both themes ── */
 .contact-form-section { margin: 2rem auto; max-width: 580px; width: 100%; }
 .contact-form-container {
   background: var(--form-bg);
@@ -1159,7 +1196,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 @keyframes bounce { 0%,100%{transform:translateY(0);}50%{transform:translateY(-3px);} }
 .form-group { margin-bottom: 1.2rem; text-align: left; }
 
-/* Dark theme input/textarea bold borders */
 .form-group input, .form-group textarea {
   width: 100%; padding: 1rem 1.2rem;
   background: var(--card);
@@ -1177,7 +1213,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 }
 .form-group textarea { resize: vertical; min-height: 110px; }
 
-/* Light theme input/textarea bold borders */
 [data-theme="light"] .form-group input,
 [data-theme="light"] .form-group textarea {
   border: 2px solid rgba(13,116,144,0.38);
@@ -1296,6 +1331,7 @@ footer span { color: var(--accent); }
   <a href="#education" onclick="closeMobileMenu()">Education</a>
   <a href="#skills" onclick="closeMobileMenu()">Skills</a>
   <a href="#projects" onclick="closeMobileMenu()">Projects</a>
+  <a href="#github-section" onclick="closeMobileMenu()">GitHub</a>
   <a href="#contact" onclick="closeMobileMenu()">Contact</a>
 </div>
 
@@ -1306,6 +1342,7 @@ footer span { color: var(--accent); }
     <li><a href="#education">Education</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#github-section">GitHub</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-right">
@@ -1443,110 +1480,140 @@ footer span { color: var(--accent); }
 
     <div class="project-card reveal">
       <div class="project-top-bar"></div>
-      <div class="project-preview">
-        <div class="project-preview-num">PROJECT_01</div>
-        <div class="project-preview-badge">⭐ Featured</div>
-        <img src="https://i.postimg.cc/tTmNXWh6/1774610888858.png" alt="Al-Quran Bangla" loading="lazy">
-      </div>
-      <div class="project-body">
-        <div class="project-meta-row">
-          <!-- Only the featured badge in image remains; the duplicate below is removed -->
+      <div class="project-corner-tl"></div>
+      <div class="project-corner-br"></div>
+      <div class="project-card-inner">
+        <div class="project-preview">
+          <div class="project-preview-num">PROJECT_01</div>
+          <div class="project-preview-badge">⭐ Featured</div>
+          <img src="https://i.postimg.cc/tTmNXWh6/1774610888858.png" alt="Al-Quran Bangla" loading="lazy">
         </div>
-        <h3 class="project-title">Al-Quran Bangla</h3>
-        <p class="project-desc">A beautifully crafted Al-Quran web app with full Bangla translation. Clean UI, fast access to all surahs and verses, built to make the Quran accessible to everyone.</p>
-        <div class="project-footer">
-          <a href="https://foysalhridoy.github.io/Al-Quran/" target="_blank" rel="noopener noreferrer" class="project-live-btn">
-            <span class="live-dot"></span><span>Live Demo</span><span class="btn-arrow">→</span>
-          </a>
-          <span class="project-type-tag">Web App</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card reveal">
-      <div class="project-top-bar"></div>
-      <div class="project-preview">
-        <div class="project-preview-num">PROJECT_02</div>
-        <img src="https://i.postimg.cc/Y0WnZbJC/1774611152512.png" alt="Movie Website" loading="lazy">
-      </div>
-      <div class="project-body">
-        <div class="project-meta-row">
-          <!-- no project number, no featured badge -->
-        </div>
-        <h3 class="project-title">Movie Website</h3>
-        <p class="project-desc">A slick movie browsing website. Explore films, view details, and get the cinema experience right in your browser. Clean design meets great content.</p>
-        <div class="project-footer">
-          <a href="https://foysalhridoy.github.io/WWH/" target="_blank" rel="noopener noreferrer" class="project-live-btn">
-            <span class="live-dot"></span><span>Live Demo</span><span class="btn-arrow">→</span>
-          </a>
-          <span class="project-type-tag">Web App</span>
+        <div class="project-body">
+          <h3 class="project-title">Al-Quran Bangla</h3>
+          <p class="project-desc">A beautifully crafted Al-Quran web app with full Bangla translation. Clean UI, fast access to all surahs and verses, built to make the Quran accessible to everyone.</p>
+          <div class="project-footer">
+            <a href="https://foysalhridoy.github.io/Al-Quran/" target="_blank" rel="noopener noreferrer" class="project-live-btn">
+              <span class="live-dot"></span><span>Live Demo</span><span class="btn-arrow">→</span>
+            </a>
+            <span class="project-type-tag">Web App</span>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="project-card reveal">
       <div class="project-top-bar"></div>
-      <div class="project-preview">
-        <div class="project-preview-num">PROJECT_03</div>
-        <img src="https://i.postimg.cc/d3jdhCCV/1774611284398.png" alt="QR Code Generator" loading="lazy">
-      </div>
-      <div class="project-body">
-        <div class="project-meta-row">
-          <!-- no project number -->
+      <div class="project-corner-tl"></div>
+      <div class="project-corner-br"></div>
+      <div class="project-card-inner">
+        <div class="project-preview">
+          <div class="project-preview-num">PROJECT_02</div>
+          <img src="https://i.postimg.cc/Y0WnZbJC/1774611152512.png" alt="Movie Website" loading="lazy">
         </div>
-        <h3 class="project-title">QR Code Generator</h3>
-        <p class="project-desc">Generate custom QR codes instantly for any URL, text or data. Fast, smart and beautifully simple. Your one-stop QR solution.</p>
-        <div class="project-footer">
-          <a href="https://foysal01.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-live-btn">
-            <span class="live-dot"></span><span>Live Demo</span><span class="btn-arrow">→</span>
-          </a>
-          <span class="project-type-tag">Tool</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card reveal">
-      <div class="project-top-bar"></div>
-      <div class="project-preview">
-        <div class="project-preview-num">PROJECT_04</div>
-        <img src="https://i.postimg.cc/sD1DQS7b/1774611418324.png" alt="Smart Calendar" loading="lazy">
-      </div>
-      <div class="project-body">
-        <div class="project-meta-row">
-          <!-- no project number -->
-        </div>
-        <h3 class="project-title">Smart Calendar</h3>
-        <p class="project-desc">A real-time day, time and calendar app. Know exactly where you are in time, built with precision and a clean, intuitive interface.</p>
-        <div class="project-footer">
-          <a href="https://foysal02.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-live-btn">
-            <span class="live-dot"></span><span>Live Demo</span><span class="btn-arrow">→</span>
-          </a>
-          <span class="project-type-tag">Utility</span>
+        <div class="project-body">
+          <h3 class="project-title">Movie Website</h3>
+          <p class="project-desc">A slick movie browsing website. Explore films, view details, and get the cinema experience right in your browser. Clean design meets great content.</p>
+          <div class="project-footer">
+            <a href="https://foysalhridoy.github.io/WWH/" target="_blank" rel="noopener noreferrer" class="project-live-btn">
+              <span class="live-dot"></span><span>Live Demo</span><span class="btn-arrow">→</span>
+            </a>
+            <span class="project-type-tag">Web App</span>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="project-card reveal">
       <div class="project-top-bar"></div>
-      <div class="project-preview">
-        <div class="project-preview-num">PROJECT_05</div>
-        <img src="https://i.postimg.cc/Y0F7RNRj/1774611502413.png" alt="Photo Resizer" loading="lazy">
-      </div>
-      <div class="project-body">
-        <div class="project-meta-row">
-          <!-- no project number -->
+      <div class="project-corner-tl"></div>
+      <div class="project-corner-br"></div>
+      <div class="project-card-inner">
+        <div class="project-preview">
+          <div class="project-preview-num">PROJECT_03</div>
+          <img src="https://i.postimg.cc/d3jdhCCV/1774611284398.png" alt="QR Code Generator" loading="lazy">
         </div>
-        <h3 class="project-title">Photo Resizer</h3>
-        <p class="project-desc">Resize, compress, and optimize your photos directly in the browser. No uploads to servers. Your privacy is respected, fully client-side.</p>
-        <div class="project-footer">
-          <a href="https://foysal03.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-live-btn">
-            <span class="live-dot"></span><span>Live Demo</span><span class="btn-arrow">→</span>
-          </a>
-          <span class="project-type-tag">Tool</span>
+        <div class="project-body">
+          <h3 class="project-title">QR Code Generator</h3>
+          <p class="project-desc">Generate custom QR codes instantly for any URL, text or data. Fast, smart and beautifully simple. Your one-stop QR solution.</p>
+          <div class="project-footer">
+            <a href="https://foysal01.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-live-btn">
+              <span class="live-dot"></span><span>Live Demo</span><span class="btn-arrow">→</span>
+            </a>
+            <span class="project-type-tag">Tool</span>
+          </div>
         </div>
       </div>
     </div>
 
+    <div class="project-card reveal">
+      <div class="project-top-bar"></div>
+      <div class="project-corner-tl"></div>
+      <div class="project-corner-br"></div>
+      <div class="project-card-inner">
+        <div class="project-preview">
+          <div class="project-preview-num">PROJECT_04</div>
+          <img src="https://i.postimg.cc/sD1DQS7b/1774611418324.png" alt="Smart Calendar" loading="lazy">
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Smart Calendar</h3>
+          <p class="project-desc">A real-time day, time and calendar app. Know exactly where you are in time, built with precision and a clean, intuitive interface.</p>
+          <div class="project-footer">
+            <a href="https://foysal02.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-live-btn">
+              <span class="live-dot"></span><span>Live Demo</span><span class="btn-arrow">→</span>
+            </a>
+            <span class="project-type-tag">Utility</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-top-bar"></div>
+      <div class="project-corner-tl"></div>
+      <div class="project-corner-br"></div>
+      <div class="project-card-inner">
+        <div class="project-preview">
+          <div class="project-preview-num">PROJECT_05</div>
+          <img src="https://i.postimg.cc/Y0F7RNRj/1774611502413.png" alt="Photo Resizer" loading="lazy">
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">Photo Resizer</h3>
+          <p class="project-desc">Resize, compress, and optimize your photos directly in the browser. No uploads to servers. Your privacy is respected, fully client-side.</p>
+          <div class="project-footer">
+            <a href="https://foysal03.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-live-btn">
+              <span class="live-dot"></span><span>Live Demo</span><span class="btn-arrow">→</span>
+            </a>
+            <span class="project-type-tag">Tool</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GITHUB SECTION — Standalone -->
+<section id="github-section">
+  <div class="section-header reveal">
+    <span class="section-num">05</span>
+    <h2 class="section-title">GitHub</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="github-section-inner">
+    <div class="github-stats-section reveal">
+      <div class="github-stats-card" id="githubStatsCard">
+        <div class="github-loading">
+          <span class="github-loading-dots">Loading GitHub stats</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="github-repos-section reveal">
+      <div class="github-chart-container">
+        <div class="repos-title"><i class="devicon-github-original"></i> Top Contributed Repositories</div>
+        <div id="github-repos-list" class="repo-list"><div class="loading-repos">Loading repositories from GitHub...</div></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1593,21 +1660,6 @@ footer span { color: var(--accent); }
         <div class="cc-label">Facebook</div><div class="cc-value">Md.Ferdous Foysal Hridoy</div>
         <span class="cc-arrow">↗</span>
       </a>
-    </div>
-
-    <div class="github-stats-section reveal">
-      <div class="github-stats-card" id="githubStatsCard">
-        <div class="github-loading">
-          <span class="github-loading-dots">Loading GitHub stats</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="github-repos-section reveal">
-      <div class="github-chart-container">
-        <div class="repos-title"><i class="devicon-github-original"></i> Top Contributed Repositories</div>
-        <div id="github-repos-list" class="repo-list"><div class="loading-repos">Loading repositories from GitHub...</div></div>
-      </div>
     </div>
 
     <div class="contact-form-section reveal">
