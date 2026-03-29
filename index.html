@@ -457,7 +457,7 @@ section { position: relative; z-index: 2; padding: 4rem 6rem 3rem; }
   border: 2px solid rgba(110,231,247,0.28);
   padding: 1.4rem 1rem; border-radius: 6px;
   text-align: center; font-family: var(--font-mono); font-size: .72rem;
-  letter-spacing: .08em; transition: all .25s; position: relative; overflow: hidden;
+  letter-spacing: .08em; transition: all .25s; position: relative; overflow: visible;
   cursor: default; color: var(--text2); font-weight: 300;
   box-shadow: 0 2px 10px rgba(110,231,247,0.06);
 }
@@ -1233,11 +1233,71 @@ footer span { color: var(--accent); }
 #scroll-top:hover { border-color: var(--accent); box-shadow: var(--glow-strong); transform: translateY(-3px) scale(1.06); }
 #scroll-top:hover .arrow-icon { transform: translateY(-2px); }
 
-@media (max-width:1100px){section{padding:4rem 3rem 3rem;}#hero{gap:2.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:900px){nav{padding:1rem 1.5rem;}section{padding:3.5rem 1.8rem 3rem;}#hero{grid-template-columns:1fr;gap:3rem;padding-top:7rem;}.hero-photo{order:-1;}.photo-wrap{width:210px;height:210px;}#about{grid-template-columns:1fr;gap:2.5rem;}.skills-grid{grid-template-columns:repeat(3,1fr);}.contact-cards{grid-template-columns:repeat(2,1fr);}.edu-timeline::before{left:36px;}.gmail-hero-card{padding:1.7rem 1.8rem;gap:1.4rem;}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:700px){section{padding:3rem 1.2rem 2.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.about-stats{grid-template-columns:1fr 1fr;}.projects-grid{grid-template-columns:1fr;}.edu-item{grid-template-columns:58px 1fr;gap:0 1rem;}.edu-node{width:58px;height:58px;font-size:1.3rem;border-radius:14px;}.edu-timeline::before{left:29px;}.gmail-hero-card{flex-direction:column;text-align:center;padding:1.7rem 1.5rem;}.gmail-hero-content{text-align:center;}.gmail-primary-label{justify-content:center;}.gmail-sub-text{justify-content:center;flex-wrap:wrap;}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:600px){.nav-hamburger{display:flex;}.nav-links{display:none!important;}.projects-grid{grid-template-columns:1fr;}.skills-grid{grid-template-columns:repeat(2,1fr);}.contact-big{font-size:clamp(1.9rem,8.5vw,2.8rem);}.contact-cards{grid-template-columns:repeat(2,1fr);}#scroll-top{bottom:1.3rem;right:1.3rem;width:42px;height:42px;}.github-stats-grid{grid-template-columns:1fr 1fr;}}
-@media (max-width:480px){nav{padding:.9rem 1rem;}.nav-right{gap:.7rem;}.hero-name{font-size:clamp(1.9rem,7.5vw,2.8rem);}.hero-cta{flex-direction:column;align-items:flex-start;}.contact-cards{grid-template-columns:1fr 1fr;}.stat-num{font-size:1.65rem;}.edu-card{padding:1.4rem 1.2rem;}.gmail-address{font-size:.82rem;}.github-stats-grid{grid-template-columns:1fr 1fr;}}
+/* ─── Availability Badge — always visible ─── */
+#avail-badge {
+  position: fixed;
+  /* Sit flush on the left edge, rotated so text reads bottom-to-top */
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg) translateX(-50%);
+  transform-origin: 0 50%;
+  z-index: 150;
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  font-family: var(--font-mono);
+  font-size: .58rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--card);
+  border: 1px solid rgba(110,231,247,.35);
+  /* rounded on the bottom side (which visually faces right) */
+  padding: .45rem 1.1rem;
+  border-radius: 0 0 10px 10px;
+  white-space: nowrap;
+  box-shadow: 0 4px 18px rgba(110,231,247,.12);
+  pointer-events: none;
+  /* no transition needed — always visible */
+}
+[data-theme="light"] #avail-badge {
+  background: rgba(255,252,247,0.96);
+  border-color: rgba(13,116,144,.28);
+}
+#avail-badge .ab-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #34a853; flex-shrink: 0;
+  animation: abPulse 2s infinite;
+}
+@keyframes abPulse {
+  0%,100%{box-shadow:0 0 0 0 rgba(52,168,83,.5);}
+  50%{box-shadow:0 0 0 5px rgba(52,168,83,0);}
+}
+
+/* ─── Skill Tooltips ─── */
+.skill-tooltip {
+  position: fixed;
+  background: var(--card);
+  border: 1px solid rgba(110,231,247,.3);
+  border-radius: 8px;
+  padding: .45rem .85rem;
+  font-family: var(--font-mono);
+  font-size: .58rem;
+  color: var(--text2);
+  letter-spacing: .04em;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .2s;
+  box-shadow: 0 6px 22px rgba(0,0,0,.35);
+  z-index: 9990;
+  font-weight: 300;
+}
+[data-theme="light"] .skill-tooltip { border-color: rgba(13,116,144,.28); }
+
+/* ─── Cursor Trail ─── */
+#trail-canvas { position: fixed; inset: 0; z-index: 9997; pointer-events: none; }
+@media (pointer: coarse) { #trail-canvas { display: none; } }
 
 /* ─── Reading Progress Bar ─── */
 #read-progress {
@@ -1250,146 +1310,24 @@ footer span { color: var(--accent); }
   pointer-events: none;
 }
 
-/* ─── Availability Badge ─── */
-#avail-badge {
-  position: fixed; left: -104px; top: 50%;
-  transform: translateY(-50%) rotate(-90deg);
-  z-index: 150; display: flex; align-items: center; gap: .55rem;
-  font-family: var(--font-mono); font-size: .58rem; letter-spacing: .22em;
-  text-transform: uppercase; color: var(--accent);
-  background: var(--card); border: 1px solid rgba(110,231,247,.25);
-  padding: .45rem 1.1rem; border-radius: 0 0 10px 10px;
-  transition: left .38s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
-  cursor: default; white-space: nowrap;
-  box-shadow: 0 4px 18px rgba(110,231,247,.1);
-}
-#avail-badge:hover {
-  left: -88px;
-  box-shadow: 0 0 24px rgba(110,231,247,.28);
-  border-color: rgba(110,231,247,.5);
-}
-#avail-badge .ab-dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: #34a853; flex-shrink: 0;
-  animation: abPulse 2s infinite;
-  transform: rotate(90deg);
-}
-@keyframes abPulse {
-  0%,100%{box-shadow:0 0 0 0 rgba(52,168,83,.5);}
-  50%{box-shadow:0 0 0 5px rgba(52,168,83,0);}
-}
-[data-theme="light"] #avail-badge {
-  background: rgba(255,252,247,0.96);
-  border-color: rgba(13,116,144,.28);
-}
-
-/* ─── Keyboard Panel ─── */
-#kbd-overlay {
-  position: fixed; inset: 0; z-index: 9000;
-  background: rgba(11,15,23,.88); backdrop-filter: blur(22px);
-  display: none; align-items: center; justify-content: center;
-}
-@keyframes kbdFadeIn { from{opacity:0;transform:scale(.96);}to{opacity:1;transform:scale(1);} }
-#kbd-overlay.open { display: flex; animation: kbdFadeIn .22s ease; }
-[data-theme="light"] #kbd-overlay { background: rgba(248,245,240,.92); }
-#kbd-panel {
-  background: var(--card); border: 1.5px solid rgba(110,231,247,.22);
-  border-radius: 22px; padding: 2.4rem 2.8rem; min-width: 360px; max-width: 90vw;
-  box-shadow: 0 0 80px rgba(110,231,247,.12), 0 32px 80px rgba(0,0,0,.55);
-}
-#kbd-panel h3 {
-  font-family: var(--font-head); font-size: 1.3rem; font-weight: 900;
-  letter-spacing: -.03em; color: var(--accent); margin-bottom: 1.8rem;
-  display: flex; align-items: center; gap: .7rem;
-}
-#kbd-panel h3 span { color: var(--text); }
-.kbd-list { display: flex; flex-direction: column; gap: .75rem; }
-.kbd-row {
-  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
-  font-family: var(--font-mono); font-size: .72rem; color: var(--text2);
-  padding-bottom: .75rem; border-bottom: 1px solid var(--border2); font-weight: 300;
-}
-.kbd-row:last-child { border-bottom: none; padding-bottom: 0; }
-.kbd-key {
-  font-family: var(--font-mono); font-size: .65rem; font-weight: 600;
-  color: var(--accent); background: rgba(110,231,247,.08);
-  border: 1px solid rgba(110,231,247,.25); border-radius: 6px;
-  padding: .22rem .65rem; min-width: 32px; text-align: center;
-  box-shadow: 0 2px 0 rgba(110,231,247,.2); display: inline-block;
-}
-.kbd-close-hint {
-  margin-top: 1.5rem; text-align: center;
-  font-family: var(--font-mono); font-size: .58rem;
-  color: var(--muted); letter-spacing: .1em; font-weight: 300;
-}
-[data-theme="light"] #kbd-panel { border-color: rgba(13,116,144,.2); }
-[data-theme="light"] .kbd-key { background: rgba(13,116,144,.07); border-color: rgba(13,116,144,.25); }
-
-/* ─── ? button in nav ─── */
-#kbd-hint-btn {
-  font-family: var(--font-mono); font-size: .65rem; font-weight: 600;
-  color: var(--muted); background: var(--card);
-  border: 1px solid var(--border); border-radius: 6px;
-  width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
-  cursor: none; transition: color .2s, border-color .2s, box-shadow .2s; flex-shrink: 0;
-}
-#kbd-hint-btn:hover { color: var(--accent); border-color: rgba(110,231,247,.4); box-shadow: 0 0 14px rgba(110,231,247,.18); }
-
-/* ─── Cursor Trail ─── */
-#trail-canvas { position: fixed; inset: 0; z-index: 9997; pointer-events: none; }
-@media (pointer: coarse) { #trail-canvas { display: none; } }
-
-/* ─── Footer Clock ─── */
-#footer-clock { font-family: var(--font-mono); font-size: .6rem; color: var(--muted); letter-spacing: .1em; display: block; margin-top: .4rem; font-weight: 300; }
-#footer-clock .clock-time { color: var(--accent); font-weight: 500; }
-
-/* ─── Skill Tooltips ─── */
-.skill-tooltip {
-  position: absolute; bottom: calc(100% + 10px); left: 50%;
-  transform: translateX(-50%) translateY(6px);
-  background: var(--card); border: 1px solid rgba(110,231,247,.3);
-  border-radius: 8px; padding: .45rem .85rem;
-  font-family: var(--font-mono); font-size: .58rem; color: var(--text2);
-  letter-spacing: .04em; white-space: nowrap; pointer-events: none;
-  opacity: 0; transition: opacity .2s, transform .2s;
-  box-shadow: 0 6px 22px rgba(0,0,0,.35); z-index: 20; font-weight: 300;
-}
-.skill-pill { position: relative; }
-.skill-pill:hover .skill-tooltip { opacity: 1; transform: translateX(-50%) translateY(0); }
-[data-theme="light"] .skill-tooltip { border-color: rgba(13,116,144,.28); }
-
 /* ─── Active nav ─── */
 .nav-links a.nav-active { color: var(--accent) !important; }
 .nav-links a.nav-active::after { width: 100% !important; }
 
+@media (max-width:1100px){section{padding:4rem 3rem 3rem;}#hero{gap:2.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:900px){nav{padding:1rem 1.5rem;}section{padding:3.5rem 1.8rem 3rem;}#hero{grid-template-columns:1fr;gap:3rem;padding-top:7rem;}.hero-photo{order:-1;}.photo-wrap{width:210px;height:210px;}#about{grid-template-columns:1fr;gap:2.5rem;}.skills-grid{grid-template-columns:repeat(3,1fr);}.contact-cards{grid-template-columns:repeat(2,1fr);}.edu-timeline::before{left:36px;}.gmail-hero-card{padding:1.7rem 1.8rem;gap:1.4rem;}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:700px){section{padding:3rem 1.2rem 2.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.about-stats{grid-template-columns:1fr 1fr;}.projects-grid{grid-template-columns:1fr;}.edu-item{grid-template-columns:58px 1fr;gap:0 1rem;}.edu-node{width:58px;height:58px;font-size:1.3rem;border-radius:14px;}.edu-timeline::before{left:29px;}.gmail-hero-card{flex-direction:column;text-align:center;padding:1.7rem 1.5rem;}.gmail-hero-content{text-align:center;}.gmail-primary-label{justify-content:center;}.gmail-sub-text{justify-content:center;flex-wrap:wrap;}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:600px){.nav-hamburger{display:flex;}.nav-links{display:none!important;}.projects-grid{grid-template-columns:1fr;}.skills-grid{grid-template-columns:repeat(2,1fr);}.contact-big{font-size:clamp(1.9rem,8.5vw,2.8rem);}.contact-cards{grid-template-columns:repeat(2,1fr);}#scroll-top{bottom:1.3rem;right:1.3rem;width:42px;height:42px;}.github-stats-grid{grid-template-columns:1fr 1fr;}}
+@media (max-width:480px){nav{padding:.9rem 1rem;}.nav-right{gap:.7rem;}.hero-name{font-size:clamp(1.9rem,7.5vw,2.8rem);}.hero-cta{flex-direction:column;align-items:flex-start;}.contact-cards{grid-template-columns:1fr 1fr;}.stat-num{font-size:1.65rem;}.edu-card{padding:1.4rem 1.2rem;}.gmail-address{font-size:.82rem;}.github-stats-grid{grid-template-columns:1fr 1fr;}}
 </style>
 </head>
 <body>
 
-<!-- ═══ FEATURE ADDITIONS ═══ -->
 <div id="read-progress"></div>
 
 <div id="avail-badge">
   <span class="ab-dot"></span>
   Open to Collaborate
-</div>
-
-<div id="kbd-overlay">
-  <div id="kbd-panel">
-    <h3>&#9000; <span>Keyboard Shortcuts</span></h3>
-    <div class="kbd-list">
-      <div class="kbd-row"><span>Go to About</span><kbd class="kbd-key">A</kbd></div>
-      <div class="kbd-row"><span>Go to Education</span><kbd class="kbd-key">E</kbd></div>
-      <div class="kbd-row"><span>Go to Skills</span><kbd class="kbd-key">S</kbd></div>
-      <div class="kbd-row"><span>Go to Projects</span><kbd class="kbd-key">P</kbd></div>
-      <div class="kbd-row"><span>Go to GitHub</span><kbd class="kbd-key">G</kbd></div>
-      <div class="kbd-row"><span>Go to Contact</span><kbd class="kbd-key">C</kbd></div>
-      <div class="kbd-row"><span>Toggle Theme</span><kbd class="kbd-key">T</kbd></div>
-      <div class="kbd-row"><span>Scroll to Top</span><kbd class="kbd-key">H</kbd></div>
-      <div class="kbd-row"><span>Show / Hide Shortcuts</span><kbd class="kbd-key">?</kbd></div>
-    </div>
-    <p class="kbd-close-hint">Press <kbd class="kbd-key">Esc</kbd> or <kbd class="kbd-key">?</kbd> to close</p>
-  </div>
 </div>
 
 <canvas id="trail-canvas"></canvas>
@@ -2095,7 +2033,7 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
   }
   window.addEventListener('scroll', updateReadProgress, { passive: true });
 
-  /* 2. Fix scroll-top progress circumference (133 -> 125.66) */
+  /* 2. Fix scroll-top progress circumference */
   const circle = document.querySelector('#scroll-top svg.progress-ring circle');
   if (circle) {
     const R = 20, C = 2 * Math.PI * R;
@@ -2107,40 +2045,7 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     }, { passive: true });
   }
 
-  /* 3. Keyboard Panel + Hotkeys */
-  const kbdOverlay = document.getElementById('kbd-overlay');
-  function toggleKbd() {
-    kbdOverlay.classList.toggle('open');
-    document.body.style.overflow = kbdOverlay.classList.contains('open') ? 'hidden' : '';
-  }
-  kbdOverlay.addEventListener('click', function (e) { if (e.target === kbdOverlay) toggleKbd(); });
-
-  const navRight = document.querySelector('.nav-right');
-  if (navRight) {
-    const kbdBtn = document.createElement('button');
-    kbdBtn.id = 'kbd-hint-btn';
-    kbdBtn.setAttribute('aria-label', 'Keyboard shortcuts');
-    kbdBtn.textContent = '?';
-    navRight.insertBefore(kbdBtn, navRight.firstChild);
-    kbdBtn.addEventListener('click', toggleKbd);
-  }
-
-  const sectionMap = {
-    'a':'#about','e':'#education','s':'#skills',
-    'p':'#projects','g':'#github-section','c':'#contact','h':'#hero'
-  };
-  document.addEventListener('keydown', function (e) {
-    const tag = document.activeElement.tagName;
-    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
-    const key = e.key.toLowerCase();
-    if (key === '?') { toggleKbd(); return; }
-    if (key === 'escape') { if (kbdOverlay.classList.contains('open')) toggleKbd(); return; }
-    if (kbdOverlay.classList.contains('open')) return;
-    if (key === 't') { document.getElementById('themeToggle').click(); return; }
-    if (sectionMap[key]) document.querySelector(sectionMap[key])?.scrollIntoView({ behavior: 'smooth' });
-  });
-
-  /* 4. Active Nav Highlight */
+  /* 3. Active Nav Highlight */
   const navLinks = document.querySelectorAll('.nav-links a');
   const navObs = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
@@ -2153,7 +2058,7 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
   }, { rootMargin: '-40% 0px -55% 0px' });
   document.querySelectorAll('section[id]').forEach(function (s) { navObs.observe(s); });
 
-  /* 5. Cursor Particle Trail */
+  /* 4. Cursor Particle Trail */
   if (window.matchMedia('(pointer: fine)').matches) {
     const tc = document.getElementById('trail-canvas');
     const tctx = tc.getContext('2d');
@@ -2182,24 +2087,7 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     })();
   }
 
-  /* 6. Live Dhaka Clock */
-  const footerP = document.querySelector('footer p');
-  if (footerP) {
-    const clockEl = document.createElement('span');
-    clockEl.id = 'footer-clock';
-    footerP.parentNode.appendChild(clockEl);
-    function updateClock() {
-      const now = new Date().toLocaleString('en-US', {
-        timeZone:'Asia/Dhaka', hour:'2-digit', minute:'2-digit',
-        second:'2-digit', hour12:true, weekday:'short'
-      });
-      clockEl.innerHTML = 'Dhaka, BD &nbsp;&middot;&nbsp; <span class="clock-time">' + now + '</span>';
-    }
-    updateClock();
-    setInterval(updateClock, 1000);
-  }
-
-  /* 7. Skill Tooltips */
+  /* 5. Skill Tooltips — fixed positioning to avoid overflow clipping */
   const skillDesc = {
     'C':'System programming & fundamentals',
     'C#':'.NET, Unity & enterprise apps',
@@ -2212,6 +2100,7 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     'MySQL':'Relational DB & query design',
     'Figma':'UI/UX prototyping & design'
   };
+
   document.querySelectorAll('.skill-pill').forEach(function (pill) {
     const label = pill.textContent.trim();
     const desc = skillDesc[label];
@@ -2219,7 +2108,31 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     const tip = document.createElement('div');
     tip.className = 'skill-tooltip';
     tip.textContent = desc;
-    pill.appendChild(tip);
+    document.body.appendChild(tip);
+
+    pill.addEventListener('mouseenter', function () {
+      const rect = pill.getBoundingClientRect();
+      tip.style.opacity = '0';
+      tip.style.display = 'block';
+      // position after it's in DOM so offsetWidth is available
+      requestAnimationFrame(function() {
+        const tw = tip.offsetWidth;
+        const th = tip.offsetHeight;
+        let left = rect.left + rect.width / 2 - tw / 2;
+        let top  = rect.top - th - 10;
+        // keep within viewport
+        if (left < 8) left = 8;
+        if (left + tw > window.innerWidth - 8) left = window.innerWidth - tw - 8;
+        if (top < 8) top = rect.bottom + 10;
+        tip.style.left = left + 'px';
+        tip.style.top  = top  + 'px';
+        tip.style.opacity = '1';
+      });
+    });
+
+    pill.addEventListener('mouseleave', function () {
+      tip.style.opacity = '0';
+    });
   });
 
 })();
