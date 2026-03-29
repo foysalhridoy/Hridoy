@@ -498,7 +498,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 
 /* ═══════════════════════════════════════════════════════════
    PROJECTS — CINEMATIC REDESIGN
-   Ultra-premium cards with depth, parallax glow, and drama
 ═══════════════════════════════════════════════════════════ */
 
 #projects { background: var(--bg); }
@@ -518,7 +517,6 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   display: flex;
   flex-direction: column;
   cursor: none;
-  /* Layered border effect via box-shadow */
   box-shadow:
     0 0 0 1px rgba(110,231,247,0.10),
     0 8px 32px rgba(0,0,0,0.45),
@@ -546,7 +544,7 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   border-color: rgba(13,116,144,0.18);
 }
 
-/* Ambient glow orb behind card */
+/* Ambient glow orb behind card — REMOVED hover conic border effect */
 .project-card::before {
   content: '';
   position: absolute;
@@ -560,39 +558,18 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 }
 .project-card:hover::before { opacity: 1; }
 
-/* Animated rainbow border ring on hover */
-.project-card::after {
-  content: '';
-  position: absolute;
-  inset: -1.5px;
-  border-radius: 23px;
-  background: conic-gradient(
-    from var(--angle, 0deg),
-    var(--accent) 0%,
-    var(--accent2) 25%,
-    var(--accent3) 50%,
-    var(--accent) 75%,
-    var(--accent2) 100%
-  );
-  opacity: 0;
-  z-index: -1;
-  transition: opacity .4s;
-  pointer-events: none;
-}
-.project-card:hover::after { opacity: 1; animation: spinConic 3s linear infinite; }
-@property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
-@keyframes spinConic { to { --angle: 360deg; } }
+/* ::after conic spinner removed entirely */
 
 .project-card:hover {
   transform: translateY(-14px) scale(1.018);
   box-shadow:
-    0 0 0 1px transparent,
+    0 0 0 1px rgba(110,231,247,0.18),
     0 32px 80px rgba(0,0,0,0.6),
     0 0 60px rgba(110,231,247,0.12),
     0 0 120px rgba(110,231,247,0.06);
 }
 .project-card:hover .project-card-inner {
-  border-color: transparent;
+  border-color: rgba(110,231,247,0.28);
 }
 
 [data-theme="light"] .project-card::before {
@@ -600,7 +577,7 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 }
 [data-theme="light"] .project-card:hover {
   box-shadow:
-    0 0 0 1px transparent,
+    0 0 0 1px rgba(13,116,144,0.22),
     0 28px 70px rgba(0,0,0,0.18),
     0 0 50px rgba(13,116,144,0.15);
 }
@@ -747,21 +724,7 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   position: relative; z-index: 2;
 }
 
-/* Inner separator line */
-.project-body::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 1.8rem; right: 1.8rem;
-  height: 1px;
-  background: linear-gradient(90deg,
-    rgba(110,231,247,0.12),
-    rgba(129,140,248,0.08),
-    transparent
-  );
-}
-[data-theme="light"] .project-body::before {
-  background: linear-gradient(90deg, rgba(13,116,144,.18), rgba(67,56,202,.1), transparent);
-}
+/* REMOVED: horizontal separator line from project-body::before */
 
 .project-meta-row {
   display: flex; align-items: center; justify-content: flex-end;
@@ -1163,6 +1126,7 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
 .cc-arrow { position: absolute; bottom: .9rem; right: 1.1rem; font-size: .8rem; opacity: 0; transform: translateX(-5px) translateY(5px); transition: opacity .25s,transform .25s; color: var(--accent); }
 .contact-card:hover .cc-arrow { opacity: .75; transform: translateX(0) translateY(0); }
 
+/* ── Contact Form ── */
 .contact-form-section { margin: 2rem auto; max-width: 580px; width: 100%; }
 .contact-form-container {
   background: var(--form-bg);
@@ -1187,13 +1151,20 @@ section { position: relative; z-index: 2; padding: 7rem 6rem 5rem; }
   box-shadow: 0 8px 32px rgba(13,116,144,0.2);
 }
 
+/* ── Form title with gradient "Say Hello" effect ── */
 .form-title {
-  font-family: var(--font-head); font-size: 1.18rem; font-weight: 700;
-  margin-bottom: 1.8rem; color: var(--accent); letter-spacing: -.01em;
-  display: flex; align-items: center; gap: .6rem; justify-content: center;
+  font-family: var(--font-head); font-size: 1.35rem; font-weight: 900;
+  margin-bottom: 1.8rem; letter-spacing: -.03em;
+  display: flex; align-items: center; gap: 0; justify-content: center;
+  line-height: 1.1;
 }
-.form-title span { font-size: 1.3rem; animation: bounce 2s ease-in-out infinite; font-style: normal; }
-@keyframes bounce { 0%,100%{transform:translateY(0);}50%{transform:translateY(-3px);} }
+.form-title-grad {
+  background: linear-gradient(100deg, var(--accent3), var(--accent), var(--accent2));
+  background-size: 200%;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  animation: gradShift 5s ease infinite;
+}
+
 .form-group { margin-bottom: 1.2rem; text-align: left; }
 
 .form-group input, .form-group textarea {
@@ -1664,7 +1635,8 @@ footer span { color: var(--accent); }
 
     <div class="contact-form-section reveal">
       <div class="contact-form-container">
-        <div class="form-title"><span>💌</span> Send a Message</div>
+        <!-- CHANGED: removed 💌 emoji, added gradient "Send Me a Message" heading -->
+        <div class="form-title"><span class="form-title-grad">Send Me a Message</span></div>
         <form id="contactForm">
           <div class="form-group">
             <input type="text"  id="senderName"    name="name"    placeholder="Your Name"     required autocomplete="name">
@@ -1833,17 +1805,18 @@ async function fetchGitHubStats() {
     const topLangs = Object.entries(langMap).sort((a,b) => b[1]-a[1]).slice(0,5);
     const totalLangRepos = topLangs.reduce((s,[,c]) => s+c, 0);
 
+    // FIXED: JavaScript chip uses darker color in light theme via a class-based approach
     const langColors = {
-      JavaScript: { bg:'rgba(247,223,30,.12)', border:'rgba(247,223,30,.28)', color:'#f7df1e' },
-      Python:     { bg:'rgba(55,118,171,.12)', border:'rgba(55,118,171,.28)', color:'#3776ab' },
-      HTML:       { bg:'rgba(227,79,38,.12)',  border:'rgba(227,79,38,.28)',  color:'#e34f26' },
-      CSS:        { bg:'rgba(21,114,182,.12)', border:'rgba(21,114,182,.28)', color:'#1572b6' },
-      Java:       { bg:'rgba(248,152,32,.12)', border:'rgba(248,152,32,.28)', color:'#f89820' },
-      'C#':       { bg:'rgba(155,73,147,.12)', border:'rgba(155,73,147,.28)', color:'#9b4993' },
-      'C++':      { bg:'rgba(101,154,210,.12)',border:'rgba(101,154,210,.28)',color:'#659ad2' },
-      C:          { bg:'rgba(168,185,204,.12)',border:'rgba(168,185,204,.28)',color:'#a8b9cc' },
+      JavaScript: { bg:'rgba(180,140,0,.12)', border:'rgba(180,140,0,.35)', color:'#a07800', darkBg:'rgba(247,223,30,.12)', darkBorder:'rgba(247,223,30,.28)', darkColor:'#f7df1e' },
+      Python:     { bg:'rgba(55,118,171,.12)', border:'rgba(55,118,171,.28)', color:'#3776ab', darkBg:'rgba(55,118,171,.12)', darkBorder:'rgba(55,118,171,.28)', darkColor:'#3776ab' },
+      HTML:       { bg:'rgba(227,79,38,.12)',  border:'rgba(227,79,38,.28)',  color:'#e34f26', darkBg:'rgba(227,79,38,.12)', darkBorder:'rgba(227,79,38,.28)', darkColor:'#e34f26' },
+      CSS:        { bg:'rgba(21,114,182,.12)', border:'rgba(21,114,182,.28)', color:'#1572b6', darkBg:'rgba(21,114,182,.12)', darkBorder:'rgba(21,114,182,.28)', darkColor:'#1572b6' },
+      Java:       { bg:'rgba(248,152,32,.12)', border:'rgba(248,152,32,.28)', color:'#f89820', darkBg:'rgba(248,152,32,.12)', darkBorder:'rgba(248,152,32,.28)', darkColor:'#f89820' },
+      'C#':       { bg:'rgba(155,73,147,.12)', border:'rgba(155,73,147,.28)', color:'#9b4993', darkBg:'rgba(155,73,147,.12)', darkBorder:'rgba(155,73,147,.28)', darkColor:'#9b4993' },
+      'C++':      { bg:'rgba(101,154,210,.12)',border:'rgba(101,154,210,.28)',color:'#659ad2', darkBg:'rgba(101,154,210,.12)', darkBorder:'rgba(101,154,210,.28)', darkColor:'#659ad2' },
+      C:          { bg:'rgba(168,185,204,.12)',border:'rgba(168,185,204,.28)',color:'#a8b9cc', darkBg:'rgba(168,185,204,.12)', darkBorder:'rgba(168,185,204,.28)', darkColor:'#a8b9cc' },
     };
-    const defColor = { bg:'rgba(232,168,56,.10)', border:'rgba(232,168,56,.22)', color:'#e8a838' };
+    const defColor = { bg:'rgba(232,168,56,.10)', border:'rgba(232,168,56,.22)', color:'#e8a838', darkBg:'rgba(232,168,56,.10)', darkBorder:'rgba(232,168,56,.22)', darkColor:'#e8a838' };
 
     const bars = [
       { label:'Public Repos',  value: Math.min(repoCount, 30), max: 30 },
@@ -1871,15 +1844,18 @@ async function fetchGitHubStats() {
         </div>
       `).join('')}
       ${topLangs.length ? `
-        <div class="github-lang-row">
+        <div class="github-lang-row" id="langRow">
           ${topLangs.map(([lang, count]) => {
             const c = langColors[lang] || defColor;
             const pct = Math.round((count / totalLangRepos) * 100);
-            return `<span class="lang-chip" style="background:${c.bg};border-color:${c.border};color:${c.color}">${lang} ${pct}%</span>`;
+            return `<span class="lang-chip" data-lang="${lang}" data-bg="${c.bg}" data-border="${c.border}" data-color="${c.color}" data-darkbg="${c.darkBg}" data-darkborder="${c.darkBorder}" data-darkcolor="${c.darkColor}" style="background:${c.darkBg};border-color:${c.darkBorder};color:${c.darkColor}">${lang} ${pct}%</span>`;
           }).join('')}
         </div>
       ` : ''}
     `;
+
+    // Apply correct colors based on current theme
+    applyLangChipTheme();
 
     setTimeout(() => {
       card.querySelectorAll('.contrib-bar-fill').forEach(el => {
@@ -1907,6 +1883,26 @@ async function fetchGitHubStats() {
   }
 }
 fetchGitHubStats();
+
+function applyLangChipTheme() {
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  document.querySelectorAll('.lang-chip[data-lang]').forEach(chip => {
+    if (isLight) {
+      chip.style.background   = chip.dataset.bg;
+      chip.style.borderColor  = chip.dataset.border;
+      chip.style.color        = chip.dataset.color;
+    } else {
+      chip.style.background   = chip.dataset.darkbg;
+      chip.style.borderColor  = chip.dataset.darkborder;
+      chip.style.color        = chip.dataset.darkcolor;
+    }
+  });
+}
+
+// Re-apply lang chip colors on theme toggle
+document.getElementById('themeToggle').addEventListener('click', () => {
+  setTimeout(applyLangChipTheme, 10);
+});
 
 async function fetchGitHubRepos() {
   const container = document.getElementById('github-repos-list');
