@@ -193,13 +193,14 @@ nav.scrolled { padding: .85rem 4rem; }
 [data-theme="light"] .toggle-knob::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1.5px dashed rgba(245,158,11,.45); animation: spinSlow 6s linear infinite; }
 @keyframes spinSlow { to { transform: rotate(360deg); } }
 
-section { position: relative; z-index: 2; padding: 4rem 6rem 3rem; }
+/* CHANGE 1: Section padding reduced to remove extra empty space between sections */
+section { position: relative; z-index: 2; padding: 2rem 6rem 1.5rem; }
 
-/* ── FIX 1: Hero top padding reduced for PC ── */
+/* ── Hero top padding preserved for PC ── */
 #hero {
   display: grid; grid-template-columns: 1fr 1fr;
   align-items: center; gap: 4rem;
-  min-height: 100vh; padding-top: 5.5rem; padding-bottom: 2rem;
+  min-height: 100vh; padding-top: 5.5rem; padding-bottom: 0;
 }
 .hero-text { animation: fadeUp .9s ease both; }
 
@@ -299,7 +300,6 @@ section { position: relative; z-index: 2; padding: 4rem 6rem 3rem; }
 .section-title { font-family: var(--font-head); font-size: clamp(1.7rem, 2.8vw, 2.5rem); font-weight: 800; letter-spacing: -.03em; white-space: nowrap; }
 .section-line { flex: 1; height: 1px; background: linear-gradient(90deg,var(--border),transparent); }
 
-/* ── FIX 2: About section top padding reduced for PC ── */
 #about { display: grid; grid-template-columns: 1.25fr .75fr; gap: 5rem; align-items: start; padding-top: 2.5rem; }
 .about-left { display: flex; flex-direction: column; gap: 0; }
 .about-text { font-size: 1.02rem; line-height: 1.9; color: var(--about-text-color); }
@@ -630,20 +630,11 @@ section { position: relative; z-index: 2; padding: 4rem 6rem 3rem; }
 
 .project-top-bar { display: none; }
 
+/* CHANGE 2: Corner dots completely removed */
 .project-corner-tl,
 .project-corner-br {
-  position: absolute;
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-  opacity: 0;
-  transition: opacity .3s .1s;
-  z-index: 10;
+  display: none !important;
 }
-.project-corner-tl { top: 12px; left: 12px; box-shadow: 0 0 12px var(--accent); }
-.project-corner-br { bottom: 12px; right: 12px; background: var(--accent3); box-shadow: 0 0 12px var(--accent3); }
-.project-card:hover .project-corner-tl,
-.project-card:hover .project-corner-br { opacity: 0.7; }
 
 .project-preview-num {
   position: absolute;
@@ -951,7 +942,8 @@ section { position: relative; z-index: 2; padding: 4rem 6rem 3rem; }
 .repo-stats span { display: flex; align-items: center; gap: .3rem; }
 .loading-repos { text-align: center; padding: 2rem; font-family: var(--font-mono); color: var(--muted); font-size: .8rem; font-weight: 300; }
 
-#contact { background: var(--bg); overflow: hidden; position: relative; padding-bottom: 5rem; transition: background .4s; }
+/* CHANGE 3: Contact bottom padding reduced, and mobile footer space reduced */
+#contact { background: var(--bg); overflow: hidden; position: relative; padding-bottom: 2rem; transition: background .4s; }
 .contact-wrap { position: relative; z-index: 2; max-width: 1000px; margin: 0 auto; text-align: center; }
 .contact-headline { font-family: var(--font-head); font-size: clamp(1rem,2.5vw,1.35rem); font-weight: 400; color: var(--muted); letter-spacing: .14em; margin-bottom: .6rem; font-style: italic; opacity: .7; }
 .contact-big { font-family: var(--font-head); font-size: clamp(2.4rem,5.5vw,4.6rem); font-weight: 900; line-height: 1.06; letter-spacing: -.04em; margin-bottom: 1.6rem; }
@@ -1235,7 +1227,6 @@ footer span { color: var(--accent); }
 #scroll-top:hover { border-color: var(--accent); box-shadow: var(--glow-strong); transform: translateY(-3px) scale(1.06); }
 #scroll-top:hover .arrow-icon { transform: translateY(-2px); }
 
-/* ── FIX 3: Availability Badge completely removed ── */
 #avail-badge { display: none !important; }
 
 /* ─── Skill Tooltips ─── */
@@ -1278,10 +1269,11 @@ footer span { color: var(--accent); }
 .nav-links a.nav-active { color: var(--accent) !important; }
 .nav-links a.nav-active::after { width: 100% !important; }
 
-@media (max-width:1100px){section{padding:4rem 3rem 3rem;}#hero{gap:2.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:900px){nav{padding:1rem 1.5rem;}section{padding:3.5rem 1.8rem 3rem;}#hero{grid-template-columns:1fr;gap:3rem;padding-top:7rem;}.hero-photo{order:-1;}.photo-wrap{width:210px;height:210px;}#about{grid-template-columns:1fr;gap:2.5rem;padding-top:3.5rem;}.skills-grid{grid-template-columns:repeat(3,1fr);}.contact-cards{grid-template-columns:repeat(2,1fr);}.edu-timeline::before{left:36px;}.gmail-hero-card{padding:1.7rem 1.8rem;gap:1.4rem;}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:700px){section{padding:3rem 1.2rem 2.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.about-stats{grid-template-columns:1fr 1fr;}.projects-grid{grid-template-columns:1fr;}.edu-item{grid-template-columns:58px 1fr;gap:0 1rem;}.edu-node{width:58px;height:58px;font-size:1.3rem;border-radius:14px;}.edu-timeline::before{left:29px;}.gmail-hero-card{flex-direction:column;text-align:center;padding:1.7rem 1.5rem;}.gmail-hero-content{text-align:center;}.gmail-primary-label{justify-content:center;}.gmail-sub-text{justify-content:center;flex-wrap:wrap;}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:600px){.nav-hamburger{display:flex;}.nav-links{display:none!important;}.projects-grid{grid-template-columns:1fr;}.skills-grid{grid-template-columns:repeat(2,1fr);}.contact-big{font-size:clamp(1.9rem,8.5vw,2.8rem);}.contact-cards{grid-template-columns:repeat(2,1fr);}#scroll-top{bottom:1.3rem;right:1.3rem;width:42px;height:42px;}.github-stats-grid{grid-template-columns:1fr 1fr;}}
+/* ── Responsive ── */
+@media (max-width:1100px){section{padding:2rem 3rem 1.5rem;}#hero{gap:2.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:900px){nav{padding:1rem 1.5rem;}section{padding:2rem 1.8rem 1.5rem;}#hero{grid-template-columns:1fr;gap:3rem;padding-top:7rem;}.hero-photo{order:-1;}.photo-wrap{width:210px;height:210px;}#about{grid-template-columns:1fr;gap:2.5rem;padding-top:2rem;}.skills-grid{grid-template-columns:repeat(3,1fr);}.contact-cards{grid-template-columns:repeat(2,1fr);}.edu-timeline::before{left:36px;}.gmail-hero-card{padding:1.7rem 1.8rem;gap:1.4rem;}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:700px){section{padding:2rem 1.2rem 1.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.about-stats{grid-template-columns:1fr 1fr;}.projects-grid{grid-template-columns:1fr;}.edu-item{grid-template-columns:58px 1fr;gap:0 1rem;}.edu-node{width:58px;height:58px;font-size:1.3rem;border-radius:14px;}.edu-timeline::before{left:29px;}.gmail-hero-card{flex-direction:column;text-align:center;padding:1.7rem 1.5rem;}.gmail-hero-content{text-align:center;}.gmail-primary-label{justify-content:center;}.gmail-sub-text{justify-content:center;flex-wrap:wrap;}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:600px){.nav-hamburger{display:flex;}.nav-links{display:none!important;}.projects-grid{grid-template-columns:1fr;}.skills-grid{grid-template-columns:repeat(2,1fr);}.contact-big{font-size:clamp(1.9rem,8.5vw,2.8rem);}.contact-cards{grid-template-columns:repeat(2,1fr);}#scroll-top{bottom:1.3rem;right:1.3rem;width:42px;height:42px;}.github-stats-grid{grid-template-columns:1fr 1fr;}/* Mobile: footer er upore contact section er extra space komano */#contact{padding-bottom:1rem;}}
 @media (max-width:480px){nav{padding:.9rem 1rem;}.nav-right{gap:.7rem;}.hero-name{font-size:clamp(1.9rem,7.5vw,2.8rem);}.hero-cta{flex-direction:column;align-items:flex-start;}.contact-cards{grid-template-columns:1fr 1fr;}.stat-num{font-size:1.65rem;}.edu-card{padding:1.4rem 1.2rem;}.gmail-address{font-size:.82rem;}.github-stats-grid{grid-template-columns:1fr 1fr;}}
 </style>
 </head>
