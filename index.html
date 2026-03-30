@@ -195,10 +195,11 @@ nav.scrolled { padding: .85rem 4rem; }
 
 section { position: relative; z-index: 2; padding: 4rem 6rem 3rem; }
 
+/* ── FIX 1: Hero top padding reduced for PC ── */
 #hero {
   display: grid; grid-template-columns: 1fr 1fr;
   align-items: center; gap: 4rem;
-  min-height: 100vh; padding-top: 9rem; padding-bottom: 2rem;
+  min-height: 100vh; padding-top: 5.5rem; padding-bottom: 2rem;
 }
 .hero-text { animation: fadeUp .9s ease both; }
 
@@ -298,7 +299,8 @@ section { position: relative; z-index: 2; padding: 4rem 6rem 3rem; }
 .section-title { font-family: var(--font-head); font-size: clamp(1.7rem, 2.8vw, 2.5rem); font-weight: 800; letter-spacing: -.03em; white-space: nowrap; }
 .section-line { flex: 1; height: 1px; background: linear-gradient(90deg,var(--border),transparent); }
 
-#about { display: grid; grid-template-columns: 1.25fr .75fr; gap: 5rem; align-items: start; }
+/* ── FIX 2: About section top padding reduced for PC ── */
+#about { display: grid; grid-template-columns: 1.25fr .75fr; gap: 5rem; align-items: start; padding-top: 2.5rem; }
 .about-left { display: flex; flex-direction: column; gap: 0; }
 .about-text { font-size: 1.02rem; line-height: 1.9; color: var(--about-text-color); }
 .about-text p { margin-bottom: 1.25rem; text-align: justify; }
@@ -1233,49 +1235,8 @@ footer span { color: var(--accent); }
 #scroll-top:hover { border-color: var(--accent); box-shadow: var(--glow-strong); transform: translateY(-3px) scale(1.06); }
 #scroll-top:hover .arrow-icon { transform: translateY(-2px); }
 
-/* ─── Availability Badge — FIXED ─── */
-#avail-badge {
-  position: fixed;
-  left: 0;
-  top: 50%;
-  /* Step 1: center vertically, Step 2: rotate, Step 3: shift up so badge sits on left edge */
-  transform: translateY(-50%) rotate(-90deg) translateY(100%);
-  transform-origin: left center;
-  z-index: 150;
-  display: flex;
-  align-items: center;
-  gap: .55rem;
-  font-family: var(--font-mono);
-  font-size: .58rem;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: var(--accent);
-  background: var(--card);
-  border: 1px solid rgba(110,231,247,.35);
-  padding: .45rem 1.2rem;
-  border-radius: 0 0 10px 10px;
-  white-space: nowrap;
-  box-shadow: 0 4px 18px rgba(110,231,247,.12);
-  pointer-events: none;
-  backdrop-filter: blur(10px);
-}
-[data-theme="light"] #avail-badge {
-  background: rgba(255,252,247,0.96);
-  border-color: rgba(13,116,144,.28);
-}
-#avail-badge .ab-dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: #34a853; flex-shrink: 0;
-  animation: abPulse 2s infinite;
-}
-@keyframes abPulse {
-  0%,100%{box-shadow:0 0 0 0 rgba(52,168,83,.5);}
-  50%{box-shadow:0 0 0 5px rgba(52,168,83,0);}
-}
-/* Hide badge on mobile to avoid overlap */
-@media (max-width: 768px) {
-  #avail-badge { display: none; }
-}
+/* ── FIX 3: Availability Badge completely removed ── */
+#avail-badge { display: none !important; }
 
 /* ─── Skill Tooltips ─── */
 .skill-tooltip {
@@ -1318,7 +1279,7 @@ footer span { color: var(--accent); }
 .nav-links a.nav-active::after { width: 100% !important; }
 
 @media (max-width:1100px){section{padding:4rem 3rem 3rem;}#hero{gap:2.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:900px){nav{padding:1rem 1.5rem;}section{padding:3.5rem 1.8rem 3rem;}#hero{grid-template-columns:1fr;gap:3rem;padding-top:7rem;}.hero-photo{order:-1;}.photo-wrap{width:210px;height:210px;}#about{grid-template-columns:1fr;gap:2.5rem;}.skills-grid{grid-template-columns:repeat(3,1fr);}.contact-cards{grid-template-columns:repeat(2,1fr);}.edu-timeline::before{left:36px;}.gmail-hero-card{padding:1.7rem 1.8rem;gap:1.4rem;}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:900px){nav{padding:1rem 1.5rem;}section{padding:3.5rem 1.8rem 3rem;}#hero{grid-template-columns:1fr;gap:3rem;padding-top:7rem;}.hero-photo{order:-1;}.photo-wrap{width:210px;height:210px;}#about{grid-template-columns:1fr;gap:2.5rem;padding-top:3.5rem;}.skills-grid{grid-template-columns:repeat(3,1fr);}.contact-cards{grid-template-columns:repeat(2,1fr);}.edu-timeline::before{left:36px;}.gmail-hero-card{padding:1.7rem 1.8rem;gap:1.4rem;}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
 @media (max-width:700px){section{padding:3rem 1.2rem 2.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.about-stats{grid-template-columns:1fr 1fr;}.projects-grid{grid-template-columns:1fr;}.edu-item{grid-template-columns:58px 1fr;gap:0 1rem;}.edu-node{width:58px;height:58px;font-size:1.3rem;border-radius:14px;}.edu-timeline::before{left:29px;}.gmail-hero-card{flex-direction:column;text-align:center;padding:1.7rem 1.5rem;}.gmail-hero-content{text-align:center;}.gmail-primary-label{justify-content:center;}.gmail-sub-text{justify-content:center;flex-wrap:wrap;}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
 @media (max-width:600px){.nav-hamburger{display:flex;}.nav-links{display:none!important;}.projects-grid{grid-template-columns:1fr;}.skills-grid{grid-template-columns:repeat(2,1fr);}.contact-big{font-size:clamp(1.9rem,8.5vw,2.8rem);}.contact-cards{grid-template-columns:repeat(2,1fr);}#scroll-top{bottom:1.3rem;right:1.3rem;width:42px;height:42px;}.github-stats-grid{grid-template-columns:1fr 1fr;}}
 @media (max-width:480px){nav{padding:.9rem 1rem;}.nav-right{gap:.7rem;}.hero-name{font-size:clamp(1.9rem,7.5vw,2.8rem);}.hero-cta{flex-direction:column;align-items:flex-start;}.contact-cards{grid-template-columns:1fr 1fr;}.stat-num{font-size:1.65rem;}.edu-card{padding:1.4rem 1.2rem;}.gmail-address{font-size:.82rem;}.github-stats-grid{grid-template-columns:1fr 1fr;}}
