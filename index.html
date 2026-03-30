@@ -29,7 +29,7 @@
   --accent-glow: rgba(110,231,247,0.15);
   --text:    #e2e8f0;
   --text2:   #94a3b8;
-  --muted:   #475569;
+  --muted:   #8b9ab8;
   --card:    rgba(15,23,42,0.8);
   --border:  rgba(110,231,247,0.12);
   --border2: rgba(110,231,247,0.06);
@@ -62,7 +62,7 @@
   --accent-glow: rgba(13,116,144,0.12);
   --text:    #0f172a;
   --text2:   #334155;
-  --muted:   #64748b;
+  --muted:   #4a6080;
   --card:    rgba(255,252,247,0.96);
   --border:  rgba(13,116,144,0.2);
   --border2: rgba(13,116,144,0.08);
@@ -366,7 +366,8 @@ section { position: relative; z-index: 2; padding: 2rem 6rem 1.5rem; }
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   display: block; margin-bottom: .45rem;
 }
-.stat-label { font-family: var(--font-mono); font-size: .58rem; color: var(--muted); letter-spacing: .12em; text-transform: uppercase; display: block; line-height: 1.4; font-weight: 300; }
+/* VISIBILITY FIX: stat-label now uses text2 color and font-weight 400 */
+.stat-label { font-family: var(--font-mono); font-size: .58rem; color: var(--text2); letter-spacing: .12em; text-transform: uppercase; display: block; line-height: 1.4; font-weight: 400; }
 
 #education { background: var(--bg2); transition: background .4s; }
 .edu-timeline { position: relative; display: flex; flex-direction: column; gap: 2rem; }
@@ -444,14 +445,15 @@ section { position: relative; z-index: 2; padding: 2rem 6rem 1.5rem; }
 .edu-item.ssc .edu-institution { color: var(--accent3); }
 .edu-divider { height: 1px; background: linear-gradient(90deg,rgba(255,255,255,.06),transparent); margin-bottom: 1rem; }
 [data-theme="light"] .edu-divider { background: linear-gradient(90deg,rgba(0,0,0,.09),transparent); }
+/* VISIBILITY FIX: edu-meta-chip uses text2, brighter bg/border, font-weight 400 */
 .edu-meta { display: flex; align-items: center; gap: .65rem; flex-wrap: wrap; }
 .edu-meta-chip {
   display: inline-flex; align-items: center; gap: .4rem;
-  font-family: var(--font-mono); font-size: .62rem; color: var(--muted);
-  letter-spacing: .06em; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06);
-  padding: .3rem .78rem; border-radius: 5px; transition: border-color .3s, color .3s; font-weight: 300;
+  font-family: var(--font-mono); font-size: .62rem; color: var(--text2);
+  letter-spacing: .06em; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.15);
+  padding: .3rem .78rem; border-radius: 5px; transition: border-color .3s, color .3s; font-weight: 400;
 }
-[data-theme="light"] .edu-meta-chip { background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.1); }
+[data-theme="light"] .edu-meta-chip { background: rgba(0,0,0,.07); border-color: rgba(0,0,0,.18); color: var(--text2); }
 
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(128px,1fr)); gap: .9rem; }
 .skill-pill {
@@ -774,26 +776,27 @@ section { position: relative; z-index: 2; padding: 2rem 6rem 1.5rem; }
 .project-live-btn .btn-arrow { transition: transform .2s; font-size: .8rem; }
 .project-live-btn:hover .btn-arrow { transform: translateX(4px); }
 
+/* VISIBILITY FIX: project-type-tag uses text2, brighter bg/border, font-weight 400 */
 .project-type-tag {
   font-family: var(--font-mono); font-size: .58rem; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--muted);
-  background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07);
-  padding: .32rem .75rem; border-radius: 5px; font-weight: 300;
+  text-transform: uppercase; color: var(--text2);
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16);
+  padding: .32rem .75rem; border-radius: 5px; font-weight: 400;
   transition: color .25s, border-color .25s, background .25s;
 }
 .project-card:hover .project-type-tag {
-  color: var(--text2);
-  border-color: rgba(110,231,247,.18);
-  background: rgba(110,231,247,.06);
+  color: var(--accent);
+  border-color: rgba(110,231,247,.30);
+  background: rgba(110,231,247,.08);
 }
 [data-theme="light"] .project-type-tag {
-  background: rgba(13,116,144,.05);
-  border: 1px solid rgba(13,116,144,.18);
-  color: var(--muted);
+  background: rgba(13,116,144,.08);
+  border: 1px solid rgba(13,116,144,.28);
+  color: var(--text2);
 }
 [data-theme="light"] .project-card:hover .project-type-tag {
-  background: rgba(13,116,144,.1);
-  border-color: rgba(13,116,144,.3);
+  background: rgba(13,116,144,.14);
+  border-color: rgba(13,116,144,.40);
   color: var(--accent);
 }
 
@@ -846,9 +849,10 @@ section { position: relative; z-index: 2; padding: 2rem 6rem 1.5rem; }
   color: var(--accent); letter-spacing: -.01em;
   margin-bottom: .12rem;
 }
+/* VISIBILITY FIX: github-stats-subtitle uses text2 */
 .github-stats-subtitle {
-  font-family: var(--font-mono); font-size: .6rem; color: var(--muted);
-  letter-spacing: .12em; text-transform: uppercase; font-weight: 300;
+  font-family: var(--font-mono); font-size: .6rem; color: var(--text2);
+  letter-spacing: .12em; text-transform: uppercase; font-weight: 400;
 }
 .github-stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: .75rem; margin-bottom: 1.4rem; }
 
@@ -879,15 +883,17 @@ section { position: relative; z-index: 2; padding: 2rem 6rem 1.5rem; }
   background: linear-gradient(135deg,var(--accent),var(--accent2));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
+/* VISIBILITY FIX: github-stat-label uses text2, font-weight 400 */
 .github-stat-label {
-  font-family: var(--font-mono); font-size: .54rem; color: var(--muted);
-  letter-spacing: .1em; text-transform: uppercase; font-weight: 300; display: block;
+  font-family: var(--font-mono); font-size: .54rem; color: var(--text2);
+  letter-spacing: .1em; text-transform: uppercase; font-weight: 400; display: block;
 }
 .contrib-bar-wrap { margin-bottom: .5rem; }
+/* VISIBILITY FIX: contrib-bar-label uses text2, font-weight 400 */
 .contrib-bar-label {
   display: flex; justify-content: space-between; align-items: center;
-  font-family: var(--font-mono); font-size: .6rem; color: var(--muted);
-  margin-bottom: .5rem; font-weight: 300; letter-spacing: .06em;
+  font-family: var(--font-mono); font-size: .6rem; color: var(--text2);
+  margin-bottom: .5rem; font-weight: 400; letter-spacing: .06em;
 }
 .contrib-bar-track {
   height: 5px; background: rgba(232,168,56,.08); border-radius: 99px; overflow: hidden;
@@ -900,7 +906,7 @@ section { position: relative; z-index: 2; padding: 2rem 6rem 1.5rem; }
 .github-lang-row { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1rem; }
 .lang-chip {
   font-family: var(--font-mono); font-size: .58rem; letter-spacing: .08em;
-  padding: .28rem .7rem; border-radius: 99px; font-weight: 400;
+  padding: .28rem .7rem; border-radius: 99px; font-weight: 500;
   border: 1px solid; transition: transform .2s;
   cursor: default;
 }
@@ -938,7 +944,8 @@ section { position: relative; z-index: 2; padding: 2rem 6rem 1.5rem; }
 .repo-item:last-child { border-bottom: none; }
 .repo-name { font-family: var(--font-mono); font-weight: 400; font-size: .82rem; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: .5rem; cursor: none; }
 .repo-name:hover { color: var(--accent); }
-.repo-stats { display: flex; gap: 1rem; font-family: var(--font-mono); font-size: .68rem; color: var(--muted); font-weight: 300; }
+/* VISIBILITY FIX: repo-stats uses text2, font-weight 400 */
+.repo-stats { display: flex; gap: 1rem; font-family: var(--font-mono); font-size: .68rem; color: var(--text2); font-weight: 400; }
 .repo-stats span { display: flex; align-items: center; gap: .3rem; }
 .loading-repos { text-align: center; padding: 2rem; font-family: var(--font-mono); color: var(--muted); font-size: .8rem; font-weight: 300; }
 
