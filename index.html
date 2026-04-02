@@ -193,10 +193,8 @@ nav.scrolled { padding: .85rem 4rem; }
 [data-theme="light"] .toggle-knob::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1.5px dashed rgba(245,158,11,.45); animation: spinSlow 6s linear infinite; }
 @keyframes spinSlow { to { transform: rotate(360deg); } }
 
-/* CHANGE 1: Section padding reduced to remove extra empty space between sections */
 section { position: relative; z-index: 2; padding: 2rem 6rem 1.5rem; }
 
-/* ── Hero top padding preserved for PC ── */
 #hero {
   display: grid; grid-template-columns: 1fr 1fr;
   align-items: center; gap: 4rem;
@@ -366,7 +364,6 @@ section { position: relative; z-index: 2; padding: 2rem 6rem 1.5rem; }
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   display: block; margin-bottom: .45rem;
 }
-/* VISIBILITY FIX: stat-label now uses text2 color and font-weight 400 */
 .stat-label { font-family: var(--font-mono); font-size: .58rem; color: var(--text2); letter-spacing: .12em; text-transform: uppercase; display: block; line-height: 1.4; font-weight: 400; }
 
 #education { background: var(--bg2); transition: background .4s; }
@@ -445,7 +442,6 @@ section { position: relative; z-index: 2; padding: 2rem 6rem 1.5rem; }
 .edu-item.ssc .edu-institution { color: var(--accent3); }
 .edu-divider { height: 1px; background: linear-gradient(90deg,rgba(255,255,255,.06),transparent); margin-bottom: 1rem; }
 [data-theme="light"] .edu-divider { background: linear-gradient(90deg,rgba(0,0,0,.09),transparent); }
-/* VISIBILITY FIX: edu-meta-chip uses text2, brighter bg/border, font-weight 400 */
 .edu-meta { display: flex; align-items: center; gap: .65rem; flex-wrap: wrap; }
 .edu-meta-chip {
   display: inline-flex; align-items: center; gap: .4rem;
@@ -632,7 +628,6 @@ section { position: relative; z-index: 2; padding: 2rem 6rem 1.5rem; }
 
 .project-top-bar { display: none; }
 
-/* CHANGE 2: Corner dots completely removed */
 .project-corner-tl,
 .project-corner-br {
   display: none !important;
@@ -776,7 +771,6 @@ section { position: relative; z-index: 2; padding: 2rem 6rem 1.5rem; }
 .project-live-btn .btn-arrow { transition: transform .2s; font-size: .8rem; }
 .project-live-btn:hover .btn-arrow { transform: translateX(4px); }
 
-/* VISIBILITY FIX: project-type-tag uses text2, brighter bg/border, font-weight 400 */
 .project-type-tag {
   font-family: var(--font-mono); font-size: .58rem; letter-spacing: .1em;
   text-transform: uppercase; color: var(--text2);
@@ -849,7 +843,6 @@ section { position: relative; z-index: 2; padding: 2rem 6rem 1.5rem; }
   color: var(--accent); letter-spacing: -.01em;
   margin-bottom: .12rem;
 }
-/* VISIBILITY FIX: github-stats-subtitle uses text2 */
 .github-stats-subtitle {
   font-family: var(--font-mono); font-size: .6rem; color: var(--text2);
   letter-spacing: .12em; text-transform: uppercase; font-weight: 400;
@@ -883,13 +876,11 @@ section { position: relative; z-index: 2; padding: 2rem 6rem 1.5rem; }
   background: linear-gradient(135deg,var(--accent),var(--accent2));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
-/* VISIBILITY FIX: github-stat-label uses text2, font-weight 400 */
 .github-stat-label {
   font-family: var(--font-mono); font-size: .54rem; color: var(--text2);
   letter-spacing: .1em; text-transform: uppercase; font-weight: 400; display: block;
 }
 .contrib-bar-wrap { margin-bottom: .5rem; }
-/* VISIBILITY FIX: contrib-bar-label uses text2, font-weight 400 */
 .contrib-bar-label {
   display: flex; justify-content: space-between; align-items: center;
   font-family: var(--font-mono); font-size: .6rem; color: var(--text2);
@@ -944,12 +935,10 @@ section { position: relative; z-index: 2; padding: 2rem 6rem 1.5rem; }
 .repo-item:last-child { border-bottom: none; }
 .repo-name { font-family: var(--font-mono); font-weight: 400; font-size: .82rem; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: .5rem; cursor: none; }
 .repo-name:hover { color: var(--accent); }
-/* VISIBILITY FIX: repo-stats uses text2, font-weight 400 */
 .repo-stats { display: flex; gap: 1rem; font-family: var(--font-mono); font-size: .68rem; color: var(--text2); font-weight: 400; }
 .repo-stats span { display: flex; align-items: center; gap: .3rem; }
 .loading-repos { text-align: center; padding: 2rem; font-family: var(--font-mono); color: var(--muted); font-size: .8rem; font-weight: 300; }
 
-/* CHANGE 3: Contact bottom padding reduced, and mobile footer space reduced */
 #contact { background: var(--bg); overflow: hidden; position: relative; padding-bottom: 2rem; transition: background .4s; }
 .contact-wrap { position: relative; z-index: 2; max-width: 1000px; margin: 0 auto; text-align: center; }
 .contact-headline { font-family: var(--font-head); font-size: clamp(1rem,2.5vw,1.35rem); font-weight: 400; color: var(--muted); letter-spacing: .14em; margin-bottom: .6rem; font-style: italic; opacity: .7; }
@@ -1236,7 +1225,6 @@ footer span { color: var(--accent); }
 
 #avail-badge { display: none !important; }
 
-/* ─── Skill Tooltips ─── */
 .skill-tooltip {
   position: fixed;
   background: var(--card);
@@ -1257,11 +1245,9 @@ footer span { color: var(--accent); }
 }
 [data-theme="light"] .skill-tooltip { border-color: rgba(13,116,144,.28); }
 
-/* ─── Cursor Trail ─── */
 #trail-canvas { position: fixed; inset: 0; z-index: 9997; pointer-events: none; }
 @media (pointer: coarse) { #trail-canvas { display: none; } }
 
-/* ─── Reading Progress Bar ─── */
 #read-progress {
   position: fixed; top: 0; left: 0; z-index: 9999;
   height: 2.5px; width: 0%;
@@ -1272,15 +1258,13 @@ footer span { color: var(--accent); }
   pointer-events: none;
 }
 
-/* ─── Active nav ─── */
 .nav-links a.nav-active { color: var(--accent) !important; }
 .nav-links a.nav-active::after { width: 100% !important; }
 
-/* ── Responsive ── */
 @media (max-width:1100px){section{padding:2rem 3rem 1.5rem;}#hero{gap:2.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
 @media (max-width:900px){nav{padding:1rem 1.5rem;}section{padding:2rem 1.8rem 1.5rem;}#hero{grid-template-columns:1fr;gap:3rem;padding-top:7rem;}.hero-photo{order:-1;}.photo-wrap{width:210px;height:210px;}#about{grid-template-columns:1fr;gap:2.5rem;padding-top:2rem;}.skills-grid{grid-template-columns:repeat(3,1fr);}.contact-cards{grid-template-columns:repeat(2,1fr);}.edu-timeline::before{left:36px;}.gmail-hero-card{padding:1.7rem 1.8rem;gap:1.4rem;}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
 @media (max-width:700px){section{padding:2rem 1.2rem 1.5rem;}.contact-cards{grid-template-columns:repeat(2,1fr);}.about-stats{grid-template-columns:1fr 1fr;}.projects-grid{grid-template-columns:1fr;}.edu-item{grid-template-columns:58px 1fr;gap:0 1rem;}.edu-node{width:58px;height:58px;font-size:1.3rem;border-radius:14px;}.edu-timeline::before{left:29px;}.gmail-hero-card{flex-direction:column;text-align:center;padding:1.7rem 1.5rem;}.gmail-hero-content{text-align:center;}.gmail-primary-label{justify-content:center;}.gmail-sub-text{justify-content:center;flex-wrap:wrap;}.github-stats-grid{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:600px){.nav-hamburger{display:flex;}.nav-links{display:none!important;}.projects-grid{grid-template-columns:1fr;}.skills-grid{grid-template-columns:repeat(2,1fr);}.contact-big{font-size:clamp(1.9rem,8.5vw,2.8rem);}.contact-cards{grid-template-columns:repeat(2,1fr);}#scroll-top{bottom:1.3rem;right:1.3rem;width:42px;height:42px;}.github-stats-grid{grid-template-columns:1fr 1fr;}/* Mobile: footer er upore contact section er extra space komano */#contact{padding-bottom:1rem;}}
+@media (max-width:600px){.nav-hamburger{display:flex;}.nav-links{display:none!important;}.projects-grid{grid-template-columns:1fr;}.skills-grid{grid-template-columns:repeat(2,1fr);}.contact-big{font-size:clamp(1.9rem,8.5vw,2.8rem);}.contact-cards{grid-template-columns:repeat(2,1fr);}#scroll-top{bottom:1.3rem;right:1.3rem;width:42px;height:42px;}.github-stats-grid{grid-template-columns:1fr 1fr;}#contact{padding-bottom:1rem;}}
 @media (max-width:480px){nav{padding:.9rem 1rem;}.nav-right{gap:.7rem;}.hero-name{font-size:clamp(1.9rem,7.5vw,2.8rem);}.hero-cta{flex-direction:column;align-items:flex-start;}.contact-cards{grid-template-columns:1fr 1fr;}.stat-num{font-size:1.65rem;}.edu-card{padding:1.4rem 1.2rem;}.gmail-address{font-size:.82rem;}.github-stats-grid{grid-template-columns:1fr 1fr;}}
 </style>
 </head>
@@ -1381,7 +1365,7 @@ footer span { color: var(--accent); }
   <div class="about-right reveal">
     <div class="about-stats-label">At a Glance</div>
     <div class="about-stats">
-      <div class="stat-card"><span class="stat-num">5+</span><span class="stat-label">Projects Built</span></div>
+      <div class="stat-card"><span class="stat-num">6+</span><span class="stat-label">Projects Built</span></div>
       <div class="stat-card"><span class="stat-num">10+</span><span class="stat-label">Tech Skills</span></div>
       <div class="stat-card"><span class="stat-num">High</span><span class="stat-label">Curiosity Level</span></div>
       <div class="stat-card"><span class="stat-num" style="font-size:1.6rem;letter-spacing:-.03em;">Sync</span><span class="stat-label">Learning Mode</span></div>
@@ -1560,6 +1544,28 @@ footer span { color: var(--accent); }
           <p class="project-desc">Resize, compress, and optimize your photos directly in the browser. No uploads to servers. Your privacy is respected, fully client-side.</p>
           <div class="project-footer">
             <a href="https://foysal03.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-live-btn">
+              <span class="live-dot"></span><span>Live Demo</span><span class="btn-arrow">→</span>
+            </a>
+            <span class="project-type-tag">Tool</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-top-bar"></div>
+      <div class="project-corner-tl"></div>
+      <div class="project-corner-br"></div>
+      <div class="project-card-inner">
+        <div class="project-preview">
+          <div class="project-preview-num">PROJECT_06</div>
+          <img src="https://i.postimg.cc/1tJvpq65/1775134973877.png" alt="URL Shortner" loading="lazy">
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">URL Shortner</h3>
+          <p class="project-desc">Shorten long URLs instantly into clean, shareable links. Fast, lightweight, and easy to use — your go-to tool for making links more manageable.</p>
+          <div class="project-footer">
+            <a href="https://foysalhridoy.github.io/url/" target="_blank" rel="noopener noreferrer" class="project-live-btn">
               <span class="live-dot"></span><span>Live Demo</span><span class="btn-arrow">→</span>
             </a>
             <span class="project-type-tag">Tool</span>
@@ -1878,7 +1884,7 @@ async function fetchGitHubStats() {
         </div>
       </div>
       <div class="github-stats-grid">
-        <div class="github-stat-item"><span class="github-stat-value">5+</span><span class="github-stat-label">Repositories</span></div>
+        <div class="github-stat-item"><span class="github-stat-value">6+</span><span class="github-stat-label">Repositories</span></div>
         <div class="github-stat-item"><span class="github-stat-value">&mdash;</span><span class="github-stat-label">Followers</span></div>
         <div class="github-stat-item"><span class="github-stat-value">&mdash;</span><span class="github-stat-label">Stars</span></div>
         <div class="github-stat-item"><span class="github-stat-value">&mdash;</span><span class="github-stat-label">Forks</span></div>
@@ -1922,7 +1928,7 @@ async function fetchGitHubRepos() {
       container.appendChild(item);
     });
   } catch {
-    container.innerHTML = '<div class="loading-repos">✨ Al-Quran &middot; WWH &middot; QR Code Gen &middot; Smart Calendar &middot; Photo Resizer &middot; Portfolio</div>';
+    container.innerHTML = '<div class="loading-repos">✨ Al-Quran &middot; WWH &middot; QR Code Gen &middot; Smart Calendar &middot; Photo Resizer &middot; URL Shortner &middot; Portfolio</div>';
   }
 }
 fetchGitHubRepos();
@@ -2050,7 +2056,7 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     })();
   }
 
-  /* 5. Skill Tooltips — fixed positioning to avoid overflow clipping */
+  /* 5. Skill Tooltips */
   const skillDesc = {
     'C':'System programming & fundamentals',
     'C#':'.NET, Unity & enterprise apps',
